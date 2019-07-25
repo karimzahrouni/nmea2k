@@ -47,15 +47,17 @@ namespace nmea2k {
 
 
   /** Iso11783Header is ued for encoding and decoding CAN extended 
-      32(29) bit id into stuff used by Nmea2k. */
+      32(29) bit id into stuff used by Nmea2k. These are defined here
+      from LSB to MSB. 
+  */
   struct Iso11783Header{
-    : 3;                  //<! ignore first three bits
-    unsigned char p : 3;  //<! priority, used only by CAN hardware layer
-    unsigned char r : 1;  //<! reserved (= 0) by ISO 11783-3
-    unsigned char dp : 1; //<! data page
-    unsigned char pf;     //<! PDU format
-    unsigned char ps;     //<! PDU specfic: dest, grp ext, or proprietary
-    unsigned char sa;     //<! source address
+    unsigned char sa, //<! source address
+      ps,     //<! PDU specific e.g. dest addr, grp ext, proprietary
+      pf,     //<! PDU format
+      dp : 1, //<! data page
+      r : 1,  //<! reserved (= 0) by ISO 11783-3
+      p : 3,  //<! priority, used only by CAN hardware layer
+      ignore: 3;    //<! ignore first three bits
   }; // Iso11783Header
   
   /** PDUHeader is a union for easy translation between CAN 32(29) bit id 

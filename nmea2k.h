@@ -38,7 +38,7 @@ namespace nmea2k {
 	@param _data, message data
 	@param _len, message data length
 
-	For nmea2k use, type is CAN::CANData, format is CAN::CANExtended. 
+	For nmea2k use, type is CANData, format is CANExtended. 
 	This is within the constructors and should not be altered
 	by the user. */ 
     Frame(unsigned int _id, const unsigned char *_data, unsigned char _len=8);
@@ -48,7 +48,7 @@ namespace nmea2k {
 	@param _data, message data
 	@param _len, message data length
 
-	For nmea2k use, type is CAN::CANData, format is CAN::CANExtended.
+	For nmea2k use, type is CANData, format is CANExtended.
 	This is within the constructors and should not be altered 
 	by the user. */ 
     Frame(unsigned int _id, const char *_data, unsigned char _len=8);

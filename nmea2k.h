@@ -112,7 +112,7 @@ namespace nmea2k {
 	to not use Mutex lock() unlock(); this may result in 
 	odd behavior in future but currently seems to work. 
     */
-    int read(Frame frame, int handle=0);
+    int read(Frame &frame, int handle=0);
 
     /** Attach a function to call whenever a CAN frame received interrupt 
 	is generated.  This function locks the deep sleep while the 

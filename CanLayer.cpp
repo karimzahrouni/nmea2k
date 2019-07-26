@@ -9,9 +9,9 @@
 namespace nmea2k{
 
   
-  CanLayer::CanLayer(mbed::PinName tx,
-		     mbed::PinName rx) : 
-    CAN::CAN(tx,rx,NMEA2K_FREQUENCY){
+  CanLayer::CanLayer(mbed::PinName rd,
+		     mbed::PinName td) : 
+    CAN::CAN(rd,td,NMEA2K_FREQUENCY){
     debug("nmea2k::CanLayer(tx,rx) constructor called\r\n");
   } // nmea2k::CanLayer() constructor implementation
 

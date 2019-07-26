@@ -11,8 +11,8 @@ namespace nmea2k{
   
   Frame::Frame() :
     mbed::CANMessage(){
-    type = mbed::CANData; 
-    format = mbed::CANExtended; 
+    type = CANData; 
+    format = CANExtended; 
     //debug("nmea2k::Frame() constructor called\r\n");
   }; // nmea2k::Frame() constructor
 
@@ -20,7 +20,7 @@ namespace nmea2k{
   Frame::Frame(unsigned int _id,
 	       const unsigned char *_data,
 	       unsigned char _len) :
-    mbed::CANMessage(_id,_data,_len,mbed::CANData,mbed::CANExtended){
+    mbed::CANMessage(_id,_data,_len,CANData,CANExtended){
     //debug("nmea2k::Frame(_id,_data,_len) called (unsigned char data)\r\n");
   }; // nmea2k::Frame(_id,_data,_len) w unsigned char data implementation
 
@@ -28,7 +28,7 @@ namespace nmea2k{
   Frame::Frame(unsigned int _id,
 	       const char *_data,
 	       unsigned char _len) :
-    mbed::CANMessage(_id,_data,_len,mbed::CANData,mbed::CANExtended){
+    mbed::CANMessage(_id,_data,_len,CANData,CANExtended){
     //debug("nmea2k::Frame(_id,_data,_len) called (char data)\r\n");
   }; // nmea2k::Frame(_id,_data,_len) w char data implementation
 

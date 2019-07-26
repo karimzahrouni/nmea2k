@@ -21,14 +21,14 @@ namespace nmea2k {
 
   
   /** nmea2k::Frame is a single frame of data. It inherits nearly everything 
-      from CANMessage but is set to use CAN::CANData type and 
-      CAN::CANExtended format. Mainly this is done for clean abstraction 
+      from mbed::CANMessage but is set to use CANData type and 
+      CANExtended format. Mainly this is done for clean abstraction 
       purposes. 
 
       Frame is one of the primitives used in layer 1 (physical layer) and
       layer 2 (data link layer) of nmea2k. 
   */ 
-  class Frame:public CANMessage {
+  class Frame:public mbed::CANMessage {
   public:
     /** Creates empty nmea2k Frame */ 
     Frame();
@@ -59,7 +59,7 @@ namespace nmea2k {
 
 
   /** nmea2k::CanLayer implements layer 2, the data link layer. It inherits
-      from the builtin CAN class. It is set to use bus frequency 
+      from the builtin mbed::CAN class. It is set to use bus frequency 
       NMEA2K_FREQUENCY (250000 Hz). One constructor is provided, 
       nmea2k::CanLayer(rd,td), plus a destructor.
 
@@ -73,7 +73,7 @@ namespace nmea2k {
       should be watched if they fix CAN's behavior later and it starts to 
       become buggy. 
   */
-  class CanLayer:public CAN {
+  class CanLayer:public mbed::CAN {
   public:
 
     /** Class constructor for nmea2k::CanLayer class
@@ -120,7 +120,7 @@ namespace nmea2k {
 	@param func, a pointer to a void function, or 0 to set as none
 	@param type, which CAN interrupt to attach the member function to
     */
-    void attach(Callback<void()> func, IrqType type=RxIrq);
+    void attach(mbed::Callback<void()> func, CAN::IrqType type=CAN::RxIrq);
 
     // not exposing filter since we'll probably need to look for both
     // NMEA2K_BROADCAST as well as our own node address? 

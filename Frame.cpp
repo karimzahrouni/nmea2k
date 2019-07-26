@@ -14,7 +14,7 @@ namespace nmea2k{
     type = CAN::CANData; 
     format = CAN::CANExtended; 
     //debug("nmea2k::Frame() constructor called\r\n");
-  } // nmea2k::Frame() constructor
+  }; // nmea2k::Frame() constructor
 
   
   Frame::Frame(unsigned int _id,
@@ -22,7 +22,7 @@ namespace nmea2k{
 	       unsigned char _len) :
     CANMessage(_id,_data,_len,CAN::CANData,CAN::CANExtended){
     //debug("nmea2k::Frame(_id,_data,_len) called (unsigned char data)\r\n");
-  } // nmea2k::Frame(_id,_data,_len) w unsigned char data implementation
+  }; // nmea2k::Frame(_id,_data,_len) w unsigned char data implementation
 
   
   Frame::Frame(unsigned int _id,
@@ -30,11 +30,11 @@ namespace nmea2k{
 	       unsigned char _len) :
     CANMessage(_id,_data,_len,CAN::CANData,CAN::CANExtended){
     //debug("nmea2k::Frame(_id,_data,_len) called (char data)\r\n");
-  } // nmea2k::Frame(_id,_data,_len) w char data implementation
+  }; // nmea2k::Frame(_id,_data,_len) w char data implementation
 
   
   Frame::~Frame(){
     //debug("nmea2k::~Frame() destructor called\r\n");
-  } // nmea2k::~Frame() destructor
+  }; // nmea2k::~Frame() destructor
 
 } // namespace nmea2k

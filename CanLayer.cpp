@@ -12,19 +12,19 @@ namespace nmea2k{
 		     PinName td) : 
     CAN(rd,td,NMEA2K_FREQUENCY){
     debug("nmea2k::CanLayer(tx,rx) constructor called\r\n");
-  } // nmea2k::CanLayer() constructor implementation
+  }; // nmea2k::CanLayer() constructor implementation
 
   
   CanLayer::~CanLayer(){
     debug("nmea2k::~CanLayer() destructor called\r\n");
     // N.B. super class destructors are automatically called,
     // base class last, so do not call super class destructor. 
-  } // nmea2k::~CanLayer() destructor implementation
+  }; // nmea2k::~CanLayer() destructor implementation
 
   
   int CanLayer::write(Frame frame){
     return CAN::write(frame);
-  } // nmea2k::CanLayer::write(frame) implementation
+  }; // nmea2k::CanLayer::write(frame) implementation
 
   /*
     This has been modified from the definition of CAN::read() around
@@ -38,7 +38,7 @@ namespace nmea2k{
    */
   int CanLayer::read(Frame &frame, int handle){
     return CAN::read(frame, handle); 
-  } // nmea2k::CanLayer::read(frame,handle) implementation
+  }; // nmea2k::CanLayer::read(frame,handle) implementation
 
   void CanLayer::attach(mbed::Callback<void()> func, CAN::IrqType type){
     debug("Warning: CAN.read() has a Mutex that leads to odd behavior in ISRs.\r\n");
@@ -46,6 +46,6 @@ namespace nmea2k{
     // to allow using can.read() inside ISR. see here:
     // https://os.mbed.com/questions/76892/How-to-clear-CAN-bus-interrupt-flag-Miss/
     CAN::attach(func,type); 
-  } // nmea2k::CanLayer::attach(func,type) implementation
+  }; // nmea2k::CanLayer::attach(func,type) implementation
 
 } // namespace nmea2k

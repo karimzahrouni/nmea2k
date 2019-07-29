@@ -43,7 +43,7 @@ namespace nmea2k {
        if the PDU Format value is less than 240, then the lower byte 
        of the PGN is set to 0. 
     */
-    unsigned int result = _translation.is.r << 17; 
+    unsigned int result = _translation.iso.r << 17; 
     //MBED_ASSERT(result==0); // r should always be 0
     result += _translation.iso.dp << 16;
     result += _translation.iso.pf << 8; 

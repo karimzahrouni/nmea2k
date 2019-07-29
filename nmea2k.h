@@ -272,15 +272,18 @@ namespace nmea2k {
 
     // send
     // send_fast LATER
-    // send_multi LATER
+    // send_multi LATER not within Nmea2k 
 
     // attach
-    // hook for user context receipt handling
+    // hook for user context receipt handling, rx callback
+    // hook for tx callback? 
 
   private:
-    // _send_queue
-    // _send_thread
-    // _SendCallback
+    // _tx_queue
+    // _tx_thread
+
+    // _rx_queue
+    // _rx_thread?
   };
   */
 

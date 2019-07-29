@@ -43,6 +43,7 @@ int main(void){
   foo.set_id(0);
   foo.set_pgn(130306);
   foo.set_da(0x41); // should throw warning, yes it does
+  debug("warning thrown here is expected as part of test!\r\n");
   foo.set_da(0xff); // should be ok, yes it is
   foo.set_sa(0x42); 
   for (unsigned int i=0; i<7; i++){

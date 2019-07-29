@@ -38,7 +38,6 @@ int main(void){
   TEST_ASSERT_EQUAL(0,foo.pf());
   TEST_ASSERT_EQUAL(0,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
 
   pc.printf("testing PGN 60928... ");
   foo.set_pgn(60928);
@@ -49,7 +48,6 @@ int main(void){
   TEST_ASSERT_EQUAL(238,foo.pf());
   TEST_ASSERT_EQUAL(0,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
 
   pc.printf("testing PGN 61184... ");
   foo.set_pgn(61184);
@@ -60,7 +58,6 @@ int main(void){
   TEST_ASSERT_EQUAL(239,foo.pf());
   TEST_ASSERT_EQUAL(0,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   pc.printf("testing PGN 61440... ");
   foo.set_pgn(61440);
@@ -71,10 +68,10 @@ int main(void){
   TEST_ASSERT_EQUAL(240,foo.pf());
   TEST_ASSERT_EQUAL(0,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   pc.printf("testing PGN 65279... ");
   foo.set_pgn(65279);
+  pc.printf("%d vs %02x %02x %02x \n",foo.pgn(),foo.dp(),foo.pf(),foo.ps());
   TEST_ASSERT_EQUAL(65279,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
@@ -82,7 +79,6 @@ int main(void){
   TEST_ASSERT_EQUAL(254,foo.pf());
   TEST_ASSERT_EQUAL(255,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   pc.printf("testing PGN 65280... ");
   foo.set_pgn(65280);
@@ -93,7 +89,6 @@ int main(void){
   TEST_ASSERT_EQUAL(255,foo.pf());
   TEST_ASSERT_EQUAL(0,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   pc.printf("testing PGN 65535... ");
   foo.set_pgn(65535);
@@ -104,7 +99,6 @@ int main(void){
   TEST_ASSERT_EQUAL(255,foo.pf());
   TEST_ASSERT_EQUAL(255,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   pc.printf("testing PGN 65536... ");
   foo.set_pgn(65536);
@@ -115,7 +109,6 @@ int main(void){
   TEST_ASSERT_EQUAL(0,foo.pf());
   TEST_ASSERT_EQUAL(0,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   pc.printf("testing PGN 126720... ");
   foo.set_pgn(126720);
@@ -126,7 +119,6 @@ int main(void){
   TEST_ASSERT_EQUAL(239,foo.pf());
   TEST_ASSERT_EQUAL(0,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   pc.printf("testing PGN 126976... ");
   foo.set_pgn(126976);
@@ -137,7 +129,6 @@ int main(void){
   TEST_ASSERT_EQUAL(240,foo.pf());
   TEST_ASSERT_EQUAL(0,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   pc.printf("testing PGN 131071... ");
   foo.set_pgn(131071);
@@ -148,7 +139,6 @@ int main(void){
   TEST_ASSERT_EQUAL(255,foo.pf());
   TEST_ASSERT_EQUAL(255,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
-  pc.printf("passed!\r\n");
   
   //pc.printf("testing in hex\r\n");
 } // int main(void)

@@ -56,7 +56,7 @@ int main(void){
   foo.set_id(0);
   foo.set_pgn(126208);
   foo.set_sa(0x41); 
-  TEST_ASSERT_EQUAL_MESSAGE(0x01ed0000,foo.id(),"failed to decode id");
+  TEST_ASSERT_EQUAL_MESSAGE(0x01ed0041,foo.id(),"failed to decode id");
   TEST_ASSERT_EQUAL_MESSAGE(126208,foo.pgn(),"failed to decode pgn");
   for (unsigned int i=0; i<256; i++){
     pc.printf("PGN 126208 with DA = %d\r\n",i); 

@@ -16,6 +16,7 @@ namespace nmea2k {
 
   PduHeader::PduHeader(unsigned int _id){
     _translation.id = _id;
+    debug("warning: id %x resulted in possibly badly formed PGN\r\n",_id); 
     if ((_translation.iso.pf<240) && (_translation.iso.ps!=0))
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				     MBED_ERROR_CODE_UNSUPPORTED),
@@ -44,7 +45,7 @@ namespace nmea2k {
        of the PGN is set to 0. 
     */
     unsigned int result = (_translation.iso.r << 17); 
-    MBED_ASSERT(result==0); // r should always be 0
+    //MBED_ASSERT(result==0); // r should always be 0
     result += (_translation.iso.dp << 16);
     result += (_translation.iso.pf << 8); 
     if (_translation.iso.pf>=240)
@@ -59,10 +60,10 @@ namespace nmea2k {
     b3 = (x & 0xff);
       
     if ((b2<240) && (b3!=0)){
-      debug("Badly formed PGN, no puedo");
+      debug("warning: badly formed PGN %d, no puedo\r\n",x);
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				     MBED_ERROR_CODE_UNSUPPORTED),
-		     "Badly formed PGN, no puedo",
+		     "badly formed PGN, no puedo",
 		     x);
     } // if badly formed PGN throw warning
     else {
@@ -86,10 +87,10 @@ namespace nmea2k {
     if (_translation.iso.pf<240)
       _translation.iso.ps = x;
     else if (x != NMEA2K_BROADCAST) {
-      debug("Trying to set DA for PGN w none, no puedo");
+      debug("warning: trying to set DA %x for PGN w none, no puedo\r\n",x);
       MBED_WARNING1 ( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				      MBED_ERROR_CODE_UNSUPPORTED),
-		      "Trying to set DA for PGN w none, no puedo",
+		      "trying to set DA for PGN w none, no puedo",
 		      x);
     } // if setting DA for PGN w none, throw warning
     return; 

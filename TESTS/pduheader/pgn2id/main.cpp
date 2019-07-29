@@ -28,7 +28,7 @@ int main(void){
 
   foo.set_id(0);
   foo.set_pgn(127245);
-  TEST_ASSERT_EQUAL(0x01f10d00,foo.id(),"failed to decode id");
+  TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00,foo.id(),"failed to decode id");
   
 } // int main(void)
 

@@ -14,6 +14,7 @@
  */
 
 #include "mbed.h"
+#include "mbed_error.h"
 #include "stdio.h"
 #include "unity.h"
 #include "nmea2k.h"

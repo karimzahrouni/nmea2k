@@ -48,7 +48,7 @@ int main(void){
   for (unsigned int i=0; i<7; i++){
     pc.printf("PGN 130306 with P = %d\r\n",i);
     foo.set_p(i);
-    TEST_ASSERT_EQUAL_MESSAGE(0x01fd0200+(i<<19)+0x42,foo.id(),"failed to decode id");
+    TEST_ASSERT_EQUAL_MESSAGE(0x01fd0200+(i<<20)+0x42,foo.id(),"failed to decode id");
     TEST_ASSERT_EQUAL_MESSAGE(130306,foo.pgn(),"failed to decode pgn");
   }
   

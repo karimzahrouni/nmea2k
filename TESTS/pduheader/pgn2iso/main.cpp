@@ -71,7 +71,6 @@ int main(void){
   
   pc.printf("testing PGN 65279... \r\n");
   foo.set_pgn(65279);
-  pc.printf("%d vs %02x %02x %02x \n",foo.pgn(),foo.dp(),foo.pf(),foo.ps());
   TEST_ASSERT_EQUAL(65279,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
@@ -140,6 +139,117 @@ int main(void){
   TEST_ASSERT_EQUAL(255,foo.ps());
   TEST_ASSERT_EQUAL(0,foo.sa());
   
-  //pc.printf("testing in hex\r\n");
+  pc.printf("testing in hex\r\n");
+  pc.printf("testing PGN 0... \r\n");
+  foo.set_id(0);
+  TEST_ASSERT_EQUAL(0x0,foo.id());
+  foo.set_pgn(0);
+  TEST_ASSERT_EQUAL(0,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(0,foo.dp());
+  TEST_ASSERT_EQUAL(0,foo.pf());
+  TEST_ASSERT_EQUAL(0,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+
+  pc.printf("testing PGN 60928... \r\n");
+  foo.set_pgn(0xee00);
+  TEST_ASSERT_EQUAL(60928,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(0,foo.dp());
+  TEST_ASSERT_EQUAL(238,foo.pf());
+  TEST_ASSERT_EQUAL(0,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+
+  pc.printf("testing PGN 61184... \r\n");
+  foo.set_pgn(0xef00);
+  TEST_ASSERT_EQUAL(61184,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(0,foo.dp());
+  TEST_ASSERT_EQUAL(239,foo.pf());
+  TEST_ASSERT_EQUAL(0,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+  
+  pc.printf("testing PGN 61440... \r\n");
+  foo.set_pgn(0xf000);
+  TEST_ASSERT_EQUAL(61440,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(0,foo.dp());
+  TEST_ASSERT_EQUAL(240,foo.pf());
+  TEST_ASSERT_EQUAL(0,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+  
+  pc.printf("testing PGN 65279... \r\n");
+  foo.set_pgn(0xfeff);
+  TEST_ASSERT_EQUAL(65279,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(0,foo.dp());
+  TEST_ASSERT_EQUAL(254,foo.pf());
+  TEST_ASSERT_EQUAL(255,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+  
+  pc.printf("testing PGN 65280... \r\n");
+  foo.set_pgn(0xff00);
+  TEST_ASSERT_EQUAL(65280,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(0,foo.dp());
+  TEST_ASSERT_EQUAL(255,foo.pf());
+  TEST_ASSERT_EQUAL(0,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+  
+  pc.printf("testing PGN 65535... \r\n");
+  foo.set_pgn(0xffff);
+  TEST_ASSERT_EQUAL(65535,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(0,foo.dp());
+  TEST_ASSERT_EQUAL(255,foo.pf());
+  TEST_ASSERT_EQUAL(255,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+  
+  pc.printf("testing PGN 65536... \r\n");
+  foo.set_pgn(0x010000);
+  TEST_ASSERT_EQUAL(65536,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(1,foo.dp());
+  TEST_ASSERT_EQUAL(0,foo.pf());
+  TEST_ASSERT_EQUAL(0,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+  
+  pc.printf("testing PGN 126720... \r\n");
+  foo.set_pgn(0x01ef00);
+  TEST_ASSERT_EQUAL(126720,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(1,foo.dp());
+  TEST_ASSERT_EQUAL(239,foo.pf());
+  TEST_ASSERT_EQUAL(0,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+  
+  pc.printf("testing PGN 126976... \r\n");
+  foo.set_pgn(0x01f000);
+  TEST_ASSERT_EQUAL(126976,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(1,foo.dp());
+  TEST_ASSERT_EQUAL(240,foo.pf());
+  TEST_ASSERT_EQUAL(0,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
+  
+  pc.printf("testing PGN 131071... \r\n");
+  foo.set_pgn(0x1ffff);
+  TEST_ASSERT_EQUAL(131071,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
+  TEST_ASSERT_EQUAL(0,foo.p());
+  TEST_ASSERT_EQUAL(1,foo.dp());
+  TEST_ASSERT_EQUAL(255,foo.pf());
+  TEST_ASSERT_EQUAL(255,foo.ps());
+  TEST_ASSERT_EQUAL(0,foo.sa());
 } // int main(void)
 

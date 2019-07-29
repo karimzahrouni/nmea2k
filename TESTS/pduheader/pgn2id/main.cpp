@@ -24,11 +24,19 @@ nmea2k::PduHeader foo;
 int main(void){
   pc.printf("nmea2k version ");
   pc.printf(NMEA2K_VERSION);
-  pc.printf("\r\nPduHeader PGN to ISO11783-3 test\r\n");
+  pc.printf("\r\nPduHeader PGN to CAN ID test\r\n");
 
+  pc.printf("Testing PGN 127245 Rudder with different SA\r\n");
   foo.set_id(0);
   foo.set_pgn(127245);
+  foo.set_sa(0); 
   TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00,foo.id(),"failed to decode id");
+  TEST_ASSERT_EQUAL_MESSAGE(127245,foo.pgn(),"failed to decode pgn");
+  for (unsigned char i=0; i<255; i++){
+    foo.set_sa(i);
+    TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00+i,foo.id(),"failed to decode id");
+    TEST_ASSERT_EQUAL_MESSAGE(127245,foo.pgn(),"failed to decode pgn");
+  }
   
 } // int main(void)
 

@@ -47,7 +47,7 @@ namespace nmea2k {
     MBED_ASSERT(result==0); // r should always be 0
     result += (_translation.iso.dp << 16);
     result += (_translation.iso.pf << 8); 
-    if (_translation.iso.pf<240)
+    if !(_translation.iso.pf<240)
       result += _translation.iso.ps;
     return result;
   } // pgn() getter

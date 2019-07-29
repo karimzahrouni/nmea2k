@@ -29,10 +29,10 @@ int main(void){
   // test cases from page 5 of ISO 11783-3
   pc.printf("testing PGN 0... ");
   foo.set_id(0);
-  TEST_ASSERT_EQUAL(0,foo.id())
+  TEST_ASSERT_EQUAL(0,foo.id());
   foo.set_pgn(0);
-  TEST_ASSERT_EQUAL(0,foo.pgn())
-  TEST_ASSERT_EQUAL(0,foo.ignore())
+  TEST_ASSERT_EQUAL(0,foo.pgn());
+  TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(0,foo.dp());
   TEST_ASSERT_EQUAL(0,foo.pf());
@@ -42,7 +42,7 @@ int main(void){
 
   pc.printf("testing PGN 60928... ");
   foo.set_pgn(60928);
-  TEST_ASSERT_EQUAL(60928,foo.pgn())
+  TEST_ASSERT_EQUAL(60928,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(0,foo.dp());
@@ -53,7 +53,7 @@ int main(void){
 
   pc.printf("testing PGN 61184... ");
   foo.set_pgn(61184);
-  TEST_ASSERT_EQUAL(61184,foo.pgn())
+  TEST_ASSERT_EQUAL(61184,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(0,foo.dp());
@@ -64,7 +64,7 @@ int main(void){
   
   pc.printf("testing PGN 61440... ");
   foo.set_pgn(61440);
-  TEST_ASSERT_EQUAL(61440,foo.pgn())
+  TEST_ASSERT_EQUAL(61440,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(0,foo.dp());
@@ -75,7 +75,7 @@ int main(void){
   
   pc.printf("testing PGN 65279... ");
   foo.set_pgn(65279);
-  TEST_ASSERT_EQUAL(65279,foo.pgn())
+  TEST_ASSERT_EQUAL(65279,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(0,foo.dp());
@@ -86,7 +86,7 @@ int main(void){
   
   pc.printf("testing PGN 65280... ");
   foo.set_pgn(65280);
-  TEST_ASSERT_EQUAL(65280,foo.pgn())
+  TEST_ASSERT_EQUAL(65280,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(0,foo.dp());
@@ -97,7 +97,7 @@ int main(void){
   
   pc.printf("testing PGN 65535... ");
   foo.set_pgn(65535);
-  TEST_ASSERT_EQUAL(65535,foo.pgn())
+  TEST_ASSERT_EQUAL(65535,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(0,foo.dp());
@@ -108,7 +108,7 @@ int main(void){
   
   pc.printf("testing PGN 65536... ");
   foo.set_pgn(65536);
-  TEST_ASSERT_EQUAL(65536,foo.pgn())
+  TEST_ASSERT_EQUAL(65536,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(1,foo.dp());
@@ -119,7 +119,7 @@ int main(void){
   
   pc.printf("testing PGN 126720... ");
   foo.set_pgn(126720);
-  TEST_ASSERT_EQUAL(126720,foo.pgn())
+  TEST_ASSERT_EQUAL(126720,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(1,foo.dp());
@@ -130,7 +130,7 @@ int main(void){
   
   pc.printf("testing PGN 126976... ");
   foo.set_pgn(126976);
-  TEST_ASSERT_EQUAL(126976,foo.pgn())
+  TEST_ASSERT_EQUAL(126976,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(1,foo.dp());
@@ -141,7 +141,7 @@ int main(void){
   
   pc.printf("testing PGN 131071... ");
   foo.set_pgn(131071);
-  TEST_ASSERT_EQUAL(131071,foo.pgn())
+  TEST_ASSERT_EQUAL(131071,foo.pgn());
   TEST_ASSERT_EQUAL(0,foo.ignore());
   TEST_ASSERT_EQUAL(0,foo.p());
   TEST_ASSERT_EQUAL(1,foo.dp());

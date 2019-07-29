@@ -53,6 +53,10 @@ int main(void){
   }
   
   
+  MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
+				 MBED_ERROR_CODE_UNSUPPORTED),
+		 "wtf dude?",
+		 66);
   
 } // int main(void)
 

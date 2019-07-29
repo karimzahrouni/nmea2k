@@ -56,7 +56,7 @@ void send_callback() {
 
 
 int main(void){ 
-  pc.printf("Nmea2k version ");
+  pc.printf("nmea2k version ");
   pc.printf(NMEA2K_VERSION);
   pc.printf("\r\nThreaded loopback test\r\n");
 

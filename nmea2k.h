@@ -14,6 +14,7 @@
 #define NMEA2K_BROADCAST 255 //!< Address used for broadcast messages
 
 #include "mbed.h"
+#include "PduHeader.h"
 
 namespace nmea2k {
 
@@ -140,28 +141,6 @@ namespace nmea2k {
 
 
 
-  /** Iso11783Header_t is used for encoding and decoding CAN extended
-      32(29) bit id into stuff used by Nmea2k. These are defined here
-      from LSB to MSB.
-  */
-  typedef struct Iso11783Header_t {
-    unsigned char sa, //<! source address
-      ps,     //<! PDU specific e.g. dest addr, grp ext, proprietary
-      pf,     //<! PDU format
-      dp : 1, //<! data page
-      r : 1,  //<! reserved (= 0) by ISO 11783-3
-      p : 3,  //<! priority, used only by CAN hardware layer
-      ignore: 3;    //<! ignore first three bits, named so they can be set
-  } Iso11783Header_t; // Iso11783Header_t
-
-  /** PduHeader_t is a union for easy translation between CAN 32(29) bit id
-      and ISO11783-3 header fields
-  */
-  typedef union PduHeader_t {
-    unsigned int id; //!< CAN extended 32(29) bit address id
-    Iso11783Header_t iso; //!< equivalent ISO 11783-3 header fields
-  } PduHeader_t; // PduHeader_t
-
 
 
 
@@ -173,7 +152,7 @@ namespace nmea2k {
   */
   class Pdu:public Frame {
   public:
-    PduHeader_t header; //<! used to translate CAN id <-> PGN etc.
+    PduHeader header; //<! used to translate CAN id <-> PGN etc.
 
     /** Creates empty PDU
      */
@@ -209,53 +188,12 @@ namespace nmea2k {
     */
     Pdu(unsigned int _id, const char * data, unsigned char len=8);
 
-    /* TODO LATER - need to decide which calling signatures we actually
-       want???
-    Pdu(unsigned char, unsigned char,
-        unsigned char, unsigned char, unsigned char,
-        const unsigned char *, unsigned char);
-    Pdu(unsigned char, unsigned char,
-        unsigned char, unsigned char, unsigned char,
-        const char *, unsigned char);
-    */
-
+    Pdu(PduHeader h, const unsigned char * _data, unsigned char len=8);
+    Pdu(PduHeader h, const char * _data, unsigned char len=8); 
+    
     /** Destructor for nmea2k::Pdu class */ 
     ~Pdu();
-
     
-    // setters
-    /** Set CAN id 
-	@param _id, the desired id, used when constructing from a received
-	message. Necessary to 'override' CAN id to allow proper decoding 
-	of the necessary ISO11783-3 header stuff. 
-    */ 
-    void set_id(unsigned int _id); 
-
-
-    
-    // getters
-    /** Get CAN id 
-	@returns
-	  the CAN id of the PDU, for use during transmission
-	This function is necessary to `override' CAN id to allow proper
-	encoding of necessary ISO11783-3 header stuff. 
-     */
-    unsigned int id(); 
-    
-    /** Get PGN
-	@returns 
-	  the PGN of the PDU, for message dispatch upon receipt 
-    */
-    unsigned int pgn();
-    
-    /** Get destination address
-	@returns 
-	  the destination address of the PDU, for message
-	  dispatch upon receipt. Returns NMEA2K_BROADCAST
-	  if message is a broadcast message or has no
-	  destination address
-    */
-    unsigned char da(); 
   }; // class Pdu
 
 

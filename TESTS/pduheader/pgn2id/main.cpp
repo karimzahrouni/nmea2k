@@ -32,7 +32,7 @@ int main(void){
   foo.set_sa(0); 
   TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00,foo.id(),"failed to decode id");
   TEST_ASSERT_EQUAL_MESSAGE(127245,foo.pgn(),"failed to decode pgn");
-  for (unsigned char i=0; i<256; i++){
+  for (unsigned char i=0; i<255; i++){
     pc.printf("PGN 127245 with SA = %d\r\n",i); 
     foo.set_sa(i);
     TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00+i,foo.id(),"failed to decode id");

@@ -33,36 +33,42 @@ namespace nmea2k {
     
     // getters and setters
     
-    /** get source address (SA)*/
+    /** get source address (SA) byte*/
     inline unsigned char sa() {return _translation.iso.sa;}
-    /** set source address (SA)*/ 
-    inline void set_sa(unsigned char x) {_translation.iso.sa=x;}
+    /** set source address (SA) byte*/ 
+    inline void set_sa(unsigned char x) {_translation.iso.sa=x & 0xff;}
     /** get PDU specific (PS) byte */ 
     inline unsigned char ps() {return _translation.iso.ps;}
     /** set PDU specific (PS) byte */ 
-    inline void set_ps(unsigned char x) {_translation.iso.ps=x;}
+    inline void set_ps(unsigned char x) {_translation.iso.ps=x & 0xff;}
     /** get PDU format (PF) byte */ 
     inline unsigned char pf() {return _translation.iso.pf;}
     /** set PDU format (PF) byte */ 
-    inline void set_pf(unsigned char x) {_translation.iso.pf=x;}    
+    inline void set_pf(unsigned char x) {_translation.iso.pf=x & 0xff;}    
     /** get data page (DP) bit */ 
     inline unsigned char dp() {return _translation.iso.dp;}
     /** set data page (DP) bit */
-    inline void set_dp(unsigned char x) {_translation.iso.dp=x;}
+    inline void set_dp(unsigned char x) {_translation.iso.dp=x & 0x1;}
     /** get reserved (R) bit */ 
     inline unsigned char r() {return _translation.iso.r;}
     /** set reserved (R) bit, should be 0*/ 
     inline void set_r(unsigned char x) {
       //MBED_ASSERT(x==0);
-      _translation.iso.r=x;}
-    /** set priority (P) bits */
-    inline unsigned char p() {return _translation.iso.p;}
+      _translation.iso.r=x & 0x1;}
+    
     /** get priority (P) bits */
-    inline void set_p(unsigned char x) {_translation.iso.p=x;}
+    inline unsigned char p() {return _translation.iso.p;}
+    /** set priority (P) bits */
+    inline void set_p(unsigned char x) {_translation.iso.p=x & 0x7;}
+    /** get ignore bits, should never use */
+    inline unsigned char ignore() {return _translation.iso.ignore;}
+    /** set ignore bits, should never use */
+    inline void set_ignore(unsigned char x) {_translation.iso.ignore=x & 0x7;}
+    
     /** get CAN 32(29) bit id */ 
-    inline unsigned int id() {return _translation.id};
+    inline unsigned int id() {return _translation.id;}
     /** set CAN 32(29) bit id */
-    inline void set_id(unsigned int x) {_translation.id=x}; 
+    inline void set_id(unsigned int x) {_translation.id=x;} 
 
     /** @brief returns parameter group number 
 	PGN is formed from reserved bit, data page bit, PDU format 
@@ -112,7 +118,7 @@ namespace nmea2k {
 	  ignore : 3; //<! ignore first three bits, named so they can be zeroed
       } iso; //!< equivalent ISO 11783-3 header fields
     } _translation;
-  }
+  };
   
 } // namespace nmea2k 
 

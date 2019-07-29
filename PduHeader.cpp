@@ -65,9 +65,9 @@ namespace nmea2k {
 		     x);
     } // if badly formed PGN throw warning
     else {
-      _translation.iso.r = b3>>1; 
+      _translation.iso.r = b1>>1; 
       //MBED_ASSERT(_translation.iso.r==0); // r should always be 0
-      _translation.iso.dp = b3 & 0x01;
+      _translation.iso.dp = b1 & 0x01;
       _translation.iso.pf = b2;
       _translation.iso.ps = b3;
     } // else

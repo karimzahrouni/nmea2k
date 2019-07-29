@@ -19,7 +19,7 @@
 #include "nmea2k.h"
 
 Serial pc(USBTX,USBRX);
-PduHeader foo; 
+nmea2k::PduHeader foo; 
 
 int main(void){
   pc.printf("nmea2k version ");

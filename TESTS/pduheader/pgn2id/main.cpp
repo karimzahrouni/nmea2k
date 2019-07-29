@@ -26,20 +26,20 @@ int main(void){
   pc.printf(NMEA2K_VERSION);
   pc.printf("\r\nPduHeader PGN to CAN ID test\r\n");
 
-  pc.printf("Testing PGN 127245 Rudder with different SA\r\n");
+  pc.printf("Testing PGN 127245 Rudder with different source address SA\r\n");
   foo.set_id(0);
   foo.set_pgn(127245);
   foo.set_sa(0); 
   TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00,foo.id(),"failed to decode id");
   TEST_ASSERT_EQUAL_MESSAGE(127245,foo.pgn(),"failed to decode pgn");
-  for (unsigned char i=0; i<255; i++){
+  for (unsigned char i=0; i<256; i++){
     pc.printf("PGN 127245 with SA = %d\r\n",i); 
     foo.set_sa(i);
     TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00+i,foo.id(),"failed to decode id");
     TEST_ASSERT_EQUAL_MESSAGE(127245,foo.pgn(),"failed to decode pgn");
   }
 
-  pc.printf("Testing PGN 130306 Wind Data with different P\r\n");
+  pc.printf("Testing PGN 130306 Wind Data with different priority P\r\n");
   foo.set_id(0);
   foo.set_pgn(130306);
   foo.set_sa(0x41); // should throw warning
@@ -47,7 +47,7 @@ int main(void){
   for (unsigned char i=0; i<7; i++){
     pc.printf("PGN 130306 with P = %d\r\n",i);
     foo.set_p(i);
-    TEST_ASSERT_EQUAL_MESSAGE(0x01fd02+(i<<18),foo.id(),"failed to decode id");
+    TEST_ASSERT_EQUAL_MESSAGE(0x01fd02+(i<<19),foo.id(),"failed to decode id");
     TEST_ASSERT_EQUAL_MESSAGE(130306,foo.pgn(),"failed to decode pgn");
   }
   

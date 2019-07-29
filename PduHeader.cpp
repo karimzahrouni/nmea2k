@@ -59,6 +59,7 @@ namespace nmea2k {
     b3 = (x & 0xff);
       
     if ((b2<240) && (b3!=0)){
+      debug("Badly formed PGN, no puedo");
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				     MBED_ERROR_CODE_UNSUPPORTED),
 		     "Badly formed PGN, no puedo",
@@ -85,6 +86,7 @@ namespace nmea2k {
     if (_translation.iso.pf<240)
       _translation.iso.ps = x;
     else if (x != NMEA2K_BROADCAST) {
+      debug("Trying to set DA for PGN w none, no puedo");
       MBED_WARNING1 ( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				      MBED_ERROR_CODE_UNSUPPORTED),
 		      "Trying to set DA for PGN w none, no puedo",

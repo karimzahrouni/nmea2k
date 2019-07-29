@@ -14,7 +14,6 @@
  */
 
 #include "mbed.h"
-#include "mbed_error.h"
 #include "stdio.h"
 #include "unity.h"
 #include "nmea2k.h"
@@ -52,17 +51,6 @@ int main(void){
     TEST_ASSERT_EQUAL_MESSAGE(0x01fd0200+(i<<26)+0x42,foo.id(),"failed to decode id");
     TEST_ASSERT_EQUAL_MESSAGE(130306,foo.pgn(),"failed to decode pgn");
   }
-  
-  
-  MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
-				 MBED_ERROR_CODE_UNSUPPORTED),
-		 "wtf dude?",
-		 66);
-
-  MBED_ERROR1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
-			       MBED_ERROR_CODE_UNSUPPORTED),
-	       "wtf dude?",
-	       66);
-  
+    
 } // int main(void)
 

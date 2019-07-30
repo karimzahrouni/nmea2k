@@ -8,7 +8,7 @@ namespace nmea2k{
   
   class Pgn{
   public:
-    PduHeader header;
+    PduHeader header; // do I need this???
     unsigned char len;
     union{
       unsigned char data[8];
@@ -20,7 +20,9 @@ namespace nmea2k{
     ~Pgn();
   }; // class Pgn
 
+  // abstract factory methods
   int encode(Pgn &raw, Pdu &encoded);
+  int decode(Pdu &raw, Pgn &decoded); 
   
 } // namespace nmea2k
 

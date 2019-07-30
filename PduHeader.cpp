@@ -14,8 +14,8 @@ namespace nmea2k {
   PduHeader::PduHeader(){
   }
 
-  PduHeader::PduHeader(unsigned int _id){
-    _translation.id = _id;
+  PduHeader::PduHeader(unsigned int id){
+    _translation.id = id;
     debug("warning: id %x resulted in possibly badly formed PGN\r\n",_id); 
     if ((_translation.iso.pf<240) && (_translation.iso.ps!=0))
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
@@ -53,7 +53,7 @@ namespace nmea2k {
     return result;
   } // pgn() getter
     
-  void PduHeader::set_pgn(unsigned int x){
+  int PduHeader::set_pgn(unsigned int x){
     unsigned char b1,b2,b3;
     b1 = (x>>16) & 0x03;
     b2 = (x>>8) & 0xff;
@@ -65,6 +65,7 @@ namespace nmea2k {
 				     MBED_ERROR_CODE_UNSUPPORTED),
 		     "badly formed PGN, no puedo",
 		     x);
+      return MBED_ERROR_CODE_INVALID_ARGUMENT;
     } // if badly formed PGN throw warning
     else {
       _translation.iso.r = b1>>1; 
@@ -72,8 +73,8 @@ namespace nmea2k {
       _translation.iso.dp = b1 & 0x01;
       _translation.iso.pf = b2;
       _translation.iso.ps = b3;
+      return MBED_SUCCESS;
     } // else
-    return; 
   } // set_pgn() setter
     
   unsigned char PduHeader::da(){
@@ -83,17 +84,18 @@ namespace nmea2k {
       return NMEA2K_BROADCAST;
   } // da() getter
       
-  void PduHeader::set_da(unsigned char x){
-    if (_translation.iso.pf<240)
+  int PduHeader::set_da(unsigned char x){
+    if (_translation.iso.pf<240){
       _translation.iso.ps = x;
+      return MBED_SUCCESS;}
     else if (x != NMEA2K_BROADCAST) {
       debug("warning: trying to set DA %x for PGN w none, no puedo\r\n",x);
       MBED_WARNING1 ( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				      MBED_ERROR_CODE_UNSUPPORTED),
 		      "trying to set DA for PGN w none, no puedo",
 		      x);
+      return MBED_ERROR_CODE_INVALID_ARGUMENT;
     } // if setting DA for PGN w none, throw warning
-    return; 
   } // set_da() setter
 
   

@@ -9,30 +9,30 @@ namespace nmea2k{
   Pdu::Pdu() :
     Frame(){
     header = PduHeader(); 
-  };
+  }
 
   Pdu::Pdu(unsigned int id, const unsigned char *data, unsigned char len) :
     Frame(id,data,len){
     header = PduHeader(id,data,len); 
-  };
+  }
 
   Pdu::Pdu(unsigned int id, const char *data, unsigned char len) :
     Frame(id,data,len){
     header = PduHeader(id,data,len);
-  };
+  }
 
   Pdu::Pdu(PduHeader h, const unsigned char *data, unsigned char len) :
     Frame(h.get_id(),data,len){
     header = h;
-  };
+  }
 
   Pdu::Pdu(PduHeader h, const char *data, unsigned char len) :
     Frame(h.get_id(),data,len){
     header=h;
-  };
+  }
 
   Pdu::~Pdu(){
-  };
+  }
 
   unsigned int Pdu::get_id(){
     return header.get_id();

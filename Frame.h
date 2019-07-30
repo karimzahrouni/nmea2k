@@ -78,7 +78,7 @@ namespace nmea2k{
     /** Sets message id (for CAN purposes)
 	@returns
 	  MBED_SUCCESS (0) if message id was successfully set
-	  error code (negative #) otherwise
+	  error code (negative #) otherwise (won't fail at this level)
 
 	Note: Frame.id is a public member but try not to access it directly, 
 	for purposes of downstream compatibility with PDU header information
@@ -87,7 +87,7 @@ namespace nmea2k{
 	and write stuff relies on it being public and provides no way 
 	to modify to use the getters and setters... 
      */
-    void set_id(unsigned int x);    
+    int set_id(unsigned int x);    
   }; // class Frame
 
   

@@ -27,10 +27,10 @@ namespace nmea2k{
     /** Creates empty PDU */
     Pdu();
 
-    Pdu(unsigned int _id, const unsigned char *_data, unsigned char len=8);
-    Pdu(unsigned int _id, const char *_data, unsigned char len=8); 
-    Pdu(PduHeader h, const unsigned char *_data, unsigned char len=8);
-    Pdu(PduHeader h, const char *_data, unsigned char len=8); 
+    Pdu(unsigned int id, const unsigned char *data, unsigned char len=8);
+    Pdu(unsigned int id, const char *data, unsigned char len=8); 
+    Pdu(PduHeader h, const unsigned char *data, unsigned char len=8);
+    Pdu(PduHeader h, const char *data, unsigned char len=8); 
 
     /** Destructor for Pdu class */
     ~Pdu();

@@ -9,31 +9,31 @@ namespace nmea2k{
   Pdu::Pdu() :
     Frame(){
     debug("Pdu() constructor called\r\n");
-    header = PduHeader(); 
+    Pdu::header = PduHeader(); 
   }
 
   Pdu::Pdu(unsigned int id, const unsigned char *data, unsigned char len) :
     Frame(id,data,len){
     debug("Pdu(id,data,len) constructor called with unsigned char data\r\n");
-    header = PduHeader(id,data,len); 
+    Pdu::header = PduHeader(id,data,len); 
   }
 
   Pdu::Pdu(unsigned int id, const char *data, unsigned char len) :
     Frame(id,data,len){
     debug("Pdu(id,data,len) constructor called with char data\r\n");
-    header = PduHeader(id,data,len);
+    Pdu::header = PduHeader(id,data,len);
   }
 
   Pdu::Pdu(PduHeader h, const unsigned char *data, unsigned char len) :
     Frame(h.get_id(),data,len){
     debug("Pdu(h,data,len) constructor called with unsigned char data\r\n");
-    header = h;
+    Pdu::header = h;
   }
 
   Pdu::Pdu(PduHeader h, const char *data, unsigned char len) :
     Frame(h.get_id(),data,len){
     debug("Pdu(h,data,len) constructor called with char data\r\n");
-    header=h;
+    Pdu::header=h;
   }
 
   Pdu::~Pdu(){
@@ -41,11 +41,11 @@ namespace nmea2k{
   }
 
   unsigned int Pdu::get_id(){
-    return header.get_id();
+    return Pdu::header.get_id();
   }
 
   int set_id(unsigned int x){
-    int result = header.set_id(x);
+    int result = Pdu::header.set_id(x);
     if (result == MBED_SUCCESS)
       Frame::set_id(x); 
     return result;
@@ -54,7 +54,7 @@ namespace nmea2k{
   int set_header(PduHeader h){
     int result = Frame::set_id(h.get_id());
     if (result == MBED_SUCCESS)
-      header = h;
+      Pdu::header = h;
     return result; 
   }
     

@@ -18,12 +18,12 @@ namespace nmea2k {
   PduHeader::PduHeader(unsigned int id){
     debug("PduHeader(id) called\r\n");
     _translation.id = id;
-    debug("warning: id %x resulted in possibly badly formed PGN\r\n",_id); 
+    debug("warning: id %x resulted in possibly badly formed PGN\r\n",id); 
     if ((_translation.iso.pf<240) && (_translation.iso.ps!=0))
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				     MBED_ERROR_CODE_UNSUPPORTED),
 		     "id resulted in possibly badly formed PGN",
-		     _id);
+		     id);
   }
 
   PduHeader::PduHeader(unsigned char priority,
@@ -91,7 +91,8 @@ namespace nmea2k {
   int PduHeader::set_da(unsigned char x){
     if (_translation.iso.pf<240){
       _translation.iso.ps = x;
-      return MBED_SUCCESS;}
+      return MBED_SUCCESS;
+    } // if pf<240
     else if (x != NMEA2K_BROADCAST) {
       debug("warning: trying to set DA %x for PGN w none, no puedo\r\n",x);
       MBED_WARNING1 ( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,

@@ -43,13 +43,13 @@ int main(void){
   TEST_ASSERT_EQUAL_MESSAGE(CANExtended,f.format,"unexpected CAN format");
 
   pc.printf("testing constructor with unsigned char data\r\n");
-  unsigned char counter[] = {7,6,5,4}; 
-  f = nmea2k::Frame(1337,&counter,4);
+  unsigned char arr[4] = {7,6,5,4}; 
+  f = nmea2k::Frame(1337,&arr,4);
   TEST_ASSERT_EQUAL_MESSAGE(1337,f.id,"failed to set id");
-  TEST_ASSERT_EQUAL_MESSAGE(7,f.data[0],"failed to set data");
-  TEST_ASSERT_EQUAL_MESSAGE(6,f.data[1],"failed to set data");
-  TEST_ASSERT_EQUAL_MESSAGE(5,f.data[2],"failed to set data");
-  TEST_ASSERT_EQUAL_MESSAGE(4,f.data[3],"failed to set data");
+  TEST_ASSERT_EQUAL_MESSAGE(arr[0],f.data[0],"failed to set data");
+  TEST_ASSERT_EQUAL_MESSAGE(arr[1],f.data[1],"failed to set data");
+  TEST_ASSERT_EQUAL_MESSAGE(arr[2],f.data[2],"failed to set data");
+  TEST_ASSERT_EQUAL_MESSAGE(arr[3],f.data[3],"failed to set data");
   TEST_ASSERT_EQUAL_MESSAGE(4,f.len,"failed to set len");
   TEST_ASSERT_EQUAL_MESSAGE(CANData,f.type,"unexpected CAN type");
   TEST_ASSERT_EQUAL_MESSAGE(CANExtended,f.format,"unexpected CAN format");

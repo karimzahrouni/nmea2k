@@ -2,6 +2,7 @@
 #define PGN_H
 
 #include "nmea2k.h"
+#include "PduHeader.h"
 #include "Pdu.h"
 
 namespace nmea2k{
@@ -11,18 +12,24 @@ namespace nmea2k{
     PduHeader header; // do I need this???
     unsigned char len;
     union{
-      unsigned char data[8];
+      unsigned char data[8]={0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};
       struct{
 	unsigned char unused[8]; 
       } fields;
     } translation;    
     Pgn();
     ~Pgn();
+
+    // factory method for corresponding Pdu(s)
+    int encode(Pdu &encoded);
   }; // class Pgn
 
-  // abstract factory methods
-  int encode(Pgn &raw, Pdu &encoded);
-  int decode(Pdu &raw, Pgn &decoded); 
+  class PgnParser{
+  public:
+    PgnParser();
+    ~PgnParser();
+    int parse(Pdu &encoded, Pgn &decoded); 
+  }
   
 } // namespace nmea2k
 

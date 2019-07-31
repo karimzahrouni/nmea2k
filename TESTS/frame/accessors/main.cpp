@@ -28,6 +28,16 @@ int main(void){
   TEST_ASSERT_EQUAL_MESSAGE(0x0000ff00,f.get_id(),"failed to set id");
   f.set_id(0x00ffffff);
   TEST_ASSERT_EQUAL_MESSAGE(0x00ffffff,f.get_id(),"failed to set id");
-  f.set_id(0x1fffffff);
+  f.set_id(0x01ffffff);
   TEST_ASSERT_EQUAL_MESSAGE(0x01ffffff,f.get_id(),"failed to set id");
+  f.set_id(0x1dffffff);
+  TEST_ASSERT_EQUAL_MESSAGE(0x1dffffff,f.get_id(),"failed to set id");
+
+  pc.printf("Setting R to 1, may throw warnings or errors\r\n");
+  f.set_id(0x1fffffff);
+  TEST_ASSERT_EQUAL_MESSAGE(0x1fffffff,f.get_id(),"failed to set id");
+
+  pc.printf("Setting ignored bits to 1, may throw warnings or errors\r\n");
+  f.set_id(0xffffffff);
+  TEST_ASSERT_EQUAL_MESSAGE(0xffffffff,f.get_id(),"failed to set id");
 } // int main(void)

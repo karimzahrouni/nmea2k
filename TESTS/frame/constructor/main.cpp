@@ -43,7 +43,7 @@ int main(void){
   TEST_ASSERT_EQUAL_MESSAGE(CANExtended,f.format,"unexpected CAN format");
 
   pc.printf("testing constructor with unsigned char data\r\n");
-  unsigned char arr[4] = {7,6,5,4}; 
+  unsigned char *arr = {7,6,5,4}; 
   f = nmea2k::Frame(1337,&arr,4);
   TEST_ASSERT_EQUAL_MESSAGE(1337,f.id,"failed to set id");
   TEST_ASSERT_EQUAL_MESSAGE(arr[0],f.data[0],"failed to set data");

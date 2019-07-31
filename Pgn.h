@@ -29,7 +29,7 @@ namespace nmea2k{
     PgnParser();
     ~PgnParser();
     int parse(Pdu &encoded, Pgn &decoded); 
-  }
+  };
   
 } // namespace nmea2k
 

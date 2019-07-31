@@ -45,10 +45,10 @@ namespace nmea2k {
 	      unsigned char da=NMEA2K_BROADCAST);
 
     /** Destructor for PduHeader class */ 
-    ~PduHeader;
+    ~PduHeader();
 
     /** get source address (SA) byte */
-    inline unsigned char sa() {return _translation.iso.sa}
+    inline unsigned char sa() {return _translation.iso.sa;}
     /** set source address (SA) byte */
     inline void set_sa(unsigned char x) { _translation.iso.sa = x;}
     /** get PDU specific (PS) byte */
@@ -62,7 +62,7 @@ namespace nmea2k {
     /** get data page (DP) bit */
     inline unsigned char dp() {return _translation.iso.dp;}
     /** set data page (DP) bit */
-    inline void set_dp(unsigned char x) {_translation.iso.df = (x & 0x01);}
+    inline void set_dp(unsigned char x) {_translation.iso.dp = (x & 0x01);}
     /** get reserved (R) bit */
     inline unsigned char r() {return _translation.iso.r;}
     /** set reserved (R) bit, should be 0*/

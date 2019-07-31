@@ -10,7 +10,7 @@
 #include "unity.h"
 
 Serial pc(USBTX,USBRX); 
-nmea2k::Frame() f; 
+nmea2k::Frame f; 
 
 int main(void){
   //pc.printf("nmea2k version ");

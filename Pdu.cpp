@@ -8,30 +8,36 @@ namespace nmea2k{
 
   Pdu::Pdu() :
     Frame(){
+    debug("Pdu() constructor called\r\n");
     header = PduHeader(); 
   }
 
   Pdu::Pdu(unsigned int id, const unsigned char *data, unsigned char len) :
     Frame(id,data,len){
+    debug("Pdu(id,data,len) constructor called with unsigned char data\r\n");
     header = PduHeader(id,data,len); 
   }
 
   Pdu::Pdu(unsigned int id, const char *data, unsigned char len) :
     Frame(id,data,len){
+    debug("Pdu(id,data,len) constructor called with char data\r\n");
     header = PduHeader(id,data,len);
   }
 
   Pdu::Pdu(PduHeader h, const unsigned char *data, unsigned char len) :
     Frame(h.get_id(),data,len){
+    debug("Pdu(h,data,len) constructor called with unsigned char data\r\n");
     header = h;
   }
 
   Pdu::Pdu(PduHeader h, const char *data, unsigned char len) :
     Frame(h.get_id(),data,len){
+    debug("Pdu(h,data,len) constructor called with char data\r\n");
     header=h;
   }
 
   Pdu::~Pdu(){
+    debug("~Pdu() destructor called\r\n");
   }
 
   unsigned int Pdu::get_id(){

@@ -12,9 +12,11 @@
 namespace nmea2k {
 
   PduHeader::PduHeader(){
+    debug("PduHeader() empty constructor called\r\n");
   }
 
   PduHeader::PduHeader(unsigned int id){
+    debug("PduHeader(id) called\r\n");
     _translation.id = id;
     debug("warning: id %x resulted in possibly badly formed PGN\r\n",_id); 
     if ((_translation.iso.pf<240) && (_translation.iso.ps!=0))
@@ -28,6 +30,7 @@ namespace nmea2k {
 		       unsigned int pgn,
 		       unsigned char sa,
 		       unsigned char da){
+    debug("PduHeader(priority,pgn,sa,da) called\r\n");
     _translation.iso.ignore = 0;
     _translation.iso.p = priority & (0x7);
     set_pgn(pgn);
@@ -36,6 +39,7 @@ namespace nmea2k {
   }
 
   PduHeader::~PduHeader(){
+    debug("~PduHeader() destructor called\r\n");
   }
 
   unsigned int PduHeader::pgn(){
@@ -45,7 +49,7 @@ namespace nmea2k {
        of the PGN is set to 0. 
     */
     unsigned int result = (_translation.iso.r << 17); 
-    //MBED_ASSERT(result==0); // r should always be 0
+    MBED_ASSERT(result==0); // r should always be 0
     result += (_translation.iso.dp << 16);
     result += (_translation.iso.pf << 8); 
     if (_translation.iso.pf>=240)
@@ -69,7 +73,7 @@ namespace nmea2k {
     } // if badly formed PGN throw warning
     else {
       _translation.iso.r = b1>>1; 
-      //MBED_ASSERT(_translation.iso.r==0); // r should always be 0
+      MBED_ASSERT(_translation.iso.r==0); // r should always be 0
       _translation.iso.dp = b1 & 0x01;
       _translation.iso.pf = b2;
       _translation.iso.ps = b3;

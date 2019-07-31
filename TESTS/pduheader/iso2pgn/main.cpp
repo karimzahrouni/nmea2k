@@ -1,6 +1,5 @@
-/** 
-    TESTS/pduheader/iso2pgn/main.cpp
-    Test of ISO11783 to PGN encoding for PDU header in nmea2k
+/** @file TESTS/pduheader/iso2pgn/main.cpp
+    @brief Test of ISO11783 to PGN encoding for PDU header in nmea2k
     Dennis Evangelista, 2019
 
     This test checks that PduHeader is correctly
@@ -13,17 +12,19 @@
     data link layer.
  */
 
+#include "PduHeader.h"
+
 #include "mbed.h"
 #include "stdio.h"
 #include "unity.h"
-#include "nmea2k.h"
+//#include "nmea2k.h"
 
 Serial pc(USBTX,USBRX);
 nmea2k::PduHeader foo; 
 
 int main(void){
-  pc.printf("nmea2k version ");
-  pc.printf(NMEA2K_VERSION);
+  //pc.printf("nmea2k version ");
+  //pc.printf(NMEA2K_VERSION);
   pc.printf("\r\nPduHeader ISO11783-3 to PGN test\r\n");
 
   // test cases from page 5 of ISO 11783-3

@@ -1,6 +1,5 @@
-/** 
-    TESTS/pduheader/pgn2id/main.cpp
-    Test of PGN to CAN ID encoding for PDU header in nmea2k
+/** @file TESTS/pduheader/pgn2id/main.cpp
+    @brief Test of PGN to CAN ID encoding for PDU header in nmea2k
     Dennis Evangelista, 2019
 
     This test checks that PduHeader is correctly
@@ -13,17 +12,19 @@
     data link layer.
  */
 
+#include "PduHeader.h"
+
 #include "mbed.h"
 #include "stdio.h"
 #include "unity.h"
-#include "nmea2k.h"
+//#include "nmea2k.h"
 
 Serial pc(USBTX,USBRX);
 nmea2k::PduHeader foo; 
 
 int main(void){
-  pc.printf("nmea2k version ");
-  pc.printf(NMEA2K_VERSION);
+  //pc.printf("nmea2k version ");
+  //pc.printf(NMEA2K_VERSION);
   pc.printf("\r\nPduHeader PGN to CAN ID test\r\n");
 
   pc.printf("Testing PGN 127245 Rudder with different source address SA\r\n");

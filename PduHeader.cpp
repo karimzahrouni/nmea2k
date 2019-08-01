@@ -12,11 +12,11 @@
 namespace nmea2k {
 
   PduHeader::PduHeader(){
-    debug("PduHeader() empty constructor called\r\n");
+    debug("PduHeader() empty constructor called %p\r\n",this);
   }
 
   PduHeader::PduHeader(unsigned int id){
-    debug("PduHeader(id) called\r\n");
+    debug("PduHeader(id) called %p\r\n",this);
     _translation.id = id;
     debug("warning: id %x resulted in possibly badly formed PGN\r\n",id); 
     if ((_translation.iso.pf<240) && (_translation.iso.ps!=0))
@@ -30,7 +30,7 @@ namespace nmea2k {
 		       unsigned int pgn,
 		       unsigned char sa,
 		       unsigned char da){
-    debug("PduHeader(priority,pgn,sa,da) called\r\n");
+    debug("PduHeader(priority,pgn,sa,da) called %p\r\n",this);
     _translation.iso.ignore = 0;
     _translation.iso.p = priority & (0x7);
     set_pgn(pgn);
@@ -39,7 +39,7 @@ namespace nmea2k {
   }
 
   PduHeader::~PduHeader(){
-    debug("~PduHeader() destructor called\r\n");
+    debug("~PduHeader() destructor called %p\r\n",this);
   }
 
   unsigned int PduHeader::pgn(){

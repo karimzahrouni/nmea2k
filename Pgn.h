@@ -1,6 +1,7 @@
 #ifndef PGN_H
 #define PGN_H
 
+#include "nmea2k.h"
 #include "PduHeader.h"
 #include "Pdu.h"
 
@@ -8,18 +9,20 @@ namespace nmea2k{
   
   class Pgn{
   public:
-    PduHeader header; // do I want this? 
+
     Pgn();
     ~Pgn();
 
     // factory method for corresponding Pdu(s)
-    int encode(Pdu &encoded);
+    int encode(unsigned int sa
+	       Pdu *encoded,
+	       unsigned char priority=3,
+	       unsigned char da=NMEA2K_BROADCAST);
 
-    // need to set and get header, data, and any fields
-    int set_header(PduHeader h);
-    int set_data(unsigned char *data, unsigned char len);
+    // set and get
+    void set_data(unsigned char *x, unsigned char len); 
 
-  private:
+  protected:
     union{
       unsigned char data[8] = {0xff};
       struct{
@@ -32,7 +35,7 @@ namespace nmea2k{
   public:
     PgnParser();
     ~PgnParser();
-    int parse(Pdu &encoded, Pgn &decoded); 
+    int parse(Pdu *encoded, Pgn *decoded); 
   };
   
 } // namespace nmea2k

@@ -16,13 +16,25 @@ namespace nmea2k{
     debug("~Pgn() destructor called %p\r\n",this);
   }
 
-  int Pgn::encode(Pdu &encoded){
+  int Pgn::encode(unsigned int sa,
+		  Pdu *encoded,
+		  unsigned char p,
+		  unsigned char da){
     MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
 				MBED_ERROR_CODE_INVALID_OPERATION),
 		"Pgn::encode() should be overriden by subclasses" );
     return MBED_ERROR_CODE_INVALID_OPERATION;
   }
 
+  void set_data(unsigned char *x, unsigned char len){
+    memcpy(_translation.data,x,len);
+  }
+
+
+
+
+
+  
   PgnParser::PgnParser(){
     debug("PgnParser() empty constructor called\r\n"); 
   }
@@ -31,7 +43,7 @@ namespace nmea2k{
     debug("~PgnParser() destructor called\r\n"); 
   }
 
-  int PgnParser::parse(Pdu &encoded, Pgn &decoded){
+  int PgnParser::parse(Pdu *encoded, Pgn *decoded){
     MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
 				MBED_ERROR_CODE_INVALID_OPERATION),
 		"PgnParser::parse() should be overrided by subclasses");

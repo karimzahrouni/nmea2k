@@ -62,6 +62,10 @@ namespace nmea2k{
     /** Destructor for nmea2k::Frame class */
     ~Frame();
 
+    /** copy constructor and operator */
+    Frame(const Frame &other);
+    Frame& operator=(const Frame &other); 
+
     // getters and setters for id
     /** @brief Returns message id (for CAN purposes)
 	@returns message id

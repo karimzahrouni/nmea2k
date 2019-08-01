@@ -38,6 +38,22 @@ namespace nmea2k{
     debug("nmea2k::~Frame() destructor called %d\r\n",this);
   } // nmea2k::~Frame() destructor
 
+  Frame::Frame(const Frame::Frame &other){
+    id = other.id;
+    memcpy(other.data,data,8); 
+    len = other.len;
+    type = other.type;
+    format = other.format; 
+  }
+
+  Frame::Frame& Frame::operator=(const Frame::Frame &other){
+    id = other.id;
+    memcpy(other.data,data,8);
+    len=other.len;
+    type=other.type;
+    format=other.format; 
+  }
+
   unsigned int Frame::get_id(void){
     return id; 
   }

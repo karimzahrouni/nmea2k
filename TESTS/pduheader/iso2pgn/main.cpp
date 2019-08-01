@@ -31,130 +31,75 @@ int main(void){
 
   // test cases from page 5 of ISO 11783-3
   pc.printf("testing PGN 0... \r\n");
-  retval = foo.set_pgn(0);
+  retval=foo.set_id(0);
   TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.dp(),"failed to decode data page");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.pf(),"failed to decode PDU format");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ps(),"failed to decode PDU specific");
+  foo.set_p(0);
+  foo.set_dp(0);
+  foo.set_pf(0);
+  foo.set_ps(0);
+  foo.set_da(0);
   TEST_ASSERT_EQUAL_MESSAGE(0,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 60928... \r\n");
-  retval=foo.set_pgn(60928);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.dp(),"failed to decode data page");
+  foo.set_pf(238);
   TEST_ASSERT_EQUAL_MESSAGE(238,foo.pf(),"failed to decode PDU format");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(60928,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 61184... \r\n");
-  retval=foo.set_pgn(61184);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.dp(),"failed to decode data page");
+  foo.set_pf(239);
   TEST_ASSERT_EQUAL_MESSAGE(239,foo.pf(),"failed to decode PDU format");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(61184,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 61440... \r\n");
-  retval=foo.set_pgn(61440);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.dp(),"failed to decode data page");
+  foo.set_pf(240);
   TEST_ASSERT_EQUAL_MESSAGE(240,foo.pf(),"failed to decode PDU format");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(61440,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 65279... \r\n");
-  retval=foo.set_pgn(65279);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.dp(),"failed to decode data page");
+  foo.set_pf(254);
+  foo.set_ps(255); 
   TEST_ASSERT_EQUAL_MESSAGE(254,foo.pf(),"failed to decode PDU format");
   TEST_ASSERT_EQUAL_MESSAGE(255,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(65279,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 65280... \r\n");
-  retval=foo.set_pgn(65280);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.dp(),"failed to decode data page");
+  foo.set_pf(255);
+  foo.set_ps(0);
   TEST_ASSERT_EQUAL_MESSAGE(255,foo.pf(),"failed to decode PDU format");
   TEST_ASSERT_EQUAL_MESSAGE(0,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(65280,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 65535... \r\n");
-  retval=foo.set_pgn(65535);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.dp(),"failed to decode data page");
+  foo.set_ps(255); 
   TEST_ASSERT_EQUAL_MESSAGE(255,foo.pf(),"failed to decode PDU format");
   TEST_ASSERT_EQUAL_MESSAGE(255,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(65535,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 65536... \r\n");
-  retval=foo.set_pgn(65536);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
+  foo.set_p(1);
+  foo.set_pf(0);
+  foo.set_ps(0); 
   TEST_ASSERT_EQUAL_MESSAGE(1,foo.dp(),"failed to decode data page");
   TEST_ASSERT_EQUAL_MESSAGE(0,foo.pf(),"failed to decode PDU format");
   TEST_ASSERT_EQUAL_MESSAGE(0,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(65536,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 126720... \r\n");
-  retval=foo.set_pgn(126720);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(1,foo.dp(),"failed to decode data page");
+  foo.set_pf(239); 
   TEST_ASSERT_EQUAL_MESSAGE(239,foo.pf(),"failed to decode PDU format");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(126720,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 126976... \r\n");
-  retval=foo.set_pgn(126976);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(1,foo.dp(),"failed to decode data page");
+  foo.set_pf(240);
   TEST_ASSERT_EQUAL_MESSAGE(240,foo.pf(),"failed to decode PDU format");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(126976,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 131071... \r\n");
-  retval=foo.set_pgn(131071);
-  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"got odd retval");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.ignore(),"failed to decode ignore bits");
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.p(),"failed to decode priority");
-  TEST_ASSERT_EQUAL_MESSAGE(1,foo.dp(),"failed to decode data page");
+  foo.set_pf(255);
+  foo.set_ps(255); 
   TEST_ASSERT_EQUAL_MESSAGE(255,foo.pf(),"failed to decode PDU format");
   TEST_ASSERT_EQUAL_MESSAGE(255,foo.ps(),"failed to decode PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(131071,foo.pgn(),"failed to decode PGN");
-
-  pc.printf("testing invalid PGN 0x200ff, PF<240, should return warnings or errors\r\n");
-  retval = foo.set_pgn(0x300ff);
-  TEST_ASSERT_MESSAGE(retval!=MBED_SUCCESS,"got unexpected retval 0, should have failed");
-  TEST_ASSERT_MESSAGE(foo.r()!=1,"it set R to 1?");
-  //DP is set from previous PGN
-  TEST_ASSERT_MESSAGE(foo.pf()!=0x00,"it set PF?");
-  //PS is 0xff from previous PGN
-
-  pc.printf("testing invalid PGN 0x2f041, R=1, should return warnings or error\r\n");
-  retval = foo.set_pgn(0x2f041);
-  TEST_ASSERT_MESSAGE(retval!=MBED_SUCCESS,"got unexpected retval 0, should have failed");
-  TEST_ASSERT_MESSAGE(foo.r()!=1,"it set R to 1?");
-  TEST_ASSERT_MESSAGE(foo.dp()!=0,"it set DP to 0?");
-  TEST_ASSERT_MESSAGE(foo.pf()!=0xef,"it set PF?");
-  TEST_ASSERT_MESSAGE(foo.ps()!=0x41,"it set PS?");
   
 } // int main(void)
 

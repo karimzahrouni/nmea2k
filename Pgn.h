@@ -14,10 +14,7 @@ namespace nmea2k{
     ~Pgn();
 
     // factory method for corresponding Pdu(s)
-    int encode(unsigned int sa
-	       Pdu *encoded,
-	       unsigned char priority=3,
-	       unsigned char da=NMEA2K_BROADCAST);
+    int encode(PduHeader *h, Pdu *encoded);,
 
     // set and get
     void set_data(unsigned char *x, unsigned char len); 

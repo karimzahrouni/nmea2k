@@ -3,8 +3,10 @@
     Dennis Evangelista, 2019
 */
 
-#include "mbed.h"
 #include "Pgn.h"
+#include "mbed.h"
+#include "PduHeader.h"
+#include "Pdu.h"
 
 namespace nmea2k{
 
@@ -16,10 +18,8 @@ namespace nmea2k{
     debug("~Pgn() destructor called %p\r\n",this);
   }
 
-  int Pgn::encode(unsigned int sa,
-		  Pdu *encoded,
-		  unsigned char p,
-		  unsigned char da){
+  int Pgn::encode(PduHeader *h,
+		  Pdu *encoded){
     MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
 				MBED_ERROR_CODE_INVALID_OPERATION),
 		"Pgn::encode() should be overriden by subclasses" );

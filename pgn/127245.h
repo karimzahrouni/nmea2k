@@ -2,7 +2,8 @@
 #define PGN127245_H
 
 #include "Pgn.h"
-#include "nmea2k.h"
+#include "PduHeader.h"
+#include "Pdu.h"
 
 #define PGN127245_LEN 8
 
@@ -11,11 +12,9 @@ public:
   Pgn127245();
   ~Pgn127245();
 
-  int encode(Pdu *encoded,
-	     unsigned char p,
-	     unsigned char sa,
-	     unsigned char da=NMEA2K_BROADCAST); 
-
+  int encode(PduHeader *h,
+	     Pdu *encoded)
+    
   // getters (apply scaling, resolution, units)
   unsigned char instance();
   unsigned char direction_order();

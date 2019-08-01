@@ -14,7 +14,7 @@ namespace nmea2k{
     mbed::CANMessage(){
     type = CANData; 
     format = CANExtended; 
-    debug("nmea2k::Frame() constructor called %d\r\n",this);
+    debug("nmea2k::Frame() constructor called %p\r\n",this);
   } // nmea2k::Frame() constructor
 
   
@@ -22,7 +22,7 @@ namespace nmea2k{
 	       const unsigned char *data,
 	       unsigned char len) :
     mbed::CANMessage(id,data,len,CANData,CANExtended){
-    debug("nmea2k::Frame(id,data,len) called (unsigned char data) %d\r\n", this);
+    debug("nmea2k::Frame(id,data,len) called (unsigned char data) %p\r\n", this);
   } // nmea2k::Frame(id,data,len) w unsigned char data implementation
 
   
@@ -30,15 +30,15 @@ namespace nmea2k{
 	       const char *data,
 	       unsigned char len) :
     mbed::CANMessage(id,data,len,CANData,CANExtended){
-    debug("nmea2k::Frame(id,data,len) called (char data) %d\r\n",this);
+    debug("nmea2k::Frame(id,data,len) called (char data) %p\r\n",this);
   } // nmea2k::Frame(id,data,len) w char data implementation
 
   
   Frame::~Frame(){
-    debug("nmea2k::~Frame() destructor called %d\r\n",this);
+    debug("nmea2k::~Frame() destructor called %p\r\n",this);
   } // nmea2k::~Frame() destructor
 
-  Frame::Frame(const Frame::Frame &other){
+  /*Frame::Frame(const Frame::Frame &other){
     id = other.id;
     memcpy(other.data,data,8); 
     len = other.len;
@@ -53,6 +53,7 @@ namespace nmea2k{
     type=other.type;
     format=other.format; 
   }
+  */
 
   unsigned int Frame::get_id(void){
     return id; 

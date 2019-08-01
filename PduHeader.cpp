@@ -49,7 +49,7 @@ namespace nmea2k {
        of the PGN is set to 0. 
     */
     unsigned int result = (_translation.iso.r << 17); 
-    MBED_ASSERT(result==0); // r should always be 0
+    //MBED_ASSERT(result==0); // r should always be 0
     result += (_translation.iso.dp << 16);
     result += (_translation.iso.pf << 8); 
     if (_translation.iso.pf>=240)
@@ -73,7 +73,7 @@ namespace nmea2k {
     } // if badly formed PGN throw warning
     else {
       _translation.iso.r = b1>>1; 
-      MBED_ASSERT(_translation.iso.r==0); // r should always be 0
+      //MBED_ASSERT(_translation.iso.r==0); // r should always be 0
       _translation.iso.dp = b1 & 0x01;
       _translation.iso.pf = b2;
       _translation.iso.ps = b3;

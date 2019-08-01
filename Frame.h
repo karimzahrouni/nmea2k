@@ -60,7 +60,7 @@ namespace nmea2k{
     Frame(unsigned int id, const char *data, unsigned char len=8);
 
     /** Destructor for nmea2k::Frame class */
-    ~Frame();
+    //~Frame();
 
     /** copy constructor and operator */
     //Frame(const Frame &other);

@@ -33,10 +33,11 @@ namespace nmea2k{
     debug("nmea2k::Frame(id,data,len) called (char data) %p\r\n",this);
   } // nmea2k::Frame(id,data,len) w char data implementation
 
-  
+  /*
   Frame::~Frame(){
     debug("nmea2k::~Frame() destructor called %p\r\n",this);
   } // nmea2k::~Frame() destructor
+  */
 
   /*Frame::Frame(const Frame::Frame &other){
     id = other.id;

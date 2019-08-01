@@ -60,11 +60,13 @@ namespace nmea2k{
     Frame(unsigned int id, const char *data, unsigned char len=8);
 
     /** Destructor for nmea2k::Frame class */
-    //~Frame();
-
-    /** copy constructor and operator */
-    //Frame(const Frame &other);
-    //Frame& operator=(const Frame &other); 
+    // Based on rule of three I don't want to define this otherwise
+    // I also have to define some other junk or risk getting strange
+    // destructor calls when things are copied or whatever. It was a
+    // trivial destructor anyway, so I'll leave it out here and accept
+    // the default one the compiler produces. We can put it back in
+    // if necessary for debugging purposes? 
+    //~Frame(); 
 
     // getters and setters for id
     /** @brief Returns message id (for CAN purposes)

@@ -5,9 +5,12 @@
     Dennis Evangelista, 2019
 */
 
-#include "mbed.h"
-#include "nmea2k.h"
 #include "PduHeader.h"
+
+#include "mbed.h"
+
+#include "nmea2k.h"
+
 
 namespace nmea2k {
 
@@ -38,9 +41,11 @@ namespace nmea2k {
     _translation.iso.sa = sa;    
   }
 
+  /*
   PduHeader::~PduHeader(){
     debug("~PduHeader() destructor called %p\r\n",this);
   }
+  */
 
   unsigned int PduHeader::pgn(){
     /* From ISO11783-3 page 2, the procedure for the bit fields 

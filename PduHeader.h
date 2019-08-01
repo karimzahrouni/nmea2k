@@ -44,8 +44,11 @@ namespace nmea2k {
 	      unsigned char sa,
 	      unsigned char da=NMEA2K_BROADCAST);
 
-    /** Destructor for PduHeader class */ 
-    ~PduHeader();
+    /** Destructor for PduHeader class */
+    // It was a trivial destructor anyway, leave it undefined to get
+    // default compiler behavior to avoid having to do copy constructor
+    // and operator, rule of big three
+    //~PduHeader();
 
     /** get source address (SA) byte */
     inline unsigned char sa() {return _translation.iso.sa;}

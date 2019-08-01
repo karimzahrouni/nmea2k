@@ -50,7 +50,7 @@ int main(void){
   
   pc.printf("Pdu(id,data,len) with unsigned char data\r\n");
   unsigned char counter=0; 
-  foo = Pdu(0x01ef00ff,&counter,1);
+  foo = nmea2k::Pdu(0x01ef00ff,&counter,1);
   TEST_ASSERT_EQUAL_MESSAGE(0x01ef00ff,foo.get_id(),"bad id"); 
     pc.printf("inherited from CANMessage via Frame:\r\n"); 
   pc.printf("  id = %d\r\n",foo.get_id());

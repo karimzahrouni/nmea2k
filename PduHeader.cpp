@@ -67,7 +67,7 @@ namespace nmea2k {
       debug("warning: badly formed PGN %d, no puedo\r\n",x);
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				     MBED_ERROR_CODE_UNSUPPORTED),
-		     "badly formed PGN, no puedo",
+		     "badly formed PGN, PF<240 but PS set, no puedo",
 		     x);
       return MBED_ERROR_CODE_INVALID_ARGUMENT;
     } // if badly formed PGN throw warning

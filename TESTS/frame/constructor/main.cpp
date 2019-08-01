@@ -65,9 +65,6 @@ int main(void){
   TEST_ASSERT_NOT_NULL_MESSAGE(gp,"failed constructor");
   pc.printf("testing destructor\r\n");
   delete gp;
-  if (gp == NULL)
-    pc.printf("gp is null?\r\n");
-  else
-    pc.printf("gp is %d\r\n",gp);
+  gp = NULL; 
   TEST_ASSERT_NULL_MESSAGE(gp,"failed destructor"); 
 } // int main(void)

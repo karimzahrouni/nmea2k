@@ -76,7 +76,7 @@ int main(void){
   TEST_ASSERT_EQUAL_MESSAGE(65535,foo.pgn(),"failed to decode PGN");
 
   pc.printf("testing PGN 65536... \r\n");
-  foo.set_p(1);
+  foo.set_dp(1);
   foo.set_pf(0);
   foo.set_ps(0); 
   TEST_ASSERT_EQUAL_MESSAGE(1,foo.dp(),"failed to decode data page");

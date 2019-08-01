@@ -1,14 +1,19 @@
+/** @file Pgn.cpp
+    @brief Pgn implementation file
+    Dennis Evangelista, 2019
+*/
+
 #include "mbed.h"
 #include "Pgn.h"
 
 namespace nmea2k{
 
   Pgn::Pgn(){
-    debug("Pgn() empty constructor called\r\n");
+    debug("Pgn() empty constructor called %p\r\n",this);
   }
 
   Pgn::~Pgn(){
-    debug("~Pgn() destructor called\r\n");
+    debug("~Pgn() destructor called %p\r\n",this);
   }
 
   int Pgn::encode(Pdu &encoded){

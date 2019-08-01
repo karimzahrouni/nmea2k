@@ -6,9 +6,7 @@
 */
 
 #include "PduHeader.h"
-
 #include "mbed.h"
-
 #include "nmea2k.h"
 
 

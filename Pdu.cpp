@@ -1,10 +1,10 @@
+/** @file Pdu.cpp
+    @brief Pdu implementation file
+    Dennis Evangelista, 2019
+*/
+
 #include "Pdu.h"
-
 #include "mbed.h"
-//#include "nmea2k.h"
-//#include "Frame.h"
-//#include "PduHeader.h"
-
 
 namespace nmea2k{
 

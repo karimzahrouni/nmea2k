@@ -10,7 +10,6 @@
 #define FRAME_H
 
 #include "mbed.h"
-//#include "nmea2k.h"
 
 namespace nmea2k{
   

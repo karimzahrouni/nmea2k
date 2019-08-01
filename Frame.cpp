@@ -4,7 +4,7 @@
 */
 
 #include "mbed.h"
-#include "nmea2k.h"
+//#include "nmea2k.h"
 #include "Frame.h"
 
 namespace nmea2k{
@@ -15,7 +15,7 @@ namespace nmea2k{
     type = CANData; 
     format = CANExtended; 
     debug("nmea2k::Frame() constructor called %d\r\n",this);
-  }; // nmea2k::Frame() constructor
+  } // nmea2k::Frame() constructor
 
   
   Frame::Frame(unsigned int id,
@@ -23,7 +23,7 @@ namespace nmea2k{
 	       unsigned char len) :
     mbed::CANMessage(id,data,len,CANData,CANExtended){
     debug("nmea2k::Frame(id,data,len) called (unsigned char data) %d\r\n", this);
-  }; // nmea2k::Frame(id,data,len) w unsigned char data implementation
+  } // nmea2k::Frame(id,data,len) w unsigned char data implementation
 
   
   Frame::Frame(unsigned int id,
@@ -31,16 +31,16 @@ namespace nmea2k{
 	       unsigned char len) :
     mbed::CANMessage(id,data,len,CANData,CANExtended){
     debug("nmea2k::Frame(id,data,len) called (char data) %d\r\n",this);
-  }; // nmea2k::Frame(id,data,len) w char data implementation
+  } // nmea2k::Frame(id,data,len) w char data implementation
 
   
   Frame::~Frame(){
     debug("nmea2k::~Frame() destructor called %d\r\n",this);
-  }; // nmea2k::~Frame() destructor
+  } // nmea2k::~Frame() destructor
 
   unsigned int Frame::get_id(void){
     return id; 
-  };
+  }
 
   int Frame::set_id(unsigned int x){
     id = x;

@@ -23,13 +23,17 @@ Serial pc(USBTX,USBRX);
 nmea2k::PduHeader foo; 
 
 int main(void){
+  int retval;
+  
   //pc.printf("nmea2k version ");
   //pc.printf(NMEA2K_VERSION);
   pc.printf("\r\nPduHeader PGN to CAN ID test\r\n");
 
   pc.printf("Testing PGN 127245 Rudder with different source address SA\r\n");
-  foo.set_id(0);
-  foo.set_pgn(127245);
+  retval=foo.set_id(0);
+  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"unexpected nonzero retval");
+  retval=foo.set_pgn(127245);
+  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"unexpected nonzero retval");
   foo.set_sa(0); 
   TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00,foo.get_id(),"failed to decode id");
   TEST_ASSERT_EQUAL_MESSAGE(127245,foo.pgn(),"failed to decode pgn");
@@ -41,8 +45,10 @@ int main(void){
   }
 
   pc.printf("Testing PGN 130306 Wind Data with different priority P\r\n");
-  foo.set_id(0);
-  foo.set_pgn(130306);
+  retval=foo.set_id(0);
+  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"unexpected nonzero retval");
+  retval=foo.set_pgn(130306);
+  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"unexpected nonzero retval");
   foo.set_da(0x41); // should throw warning, yes it does
   debug("warning thrown here is expected as part of test!\r\n");
   foo.set_da(0xff); // should be ok, yes it is
@@ -55,8 +61,10 @@ int main(void){
   }
 
   pc.printf("Testing PGN 126208 NMEA Command group function with different destination address DA\r\n");
-  foo.set_id(0);
-  foo.set_pgn(126208);
+  retval=foo.set_id(0);
+  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"unexpected nonzero retval");
+  retval=foo.set_pgn(126208);
+  TEST_ASSERT_EQUAL_MESSAGE(MBED_SUCCESS,retval,"unexpected nonzero retval");
   foo.set_sa(0x41); 
   TEST_ASSERT_EQUAL_MESSAGE(0x01ed0041,foo.get_id(),"failed to decode id");
   TEST_ASSERT_EQUAL_MESSAGE(126208,foo.pgn(),"failed to decode pgn");

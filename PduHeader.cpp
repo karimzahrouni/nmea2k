@@ -88,7 +88,36 @@ namespace nmea2k {
       return MBED_SUCCESS;
     } // else
   } // set_pgn() setter
+
+  int PduHeader::set_id(unsigned int x){
+    unsigned char r, pf, ps;
+    r = (x>>25)&0x1;
+    pf = (x>>16) & 0xff;
+    ps = (x>>8) & 0xff;
+    if ((pf<240) && (ps!=0)){
+      debug("warning: badly formed id %x, PF<240 but PS set, no puedo\r\n",x);
+      MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
+				     MBED_ERROR_CODE_UNSUPPORTED),
+		     "badly formed id, PF<240 but PS set, no puedo",
+		     x);
+      return MBED_ERROR_CODE_INVALID_ARGUMENT;
+    } // if badly formed PGN throw warning
+    else if (r){
+      debug("warning: badly formed id %x, wants to set R=1, no puedo\r\n",x);
+      MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
+				     MBED_ERROR_CODE_UNSUPPORTED),
+		     "badly formed id, setting R=1, no puedo",
+		     x);
+      return MBED_ERROR_CODE_INVALID_ARGUMENT;
+    }
+    else {
+      _translation.id = x; 
+      return MBED_SUCCESS;
+    } // else
     
+    return _translation.id;
+  }
+  
   unsigned char PduHeader::da(){
     if (_translation.iso.pf<240)
       return _translation.iso.ps;

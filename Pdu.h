@@ -2,6 +2,9 @@
     @brief Protocol Data Unit header file for nmea2k library
 
     Dennis Evangelista, 2019
+
+    TODO Make header private and provide accessors and a setter that
+    takes a pointer to a PduHeader. 
 */
 #ifndef PDU_H
 #define PDU_H

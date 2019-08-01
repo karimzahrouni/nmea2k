@@ -21,13 +21,6 @@ namespace nmea2k {
   PduHeader::PduHeader(unsigned int id){
     debug("PduHeader(id) called %p\r\n",this);
     _translation.id = id;
-    if ((_translation.iso.pf<240) && (_translation.iso.ps!=0)){
-      debug("warning: id %x resulted in possibly badly formed PGN, PF<240 and PS set\r\n",id); 
-      MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
-				     MBED_ERROR_CODE_UNSUPPORTED),
-		     "id resulted in possibly badly formed PGN",
-		     id);
-    }
   }
 
   PduHeader::PduHeader(unsigned char priority,
@@ -100,15 +93,7 @@ namespace nmea2k {
     r = (x>>25)&0x1;
     pf = (x>>16) & 0xff;
     ps = (x>>8) & 0xff;
-    if ((pf<240) && (ps!=0)){
-      debug("warning: badly formed id %x, PF<240 but PS set, no puedo\r\n",x);
-      MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
-				     MBED_ERROR_CODE_UNSUPPORTED),
-		     "badly formed id, PF<240 but PS set, no puedo",
-		     x);
-      return MBED_ERROR_CODE_INVALID_ARGUMENT;
-    } // if badly formed PGN throw warning
-    else if (r){
+    if (r){
       debug("warning: badly formed id %x, wants to set R=1, no puedo\r\n",x);
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				     MBED_ERROR_CODE_UNSUPPORTED),
@@ -120,9 +105,7 @@ namespace nmea2k {
       _translation.id = x; 
       return MBED_SUCCESS;
     } // else
-    
-    return _translation.id;
-  }
+  } // set_id
   
   unsigned char PduHeader::da(){
     if (_translation.iso.pf<240)

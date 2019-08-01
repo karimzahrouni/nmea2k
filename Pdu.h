@@ -7,7 +7,7 @@
 #define PDU_H
 
 #include "mbed.h"
-#include "nmea2k.h"
+//#include "nmea2k.h"
 #include "Frame.h"
 #include "PduHeader.h"
 

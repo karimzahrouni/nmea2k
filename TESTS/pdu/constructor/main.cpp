@@ -5,6 +5,7 @@
 */
 
 #include "Pdu.h"
+
 #include "mbed.h"
 #include "stdio.h"
 #include "unity.h"
@@ -22,7 +23,7 @@ int main(void){
   pc.printf("inherited from CANMessage via Frame:\r\n"); 
   pc.printf("id = %d\r\n",foo.get_id());
   for (int i=0; i<8; i++)
-    pc.printf("data[%d] = %d\r\n",id,foo.data[i]);
+    pc.printf("data[%d] = %d\r\n",i,foo.data[i]);
   pc.printf("len = %d\r\n",foo.len);
   pc.printf("type = %d, %d = CANData\r\n",foo.type,CANData);
   pc.printf("format = %d, %d = CANExtended\r\n",foo.format,CANExtended);

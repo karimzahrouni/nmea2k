@@ -28,15 +28,15 @@ int main(void){
   pc.printf("type = %d, %d = CANData\r\n",foo.type,CANData);
   pc.printf("format = %d, %d = CANExtended\r\n",foo.format,CANExtended);
   pc.printf("contained in PduHeader header:\r\n");
-  pc.printf("p = %d",foo.header.p());
-  pc.printf("r = %d",foo.header.r());
-  pc.printf("dp = %d",foo.header.dp());
-  pc.printf("pf = %d",foo.header.pf());
-  pc.printf("ps = %d",foo.header.ps());
-  pc.printf("sa = %d",foo.header.sa());
-  pc.printf("id = %d",foo.header.get_id());
-  pc.printf("pgn = %d",foo.header.pgn());
-  pc.printf("da = %d",foo.header.da());
+  pc.printf("p = %d\r\n",foo.header.p());
+  pc.printf("r = %d\r\n",foo.header.r());
+  pc.printf("dp = %d\r\n",foo.header.dp());
+  pc.printf("pf = %d\r\n",foo.header.pf());
+  pc.printf("ps = %d\r\n",foo.header.ps());
+  pc.printf("sa = %d\r\n",foo.header.sa());
+  pc.printf("id = %d\r\n",foo.header.get_id());
+  pc.printf("pgn = %d\r\n",foo.header.pgn());
+  pc.printf("da = %d\r\n",foo.header.da());
 
   
 }

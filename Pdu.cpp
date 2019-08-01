@@ -1,43 +1,45 @@
-#include "mbed.h"
-#include "nmea2k.h"
-#include "Frame.h"
-#include "PduHeader.h"
 #include "Pdu.h"
+
+#include "mbed.h"
+//#include "nmea2k.h"
+//#include "Frame.h"
+//#include "PduHeader.h"
+
 
 namespace nmea2k{
 
   Pdu::Pdu() :
     Frame(){
-    debug("Pdu() constructor called\r\n");
+    debug("Pdu() constructor called %p\r\n",this);
     Pdu::header = PduHeader(); 
   }
 
   Pdu::Pdu(unsigned int id, const unsigned char *data, unsigned char len) :
     Frame(id,data,len){
-    debug("Pdu(id,data,len) constructor called with unsigned char data\r\n");
+    debug("Pdu(id,data,len) constructor called with unsigned char data %p\r\n",this);
     Pdu::header = PduHeader(id); 
   }
 
   Pdu::Pdu(unsigned int id, const char *data, unsigned char len) :
     Frame(id,data,len){
-    debug("Pdu(id,data,len) constructor called with char data\r\n");
+    debug("Pdu(id,data,len) constructor called with char data %p\r\n",this);
     Pdu::header = PduHeader(id);
   }
 
   Pdu::Pdu(PduHeader h, const unsigned char *data, unsigned char len) :
     Frame(h.get_id(),data,len){
-    debug("Pdu(h,data,len) constructor called with unsigned char data\r\n");
+    debug("Pdu(h,data,len) constructor called with unsigned char data %p\r\n",this);
     Pdu::header = h;
   }
 
   Pdu::Pdu(PduHeader h, const char *data, unsigned char len) :
     Frame(h.get_id(),data,len){
-    debug("Pdu(h,data,len) constructor called with char data\r\n");
+    debug("Pdu(h,data,len) constructor called with char data %p\r\n",this);
     Pdu::header=h;
   }
 
   Pdu::~Pdu(){
-    debug("~Pdu() destructor called\r\n");
+    debug("~Pdu() destructor called %p\r\n",this);
   }
 
   unsigned int Pdu::get_id(){

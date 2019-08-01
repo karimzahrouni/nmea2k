@@ -31,12 +31,12 @@ int main(void){
   foo.set_id(0);
   foo.set_pgn(127245);
   foo.set_sa(0); 
-  TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00,foo.id(),"failed to decode id");
+  TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00,foo.get_id(),"failed to decode id");
   TEST_ASSERT_EQUAL_MESSAGE(127245,foo.pgn(),"failed to decode pgn");
   for (unsigned int i=0; i<256; i++){
     pc.printf("PGN 127245 with SA = %d\r\n",i); 
     foo.set_sa(i);
-    TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00+i,foo.id(),"failed to decode id");
+    TEST_ASSERT_EQUAL_MESSAGE(0x01f10d00+i,foo.get_id(),"failed to decode id");
     TEST_ASSERT_EQUAL_MESSAGE(127245,foo.pgn(),"failed to decode pgn");
   }
 
@@ -58,12 +58,12 @@ int main(void){
   foo.set_id(0);
   foo.set_pgn(126208);
   foo.set_sa(0x41); 
-  TEST_ASSERT_EQUAL_MESSAGE(0x01ed0041,foo.id(),"failed to decode id");
+  TEST_ASSERT_EQUAL_MESSAGE(0x01ed0041,foo.get_id(),"failed to decode id");
   TEST_ASSERT_EQUAL_MESSAGE(126208,foo.pgn(),"failed to decode pgn");
   for (unsigned int i=0; i<256; i++){
     pc.printf("PGN 126208 with DA = %d\r\n",i); 
     foo.set_da(i);
-    TEST_ASSERT_EQUAL_MESSAGE(0x01ed0041+(i<<8),foo.id(),"failed to decode id");
+    TEST_ASSERT_EQUAL_MESSAGE(0x01ed0041+(i<<8),foo.get_id(),"failed to decode id");
     TEST_ASSERT_EQUAL_MESSAGE(126208,foo.pgn(),"failed to decode pgn");
   }
     

@@ -82,5 +82,40 @@ int main(void){
   TEST_ASSERT_EQUAL_MESSAGE(126720,foo.header.pgn(),"bad pgn");
   TEST_ASSERT_EQUAL_MESSAGE(0,foo.header.da(),"bad da"); 
 
+
+  pc.printf("Pdu(id,data,len) with char data\r\n");
+  char bar[]={1,8,4,5}; 
+  foo = nmea2k::Pdu(0x01ff41ff,&bar[0],4);
+  TEST_ASSERT_EQUAL_MESSAGE(0x01ff41ff,foo.get_id(),"bad id"); 
+    pc.printf("inherited from CANMessage via Frame:\r\n"); 
+  pc.printf("  id = %d\r\n",foo.get_id());
+  for (int i=0; i<8; i++)
+    pc.printf("  data[%d] = %d\r\n",i,foo.data[i]);
+  pc.printf("  len = %d\r\n",foo.len);
+  pc.printf("  type = %d, %d = CANData\r\n",foo.type,CANData);
+  pc.printf("  format = %d, %d = CANExtended\r\n",foo.format,CANExtended);
+  TEST_ASSERT_EQUAL_MESSAGE(0,foo.data[0],"bad data");
+  TEST_ASSERT_EQUAL_MESSAGE(4,foo.len,"bad length");
+  TEST_ASSERT_EQUAL_MESSAGE(CANData,foo.type,"bad Frame type");
+  TEST_ASSERT_EQUAL_MESSAGE(CANExtended,foo.format,"bad Frame format");
+  pc.printf("contained in PduHeader header:\r\n");
+  pc.printf("  p = %d\r\n",foo.header.p());
+  pc.printf("  r = %d\r\n",foo.header.r());
+  pc.printf("  dp = %d\r\n",foo.header.dp());
+  pc.printf("  pf = %d\r\n",foo.header.pf());
+  pc.printf("  ps = %d\r\n",foo.header.ps());
+  pc.printf("  sa = %d\r\n",foo.header.sa());
+  pc.printf("  id = %d, should match\r\n",foo.header.get_id());
+  pc.printf("  pgn = %d\r\n",foo.header.pgn());
+  pc.printf("  da = %d\r\n",foo.header.da());
+  TEST_ASSERT_EQUAL_MESSAGE(0,foo.header.p(),"bad priority");
+  TEST_ASSERT_EQUAL_MESSAGE(0,foo.header.r(),"bad reserved");
+  TEST_ASSERT_EQUAL_MESSAGE(1,foo.header.dp(),"bad data page");
+  TEST_ASSERT_EQUAL_MESSAGE(255,foo.header.pf(),"bad PDU format");
+  TEST_ASSERT_EQUAL_MESSAGE(41,foo.header.ps(),"bad PDU specific");
+  TEST_ASSERT_EQUAL_MESSAGE(0xff,foo.header.sa(),"bad source address");
+  TEST_ASSERT_EQUAL_MESSAGE(0x1ff41,foo.header.pgn(),"bad pgn");
+  TEST_ASSERT_EQUAL_MESSAGE(0x41,foo.header.da(),"bad da"); 
+
   
 } // int main(void) 

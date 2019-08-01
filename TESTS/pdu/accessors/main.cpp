@@ -70,7 +70,7 @@ int main(void){
   pc.printf("  da = %d\r\n",foo.header.da());
 
   pc.printf("set_header()\r\n"); 
-  h = PduHeader(0,127245,0x41);
+  h = nmea2k::PduHeader(0,127245,0x41);
   foo.set_header(h);
   pc.printf("inherited from CANMessage via Frame:\r\n"); 
   pc.printf("  id = %d\r\n",foo.get_id());

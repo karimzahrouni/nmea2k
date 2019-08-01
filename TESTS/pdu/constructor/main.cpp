@@ -80,7 +80,7 @@ int main(void){
   TEST_ASSERT_EQUAL_MESSAGE(0,foo.header.ps(),"bad PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(0xff,foo.header.sa(),"bad source address");
   TEST_ASSERT_EQUAL_MESSAGE(126720,foo.header.pgn(),"bad pgn");
-  TEST_ASSERT_EQUAL_MESSAGE(0xff,foo.header.da(),"bad da"); 
+  TEST_ASSERT_EQUAL_MESSAGE(0,foo.header.da(),"bad da"); 
 
   
 } // int main(void) 

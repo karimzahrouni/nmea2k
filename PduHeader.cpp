@@ -21,12 +21,13 @@ namespace nmea2k {
   PduHeader::PduHeader(unsigned int id){
     debug("PduHeader(id) called %p\r\n",this);
     _translation.id = id;
-    debug("warning: id %x resulted in possibly badly formed PGN\r\n",id); 
-    if ((_translation.iso.pf<240) && (_translation.iso.ps!=0))
+    if ((_translation.iso.pf<240) && (_translation.iso.ps!=0)){
+      debug("warning: id %x resulted in possibly badly formed PGN, PF<240 and PS set\r\n",id); 
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				     MBED_ERROR_CODE_UNSUPPORTED),
 		     "id resulted in possibly badly formed PGN",
 		     id);
+    }
   }
 
   PduHeader::PduHeader(unsigned char priority,

@@ -44,10 +44,11 @@ namespace nmea2k{
   }
 
   int PgnParser::parse(Pdu *encoded, Pgn *decoded){
-    MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
-				MBED_ERROR_CODE_INVALID_OPERATION),
-		"PgnParser::parse() should be overrided by subclasses");
-    return MBED_ERROR_CODE_INVALID_OPERATION;
+    if (encoded->len == decoded->len){
+      decoded->set.data(encoded->data,encoded->len);
+      return MBED_SUCCESS;
+    }
+    else return -1;     
   }
   
   

@@ -64,13 +64,21 @@ namespace nmea2k {
     b3 = (x & 0xff);
       
     if ((b2<240) && (b3!=0)){
-      debug("warning: badly formed PGN %d, no puedo\r\n",x);
+      debug("warning: badly formed PGN %d, PF<240 but PS set, no puedo\r\n",x);
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
 				     MBED_ERROR_CODE_UNSUPPORTED),
 		     "badly formed PGN, PF<240 but PS set, no puedo",
 		     x);
       return MBED_ERROR_CODE_INVALID_ARGUMENT;
     } // if badly formed PGN throw warning
+    else if (b1>>1){
+      debug("warning: badly formed PGN %d, wants to set R=1, no puedo\r\n",x);
+      MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
+				     MBED_ERROR_CODE_UNSUPPORTED),
+		     "badly formed PGN, setting R=1, no puedo",
+		     x);
+      return MBED_ERROR_CODE_INVALID_ARGUMENT;
+    }
     else {
       _translation.iso.r = b1>>1; 
       //MBED_ASSERT(_translation.iso.r==0); // r should always be 0

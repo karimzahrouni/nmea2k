@@ -22,14 +22,19 @@ int main(void){
   pc.printf("f.len = %d should be 8\r\n",f.len);
   
   pc.printf("Testing nmea2k::Frame.set_id() and get_id()\r\n");
+  pc.printf("Setting id=0x000000ff\r\n";)
   f.set_id(0x000000ff);
   TEST_ASSERT_EQUAL_MESSAGE(0x000000ff,f.get_id(),"failed to set id");
+  pc.printf("Setting id=0x0000ff00\r\n");
   f.set_id(0x0000ff00);
   TEST_ASSERT_EQUAL_MESSAGE(0x0000ff00,f.get_id(),"failed to set id");
+  pc.printf("Setting id=0x00ffffff\r\n");
   f.set_id(0x00ffffff);
   TEST_ASSERT_EQUAL_MESSAGE(0x00ffffff,f.get_id(),"failed to set id");
+  pc.printf("Setting id=0x01ffffff\r\n");
   f.set_id(0x01ffffff);
   TEST_ASSERT_EQUAL_MESSAGE(0x01ffffff,f.get_id(),"failed to set id");
+  pc.printf("Setting id=0x1dffffff\r\n");
   f.set_id(0x1dffffff);
   TEST_ASSERT_EQUAL_MESSAGE(0x1dffffff,f.get_id(),"failed to set id");
 

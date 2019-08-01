@@ -143,7 +143,9 @@ int main(void){
   pc.printf("testing invalid PGN 0x200ff, should return warnings or errors\r\n");
   retval = foo.set_pgn(0x300ff);
   TEST_ASSERT_MESSAGE(retval!=MBED_SUCCESS,"got unexpected retval 0, should have failed");
+  TEST_ASSERT_MESSAGE(foo.r()!=1,"it set R to 1?");
+  //DP is set from previous PGN
   TEST_ASSERT_MESSAGE(foo.pf()!=0x00,"it set PF?");
-  TEST_ASSERT_MESSAGE(foo.ps()!=0xff,"it set PS?");
+  //PS is 0xff from previous PGN
 } // int main(void)
 

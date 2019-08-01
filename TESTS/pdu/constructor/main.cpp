@@ -94,7 +94,10 @@ int main(void){
   pc.printf("  len = %d\r\n",foo.len);
   pc.printf("  type = %d, %d = CANData\r\n",foo.type,CANData);
   pc.printf("  format = %d, %d = CANExtended\r\n",foo.format,CANExtended);
-  TEST_ASSERT_EQUAL_MESSAGE(0,foo.data[0],"bad data");
+  TEST_ASSERT_EQUAL_MESSAGE(1,foo.data[0],"bad data");
+  TEST_ASSERT_EQUAL_MESSAGE(8,foo.data[1],"bad data");
+  TEST_ASSERT_EQUAL_MESSAGE(4,foo.data[2],"bad data");
+  TEST_ASSERT_EQUAL_MESSAGE(5,foo.data[3],"bad data");
   TEST_ASSERT_EQUAL_MESSAGE(4,foo.len,"bad length");
   TEST_ASSERT_EQUAL_MESSAGE(CANData,foo.type,"bad Frame type");
   TEST_ASSERT_EQUAL_MESSAGE(CANExtended,foo.format,"bad Frame format");
@@ -112,10 +115,10 @@ int main(void){
   TEST_ASSERT_EQUAL_MESSAGE(0,foo.header.r(),"bad reserved");
   TEST_ASSERT_EQUAL_MESSAGE(1,foo.header.dp(),"bad data page");
   TEST_ASSERT_EQUAL_MESSAGE(255,foo.header.pf(),"bad PDU format");
-  TEST_ASSERT_EQUAL_MESSAGE(41,foo.header.ps(),"bad PDU specific");
+  TEST_ASSERT_EQUAL_MESSAGE(0x41,foo.header.ps(),"bad PDU specific");
   TEST_ASSERT_EQUAL_MESSAGE(0xff,foo.header.sa(),"bad source address");
   TEST_ASSERT_EQUAL_MESSAGE(0x1ff41,foo.header.pgn(),"bad pgn");
-  TEST_ASSERT_EQUAL_MESSAGE(0x41,foo.header.da(),"bad da"); 
+  TEST_ASSERT_EQUAL_MESSAGE(0xff,foo.header.da(),"bad da"); 
 
   
 } // int main(void) 

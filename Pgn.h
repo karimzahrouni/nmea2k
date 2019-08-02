@@ -14,7 +14,7 @@ namespace nmea2k{
     ~Pgn();
 
     // factory method for corresponding Pdu(s)
-    int encode(PduHeader *h, Pdu *encoded);
+    int encode(nmea2k::PduHeader *h, nmea2k::Pdu *encoded);
 
     // set and get
     void set_data(unsigned char *x, unsigned char len); 
@@ -32,7 +32,7 @@ namespace nmea2k{
   public:
     PgnParser();
     ~PgnParser();
-    int parse(Pdu *encoded, Pgn *decoded); 
+    int parse(nmea2k::Pdu *encoded, nmea2k::Pgn *decoded); 
   };
   
 } // namespace nmea2k

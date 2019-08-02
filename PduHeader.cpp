@@ -87,10 +87,10 @@ namespace nmea2k {
   } // set_pgn() setter
 
   int PduHeader::set_id(unsigned int x){
-    unsigned char r, pf, ps;
+    unsigned char r;
     r = (x>>25)&0x1;
-    pf = (x>>16) & 0xff;
-    ps = (x>>8) & 0xff;
+    // Note we don't need to check (PF<240) and PS==0 because
+    // it could be encoding a destination address. 
     if (r){
       debug("warning: badly formed id %x, wants to set R=1, no puedo\r\n",x);
       MBED_WARNING1( MBED_MAKE_ERROR(MBED_MODULE_DRIVER,
@@ -125,6 +125,7 @@ namespace nmea2k {
 		      x);
       return MBED_ERROR_CODE_INVALID_ARGUMENT;
     } // if setting DA for PGN w none, throw warning
+    else return MBED_SUCCESS; // ok to set DA=255 for pg>=240
   } // set_da() setter
 
   

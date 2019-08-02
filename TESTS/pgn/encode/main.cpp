@@ -44,7 +44,7 @@ int main(void){
   pc.printf("pdu.len() = %d\r\n",pdu.len);
   TEST_ASSERT_EQUAL_MESSAGE(8,pdu.len,"got wrong length back");
   for (int i=0; i<pdu.len; i++)
-    pc.printf("pdu.data[i] = %d\r\n",pdu.data[i]);
+    pc.printf("pdu.data[%d] = %d\r\n",i,pdu.data[i]);
   pc.printf("pdu.p() = %d\r\n",pdu.p());
   TEST_ASSERT_EQUAL_MESSAGE(0,pdu.p(),"got wrong priority back");
   pc.printf("pdu.pgn() = %d\r\n",pdu.pgn());

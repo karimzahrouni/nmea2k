@@ -11,6 +11,7 @@
 namespace nmea2k{
 
   Pgn::Pgn(){
+    len = 8; 
     debug("Pgn() empty constructor called %p\r\n",this);
   }
 
@@ -27,6 +28,7 @@ namespace nmea2k{
   }
 
   void set_data(unsigned char *x, unsigned char len){
+    this->len = len; 
     memcpy(_translation.data,x,len);
   }
 
@@ -48,8 +50,14 @@ namespace nmea2k{
       decoded->set.data(encoded->data,encoded->len);
       return MBED_SUCCESS;
     }
-    else return -1;     
-  }
+    else{
+      debug("warning: encoded Pdu has wrong length for this Pgn, no puedo\r\n");
+      MBED_WARNING( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
+				  MBED_ERROR_CODE_INVALID_ARGUMENT),
+		    "Encoded Pdu has wrong length for this Pgn\r\n"); 
+      return MBED_ERROR_CODE_INVALID_ARGUMENT;
+    } // else
+  } // int parse(encoded, decoded)
   
   
 } // namespace nmea2k

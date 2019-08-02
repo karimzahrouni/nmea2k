@@ -9,12 +9,12 @@ namespace nmea2k{
   
   class Pgn{
   public:
-
+    unsigned int len;
     Pgn();
     ~Pgn();
 
     // factory method for corresponding Pdu(s)
-    int encode(PduHeader *h, Pdu *encoded);,
+    int encode(PduHeader *h, Pdu *encoded);
 
     // set and get
     void set_data(unsigned char *x, unsigned char len); 

@@ -39,5 +39,13 @@ int main(void){
   pdu = nmea2k::Pdu();
   pc.printf("Next line should throw an error as it is unimplemented\r\n"); 
   pgn.encode(&h, &pdu);
-  
+
+  pc.printf("Check that payload got into Pdu\r\n");
+  pc.printf("pdu.len() = %d\r\n",pdu.len());
+  for (int i=0; i<pdu.len(); i++)
+    pc.printf("pdu.data[i] = %d\r\n",pdu.data[i]);
+  pc.printf("pdu.p() = %d\r\n",pdu.p()); 
+  pc.printf("pdu.pgn() = %d\r\n",pdu.pgn());
+  pc.printf("pdu.da() = %d\r\n",pdu.da()); 
+  pc.printf("pdu.sa() = 0x%x\r\n",pdu.sa());
 }

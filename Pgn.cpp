@@ -25,7 +25,7 @@ namespace nmea2k{
   int Pgn::encode(PduHeader *h,
 		  Pdu *encoded){
     encoded->set_header(*h);
-    encoded->data = _translation.data[0];
+    encoded->data = &_translation.data[0];
     encoded->len = len;
     debug("warning: Pgn::encode() should be overidden by subclasses\r\n"); 
     MBED_WARNING( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,

@@ -26,9 +26,16 @@ namespace nmea2k{
     return MBED_ERROR_CODE_INVALID_OPERATION;
   }
 
+  void Pgn::get_data(unsigned char *d, unsigned char *l){
+    l = len;
+    d = &_translation.data[0];
+    return; 
+  }
+
   void Pgn::set_data(unsigned char *x, unsigned char len){
     this->len = len; 
     memcpy(_translation.data,x,len);
+    return; 
   }
 
 

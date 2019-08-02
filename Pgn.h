@@ -16,6 +16,7 @@ namespace nmea2k{
     int encode(PduHeader *h, Pdu *encoded);
 
     // set and get
+    void get_data(unsigned char *d, unsigned char *l); 
     void set_data(unsigned char *x, unsigned char len); 
 
   protected:

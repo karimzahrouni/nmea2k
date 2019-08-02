@@ -11,14 +11,14 @@
 namespace nmea2k{
 
   Pgn::Pgn():len(NMEA2K_SINGLE_FRAME_MAX_LEN){
-    debug("Pgn() empty constructor called %p\r\n",this);
+    debug("nmea2k::Pgn() empty constructor called %p\r\n",this);
   }
 
   /*
   // By rule of 3, comment this or also declare copy constructor and operator
   // this was just trivial destructor anyway... 
   Pgn::~Pgn(){
-    debug("~Pgn() destructor called %p\r\n",this);
+    debug("nmea2k::~Pgn() destructor called %p\r\n",this);
   }
   */
 

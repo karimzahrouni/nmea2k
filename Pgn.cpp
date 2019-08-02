@@ -24,14 +24,15 @@ namespace nmea2k{
 
   int Pgn::encode(PduHeader *h,
 		  Pdu *encoded){
+    MBED_ASSERT(len < NMEA2K_SINGLE_FRAME_MAX_LEN);
     encoded->set_header(*h);
-    encoded->data = &_translation.data[0];
+    memcpy(encoded->data,_translation.data,len); 
     encoded->len = len;
     debug("warning: Pgn::encode() should be overidden by subclasses\r\n"); 
     MBED_WARNING( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
 				  MBED_ERROR_CODE_INVALID_OPERATION),
 		  "Pgn::encode() should be overriden by subclasses" );
-    return MBED_ERROR_CODE_INVALID_OPERATION;
+    return MBED_SUCCESS;
   }
 
   void Pgn::get_data(unsigned char *d, unsigned char *l){

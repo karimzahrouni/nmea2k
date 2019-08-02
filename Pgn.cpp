@@ -10,8 +10,7 @@
 
 namespace nmea2k{
 
-  Pgn::Pgn(){
-    len = 8; 
+  Pgn::Pgn():len(8){
     debug("Pgn() empty constructor called %p\r\n",this);
   }
 

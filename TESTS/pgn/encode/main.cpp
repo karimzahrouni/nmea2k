@@ -15,6 +15,8 @@ Serial pc(USBTX,USBRX);
 nmea2k::Pgn pgn;
 nmea2k::PduHeader h; 
 nmea2k::Pdu pdu; 
+unsigned char *d;
+unsigned char l; 
 
 int main(void){
   //pc.printf("nmea2k version ");

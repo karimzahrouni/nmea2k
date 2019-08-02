@@ -107,6 +107,16 @@ namespace nmea2k{
     /** Get priority, P */ 
     inline unsigned char p(){return _header.p();}
     
+    /** Set reserved, R */
+    inline void set_r(unsigned char x){
+      MBED_ASSERT(x==0); 
+      _header.set_r(x);
+      Frame::set_id(_header.get_id()); // also set super (Frame, CANMessage) id
+    } // void set_r(x)
+
+    /** Get reserved, R*/
+    inline unsigned char r(){return _header.r();}
+    
     /** Set data page, DP */
     inline void set_dp(unsigned char x){
       _header.set_dp(x);

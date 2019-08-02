@@ -22,7 +22,7 @@ namespace nmea2k{
     void get_data(unsigned char *d, unsigned char *l); 
     void set_data(unsigned char *x, unsigned char len); 
 
-  protected:
+  private:
     union{
       unsigned char data[NMEA2K_SINGLE_FRAME_MAX_LEN] = {0xff,0xff,0xff,0xff,
 							 0xff,0xff,0xff,0xff};

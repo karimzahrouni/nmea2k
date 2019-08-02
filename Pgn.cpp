@@ -28,7 +28,7 @@ namespace nmea2k{
 
   void Pgn::get_data(unsigned char *d, unsigned char *l){
     *l = len;
-    d = &_translation.data[0];
+    memcpy(d,_translation.data,len);
     return; 
   }
 

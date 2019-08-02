@@ -10,8 +10,8 @@
 
 Serial pc(USBTX,USBRX);
 
-Pgn p;
-unsigned char *d;
+nmea2k::Pgn p;
+unsigned char d[8];
 unsigned char l; 
 
 int main(void){
@@ -20,7 +20,7 @@ int main(void){
   pc.printf("\r\nnmea2k::Pgn() constructor test\r\n");
   
   pc.printf("Default constructor\r\n");
-  p = Pgn();
+  p = nmea2k::Pgn();
   pc.printf("p.len = %d\r\n",p.len);
   TEST_ASSERT_EQUAL_MESSAGE(NMEA2K_SINGLE_FRAME_MAX_LEN,
 			    p.len,"incorrect length");

@@ -14,6 +14,7 @@ namespace nmea2k {
 
   PduHeader::PduHeader(){
     debug("PduHeader() empty constructor called %p\r\n",this);
+    _translation.id = 0; 	
   }
 
   PduHeader::PduHeader(unsigned int id){

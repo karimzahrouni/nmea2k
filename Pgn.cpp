@@ -24,7 +24,7 @@ namespace nmea2k{
 
   int Pgn::encode(PduHeader *h,
 		  Pdu *encoded){
-    MBED_ASSERT(len < NMEA2K_SINGLE_FRAME_MAX_LEN);
+    MBED_ASSERT(len <= NMEA2K_SINGLE_FRAME_MAX_LEN);
     encoded->set_header(*h);
     memcpy(encoded->data,_translation.data,len); 
     encoded->len = len;

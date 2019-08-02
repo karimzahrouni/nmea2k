@@ -9,33 +9,30 @@
 namespace nmea2k{
 
   Pdu::Pdu() :
-    Frame(){
+    Frame(),_header(){
     debug("Pdu() constructor called %p\r\n",this);
-    Pdu::_header = PduHeader(); 
   } // Pdu() constructor
 
   Pdu::Pdu(unsigned int id, const unsigned char *data, unsigned char len) :
-    Frame(id,data,len){
+    Frame(id,data,len),_header(id){
     debug("Pdu(id,data,len) constructor called with unsigned char data %p\r\n",this);
-    Pdu::_header = PduHeader(id); 
   } // Pdu(id,data,len) constructor with unsigned char data
 
   Pdu::Pdu(unsigned int id, const char *data, unsigned char len) :
-    Frame(id,data,len){
-    debug("Pdu(id,data,len) constructor called with char data %p\r\n",this);
-    Pdu::_header = PduHeader(id);
+    Frame(id,data,len),_header(id){
+    debug("Pdu(id,data,len) constructor called with char data %p\r\n",this);=
   } // Pdu(id,data,len) constructor with char data
 
   Pdu::Pdu(PduHeader h, const unsigned char *data, unsigned char len) :
-    Frame(h.get_id(),data,len){
+    Frame(h.get_id(),data,len),_header(h){
     debug("Pdu(h,data,len) constructor called with unsigned char data %p\r\n",this);
-    Pdu::_header = h;
+    //Pdu::_header = h;
   } // Pdu(h,data,len) constructor with unsigned char data
 
   Pdu::Pdu(PduHeader h, const char *data, unsigned char len) :
-    Frame(h.get_id(),data,len){
+    Frame(h.get_id(),data,len),_header(h){
     debug("Pdu(h,data,len) constructor called with char data %p\r\n",this);
-    Pdu::_header=h;
+    //Pdu::_header=h;
   } // Pdu(h,data,len) constructor with char data 
 
   /* Commenting out destructor - rule of 3 would also need copy constructor

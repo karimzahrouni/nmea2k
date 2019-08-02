@@ -20,7 +20,7 @@ namespace nmea2k{
 
   Pdu::Pdu(unsigned int id, const char *data, unsigned char len) :
     Frame(id,data,len),_header(id){
-    debug("Pdu(id,data,len) constructor called with char data %p\r\n",this);=
+    debug("Pdu(id,data,len) constructor called with char data %p\r\n",this);
   } // Pdu(id,data,len) constructor with char data
 
   Pdu::Pdu(PduHeader h, const unsigned char *data, unsigned char len) :

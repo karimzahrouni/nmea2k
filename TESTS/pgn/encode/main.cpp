@@ -42,7 +42,7 @@ int main(void){
   pc.printf("h.da() = 0x%x\r\n",h.da());
   pc.printf("h.sa() = 0x%x\r\n",h.sa()); 
   pdu = nmea2k::Pdu();
-  pc.printf("Next line should throw an error as it is unimplemented\r\n"); 
+  pc.printf("Next line should throw warning as it should be overidden\r\n"); 
   pgn.encode(&h, &pdu);
 
   pc.printf("Check that payload got into Pdu\r\n");

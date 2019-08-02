@@ -1,9 +1,9 @@
 #ifndef PGN_H
 #define PGN_H
 
-#include "nmea2k.h"
 #include "PduHeader.h"
 #include "Pdu.h"
+#include "nmea2k.h"
 
 namespace nmea2k{
   

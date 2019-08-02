@@ -15,7 +15,7 @@ Serial pc(USBTX,USBRX);
 nmea2k::Pgn pgn;
 nmea2k::PduHeader h; 
 nmea2k::Pdu pdu; 
-unsigned char *d;
+unsigned char d[8];
 unsigned char l; 
 
 int main(void){
@@ -28,7 +28,6 @@ int main(void){
   pc.printf("pgn.len = %d\r\n",pgn.len);
   TEST_ASSERT_EQUAL_MESSAGE(NMEA2K_SINGLE_FRAME_MAX_LEN,
 			    pgn.len,"incorrect length");
-  d = malloc(8,sizeof(unsigned char)); 
   pgn.get_data(d,&l);
   for (int i=0; i<l; i++)
     pc.printf("pgn.data[%d] = %d\r\n",i,d[i]);

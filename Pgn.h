@@ -10,7 +10,8 @@ namespace nmea2k{
   
   class Pgn{
   public:
-    unsigned int len; //<! using unsigned int for future MultiPacket use
+    unsigned char len; //<! using unsigned char for single and fastpacket
+    // nb Multipacket, if implemented, will have to do something special
     Pgn();
     ~Pgn();
 

@@ -9,7 +9,7 @@
 #ifndef PDUHEADER_H
 #define PDUHEADER_H
 
-#include "nmea2k.h"
+#include "nmea2k_constants.h"
 
 namespace nmea2k {
 

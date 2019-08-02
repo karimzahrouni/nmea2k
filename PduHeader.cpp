@@ -7,7 +7,7 @@
 
 #include "PduHeader.h"
 #include "mbed.h"
-#include "nmea2k.h"
+#include "nmea2k_constants.h"
 
 
 namespace nmea2k {

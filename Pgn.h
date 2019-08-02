@@ -13,7 +13,7 @@ namespace nmea2k{
     unsigned char len; //<! using unsigned char for single and fastpacket
     // nb Multipacket, if implemented, will have to do something special
     Pgn();
-    ~Pgn();
+    //~Pgn(); // commented due to Rule of 3 issues
 
     // factory method for corresponding Pdu(s)
     int encode(PduHeader *h, Pdu *encoded);
@@ -24,7 +24,8 @@ namespace nmea2k{
 
   protected:
     union{
-      unsigned char data[NMEA2K_SINGLE_FRAME_MAX_LEN] = {0xff};
+      unsigned char data[NMEA2K_SINGLE_FRAME_MAX_LEN] = {0xff,0xff,0xff,0xff,
+							 0xff,0xff,0xff,0xff};
       struct{
 	unsigned char ununsed[NMEA2K_SINGLE_FRAME_MAX_LEN];
       } fields;

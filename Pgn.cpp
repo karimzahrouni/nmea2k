@@ -14,9 +14,13 @@ namespace nmea2k{
     debug("Pgn() empty constructor called %p\r\n",this);
   }
 
+  /*
+  // By rule of 3, comment this or also declare copy constructor and operator
+  // this was just trivial destructor anyway... 
   Pgn::~Pgn(){
     debug("~Pgn() destructor called %p\r\n",this);
   }
+  */
 
   int Pgn::encode(PduHeader *h,
 		  Pdu *encoded){

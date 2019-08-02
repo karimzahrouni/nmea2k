@@ -34,6 +34,7 @@ int main(void){
   
   // create a PduHeader and Pdu to hold result in
   h = nmea2k::PduHeader();
+  h.set_p(3); 
   h.set_pgn(127245);
   h.set_sa(0x41);
   pdu = nmea2k::Pdu();
@@ -46,7 +47,7 @@ int main(void){
   for (int i=0; i<pdu.len; i++)
     pc.printf("pdu.data[%d] = %d\r\n",i,pdu.data[i]);
   pc.printf("pdu.p() = %d\r\n",pdu.p());
-  TEST_ASSERT_EQUAL_MESSAGE(0,pdu.p(),"got wrong priority back");
+  TEST_ASSERT_EQUAL_MESSAGE(3,pdu.p(),"got wrong priority back");
   pc.printf("pdu.pgn() = %d\r\n",pdu.pgn());
   TEST_ASSERT_EQUAL_MESSAGE(127245,pdu.pgn(),"got wrong pgn back"); 
   pc.printf("pdu.da() = %d\r\n",pdu.da());

@@ -24,9 +24,13 @@ namespace nmea2k{
 
   int Pgn::encode(PduHeader *h,
 		  Pdu *encoded){
-    MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
-				MBED_ERROR_CODE_INVALID_OPERATION),
-		"Pgn::encode() should be overriden by subclasses" );
+    encoded->set_header(*h);
+    encoded->data = _translation.data[0];
+    encoded->len = len;
+    debug("warning: Pgn::encode() should be overidden by subclasses\r\n"); 
+    MBED_WARNING( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
+				  MBED_ERROR_CODE_INVALID_OPERATION),
+		  "Pgn::encode() should be overriden by subclasses" );
     return MBED_ERROR_CODE_INVALID_OPERATION;
   }
 

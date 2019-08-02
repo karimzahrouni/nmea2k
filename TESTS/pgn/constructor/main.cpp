@@ -22,7 +22,8 @@ int main(void){
   pc.printf("Default constructor\r\n");
   p = Pgn();
   pc.printf("p.len = %d\r\n",p.len);
-  TEST_ASSERT_EQUAL_MESSAGE(8,p.len,"incorrect length");
+  TEST_ASSERT_EQUAL_MESSAGE(NMEA2K_SINGLE_FRAME_MAX_LEN,
+			    p.len,"incorrect length");
   p.get_data(d,&l);
   for (int i=0; i<l; i++)
     pc.printf("p.data[%d] = %d\r\n",i,d[i]);

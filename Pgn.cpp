@@ -10,7 +10,7 @@
 
 namespace nmea2k{
 
-  Pgn::Pgn():len(8){
+  Pgn::Pgn():len(NMEA2K_SINGLE_FRAME_MAX_LEN){
     debug("Pgn() empty constructor called %p\r\n",this);
   }
 

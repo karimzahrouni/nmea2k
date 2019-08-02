@@ -4,11 +4,13 @@
 #include "PduHeader.h"
 #include "Pdu.h"
 
+#define NMEA2K_SINGLE_FRAME_MAX_LEN 8
+
 namespace nmea2k{
   
   class Pgn{
   public:
-    unsigned int len;
+    unsigned int len; //<! using unsigned int for future MultiPacket use
     Pgn();
     ~Pgn();
 
@@ -21,9 +23,9 @@ namespace nmea2k{
 
   protected:
     union{
-      unsigned char data[8] = {0xff};
+      unsigned char data[NMEA2K_SINGLE_FRAME_MAX_LEN] = {0xff};
       struct{
-	unsigned char ununsed[8];
+	unsigned char ununsed[NMEA2K_SINGLE_FRAME_MAX_LEN];
       } fields;
     } _translation;
   }; // class Pgn

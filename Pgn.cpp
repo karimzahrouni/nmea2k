@@ -47,7 +47,7 @@ namespace nmea2k{
 
   int PgnParser::parse(Pdu *encoded, Pgn *decoded){
     if (encoded->len == decoded->len){
-      decoded->set.data(encoded->data,encoded->len);
+      decoded->set_data(encoded->data,encoded->len);
       return MBED_SUCCESS;
     }
     else{

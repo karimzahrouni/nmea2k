@@ -34,13 +34,13 @@ int main(void){
   
   // create a PduHeader and Pdu to hold result in
   h = nmea2k::PduHeader();
-  //h.set_p(3); 
+  h.set_p(3); 
   h.set_pgn(127245);
   h.set_sa(0x41);
   pc.printf("h.p() = %d\r\n",h.p());
   pc.printf("h.pgn() = %d\r\n",h.pgn());
-  pc.printf("h.da() = %d\r\n",h.da());
-  pc.printf("h.sa() = %d\r\n",h.sa()); 
+  pc.printf("h.da() = 0x%x\r\n",h.da());
+  pc.printf("h.sa() = 0x%x\r\n",h.sa()); 
   pdu = nmea2k::Pdu();
   pc.printf("Next line should throw an error as it is unimplemented\r\n"); 
   pgn.encode(&h, &pdu);
@@ -51,10 +51,10 @@ int main(void){
   for (int i=0; i<pdu.len; i++)
     pc.printf("pdu.data[%d] = %d\r\n",i,pdu.data[i]);
   pc.printf("pdu.p() = %d\r\n",pdu.p());
-  TEST_ASSERT_EQUAL_MESSAGE(0,pdu.p(),"got wrong priority back");
+  TEST_ASSERT_EQUAL_MESSAGE(3,pdu.p(),"got wrong priority back");
   pc.printf("pdu.pgn() = %d\r\n",pdu.pgn());
   TEST_ASSERT_EQUAL_MESSAGE(127245,pdu.pgn(),"got wrong pgn back"); 
-  pc.printf("pdu.da() = %d\r\n",pdu.da());
+  pc.printf("pdu.da() = 0x%x\r\n",pdu.da());
   TEST_ASSERT_EQUAL_MESSAGE(0xff,pdu.da(),"got wrong da back");
   pc.printf("pdu.sa() = 0x%x\r\n",pdu.sa());
   TEST_ASSERT_EQUAL_MESSAGE(0x41,pdu.sa(),"got wrong sa back"); 

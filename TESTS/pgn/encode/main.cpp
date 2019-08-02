@@ -42,10 +42,15 @@ int main(void){
 
   pc.printf("Check that payload got into Pdu\r\n");
   pc.printf("pdu.len() = %d\r\n",pdu.len);
+  TEST_ASSERT_EQUAL_MESSAGE(8,pdu.len,"got wrong length back");
   for (int i=0; i<pdu.len; i++)
     pc.printf("pdu.data[i] = %d\r\n",pdu.data[i]);
-  pc.printf("pdu.p() = %d\r\n",pdu.p()); 
+  pc.printf("pdu.p() = %d\r\n",pdu.p());
+  TEST_ASSERT_EQUAL_MESSAGE(0,pdu.p(),"got wrong priority back");
   pc.printf("pdu.pgn() = %d\r\n",pdu.pgn());
-  pc.printf("pdu.da() = %d\r\n",pdu.da()); 
+  TEST_ASSERT_EQUAL_MESSAGE(127245,pdu.pgn(),"got wrong pgn back"); 
+  pc.printf("pdu.da() = %d\r\n",pdu.da());
+  TEST_ASSERT_EQUAL_MESSAGE(0xff,pdu.da(),"got wrong da back");
   pc.printf("pdu.sa() = 0x%x\r\n",pdu.sa());
+  TEST_ASSERT_EQUAL_MESSAGE(0x41,pdu.sa(),"got wrong sa back"); 
 }

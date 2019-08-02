@@ -41,8 +41,8 @@ int main(void){
   pgn.encode(&h, &pdu);
 
   pc.printf("Check that payload got into Pdu\r\n");
-  pc.printf("pdu.len() = %d\r\n",pdu.len());
-  for (int i=0; i<pdu.len(); i++)
+  pc.printf("pdu.len() = %d\r\n",pdu.len);
+  for (int i=0; i<pdu.len; i++)
     pc.printf("pdu.data[i] = %d\r\n",pdu.data[i]);
   pc.printf("pdu.p() = %d\r\n",pdu.p()); 
   pc.printf("pdu.pgn() = %d\r\n",pdu.pgn());

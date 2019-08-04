@@ -19,7 +19,7 @@ unsigned char* PgnData::data(){
   MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
                               MBED_ERROR_INVALID_OPERATION),
               "should be overridden by subclasses");
-  return MBED_ERROR_CODE_INVALID_OPERATION; 
+  return NULL; 
 }
 
 PgnParser::PgnParser(){
@@ -30,7 +30,7 @@ PgnData* PgnParser::parse(unsigned char *data, unsigned char len){
   MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
                               MBED_ERROR_CODE_INVALID_OPERATION),
               "should be overridden by subclasses");
-  return MBED_ERROR_CODE_INVALID_OPERATION;
+  return NULL;
 } // PgnData* parse(data, len);
   
   

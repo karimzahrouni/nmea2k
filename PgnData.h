@@ -6,7 +6,8 @@ namespace nmea2k{
   
   class PgnData{
   public:
-    char *name;
+    unsigned int pgn; 
+    const char *name;
     unsigned int dlen; 
     PgnData();
 

@@ -10,6 +10,7 @@
 namespace nmea2k{
 
 PgnData::PgnData() :
+    pgn(0),
     name("Generic PGN"),
     dlen(8){
   debug("nmea2k::PgnData() empty constructor called %p\r\n",this);

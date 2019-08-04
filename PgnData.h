@@ -6,9 +6,10 @@ namespace nmea2k{
   
   class PgnData{
   public:
+    unsigned char p; 
     unsigned int pgn; 
     const char *name;
-    unsigned int dlen; 
+    unsigned int dlen;
     PgnData();
 
     // set fields (later), get data

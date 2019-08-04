@@ -4,8 +4,10 @@
 */
 
 #include CANLayer.h
-#include "drivers/CAN.h"
+#include "Callback.h"
 #include "PinNames.h"
+#include "drivers/CAN.h"
+
 
 namespace nmea2k{
 
@@ -22,7 +24,7 @@ int CANLayer::read(Frame &f, int handle){
   return CAN::read(&f, handle); 
 }
 
-void CANLayer::attach(Callback<void()> func, IrqType type){
+void CANLayer::attach(mbed::Callback<void()> func, mbed::IrqType type){
   CAN::attach(&func, type);
   return; 
 }

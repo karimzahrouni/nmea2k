@@ -9,6 +9,10 @@
 #ifndef PDUHEADER_H
 #define PDUHEADER_H
 
+/** @def NMEA2K_BROADCAST
+    @brief address used for broadcast messages is 255 (0xff) */
+#define NMEA2K_BROADCAST 255
+
 namespace nmea2k {
 
   /** @brief ISO11783-3 Protocol Data Unit (PDU) header information
@@ -20,11 +24,6 @@ namespace nmea2k {
       A parameter group number (PGN) is formed from R, DP, PF, and 
       (optionally) PS. Depending on the PGN, there may be a destination
       address (DA) or not. 
-
-      These are implemented here as nmea2k::PduHeader, which is intended
-      to be aggregated together with nmea2k::Frame to form a complete
-      Protocol Data Unit (nmea2k::Pdu), which is the minimum unit
-      that gets transmitted around in the nmea2k protocol. 
    */
   class PduHeader{
     
@@ -40,18 +39,12 @@ namespace nmea2k {
     PduHeader(unsigned char priority,
 	      unsigned int pgn,
 	      unsigned char sa,
-	      unsigned char da=255);
-
-    /** Destructor for PduHeader class */
-    // It was a trivial destructor anyway, leave it undefined to get
-    // default compiler behavior to avoid having to do copy constructor
-    // and operator, rule of big three
-    //~PduHeader();
+	      unsigned char da=NMEA2K_BROADCAST);
 
     /** get source address (SA) byte */
     inline unsigned char sa() {return _translation.iso.sa;}
     /** set source address (SA) byte */
-    inline void set_sa(unsigned char x) { _translation.iso.sa = x;}
+    //inline void set_sa(unsigned char x) { _translation.iso.sa = x;}
     /** get PDU specific (PS) byte */
     inline unsigned char ps() {return _translation.iso.ps; }
     /** set PDU specific (PS) byte */
@@ -123,7 +116,7 @@ namespace nmea2k {
 	Use this instead of directly accessing id in Frame, PduHeader,
 	and Pdu. 
      */
-    inline unsigned int get_id() {return _translation.id;}
+    inline unsigned int id() {return _translation.id;}
 
     /** @brief Set 32(29) bit CAN extended id
 	@returns

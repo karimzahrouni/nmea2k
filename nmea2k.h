@@ -12,14 +12,12 @@
 
 /** @def NMEA2K_VERSION
     @brief nmea2k version for Sailbot Hull 14 mod 3 */
-/** @def NMEA2K_BROADCAST
-    @brief address used for broadcast messages is 255 (0xff) */
 #define NMEA2K_VERSION "14.3.0"
-#define NMEA2K_BROADCAST 255
 
 #include "Frame.h"
 #include "CANLayer.h"
 #include "PduHeader.h"
+#include "PgnData.h"
 
 namespace nmea2k{
 } // namespace nmea2k

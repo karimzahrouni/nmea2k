@@ -6,8 +6,8 @@
 */
 
 #include "PduHeader.h"
-#include "mbed.h"
-#include "nmea2k_constants.h"
+#include "mbed_debug.h"
+#include "mbed_error.h"
 
 
 namespace nmea2k {

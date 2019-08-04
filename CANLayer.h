@@ -6,6 +6,7 @@
 #ifndef CANLAYER_H
 #define CANLAYER_H
 
+#include "Callback.h" 
 #include "drivers/CAN.h" 
 #include "PinNames.h"
 
@@ -14,8 +15,16 @@
 #define NMEA2K_FREQUENCY 250000
 
 namespace nmea2k{
+
+  /** nmea2k::CANLayer is the physical and data link layer for nmea2k
+      It is a CAN bus running at 250000 Hz, and is pretty much inheriting
+      everything from the underlying mbed::CAN. The other main difference
+      is it uses nmea2k::Frame rather than mbed::CANMessage as the 
+      message type. 
+   */
   class CANLayer:public mbed::CAN{
- public:
+
+  public:
     /** @brief Creates a nmea2k interface connected to specific pins
         @param rd, read from transmitter
         @param td, transmit to transmitter 

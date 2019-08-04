@@ -4,6 +4,7 @@
 */
 
 #include "Frame.h"
+#include "mbed_debug.h"
 #include "drivers/CAN.h"
 
 namespace nmea2k{

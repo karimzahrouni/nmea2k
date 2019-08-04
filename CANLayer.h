@@ -14,8 +14,8 @@
 #define NMEA2K_FREQUENCY 250000
 
 namespace nmea2k{
-  class CANLayer:public mbed::CAN {
-  public:
+  class CANLayer:public mbed::CAN{
+ public:
     /** @brief Creates a nmea2k interface connected to specific pins
         @param rd, read from transmitter
         @param td, transmit to transmitter 

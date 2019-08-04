@@ -16,7 +16,7 @@ public:
     _translation.fields.count = count; 
   };
   
-  unsigned char* data(){return &_translation.data[0]};
+  unsigned char* data(){return &_translation.data[0];}
   
 private:
   union{

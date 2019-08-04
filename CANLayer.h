@@ -9,6 +9,7 @@
 #include "Callback.h" 
 #include "drivers/CAN.h" 
 #include "PinNames.h"
+#include "Frame.h"
 
 /** @def NMEA2K_FREQUENCY
     @brief CAN bus frequency for nmea2k is 250000 Hz */

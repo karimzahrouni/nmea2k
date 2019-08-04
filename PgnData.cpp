@@ -14,7 +14,7 @@ PgnData::PgnData() :
   debug("nmea2k::PgnData() empty constructor called %p\r\n",this);
 }
 
-PgnData::PgnData(unsigned char p, unsigned int pgn, const char *name, unsigned char dlen) :
+PgnData::PgnData(unsigned char p, unsigned int pgn, const char *name, unsigned int dlen) :
     p(p),pgn(pgn),name(name),dlen(dlen){
   debug("nmea2k::PgnData(p,pgn,name,dlen) called %p\r\n", this); 
 }

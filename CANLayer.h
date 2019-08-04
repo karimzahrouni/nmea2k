@@ -21,7 +21,7 @@ namespace nmea2k{
       is it uses nmea2k::Frame rather than mbed::CANMessage as the 
       message type. 
    */
-  class CANLayer:public mbed::CAN{
+  class CANLayer:public CAN{
 
   public:
     /** @brief Creates a nmea2k interface connected to specific pins
@@ -65,7 +65,7 @@ namespace nmea2k{
         This function locks the deep sleep while a callback is attached.
         Pretty much inherited from CAN. 
     */
-    void attach(mbed::Callback<void()> func, mbed::IrqType type=RxIrq);
+    void attach(Callback<void()> func, IrqType type=RxIrq);
   }; // class CANLayer
  
 } // namespace nmea2k

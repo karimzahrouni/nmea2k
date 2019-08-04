@@ -9,7 +9,7 @@
 
 namespace nmea2k{
 
-CANLayer::CANLayer(PinName rd, PinName td) :
+CANLayer::CANLayer(mbed::PinName rd, mbed::PinName td) :
     mbed::CAN(rd, td, NMEA2K_FREQUENCY){
   debug("nmea2k::CANLayer(rd, td) constructor called %p\r\n",this); 
 } // CANLayer(rd,td);
@@ -22,7 +22,7 @@ int CANLayer::read(Frame &f, int handle){
   return CAN::read(&f, handle); 
 }
 
-void CANLayer::attach(mbed::Callback<void()> func, mbed::IrqType type){
+void CANLayer::attach(mbed::Callback<void()> func, CAN::IrqType type){
   CAN::attach(&func, type);
   return; 
 }

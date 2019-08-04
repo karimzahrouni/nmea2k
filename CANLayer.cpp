@@ -19,11 +19,11 @@ int CANLayer::write(Frame f){
 }
 
 int CANLayer::read(Frame &f, int handle){
-  return CAN::read(&f, handle); 
+  return CAN::read(f, handle); 
 }
 
 void CANLayer::attach(mbed::Callback<void()> func, CAN::IrqType type){
-  CAN::attach(&func, type);
+  CAN::attach(func, type);
   return; 
 }
 

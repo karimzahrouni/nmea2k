@@ -10,7 +10,7 @@ namespace nmea2k{
 class Pgn126993:public PgnData{
 public:
   
- Pgn126993(uint16_t interval_100, uint_8 count):
+ Pgn126993(uint16_t interval_100, uint8_t count):
   PgnData(), p(7), pgn(126993), name("Heartbeat PGN 126993"), dlen(8){
     _translation.fields.interval = interval_100;
     _translation.fields.count = count; 

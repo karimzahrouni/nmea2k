@@ -6,9 +6,7 @@
 #ifndef CANLAYER_H
 #define CANLAYER_H
 
-#include "Callback.h" 
-#include "drivers/CAN.h" 
-#include "PinNames.h"
+#include "mbed.h"
 #include "Frame.h"
 
 /** @def NMEA2K_FREQUENCY
@@ -67,7 +65,7 @@ namespace nmea2k{
         This function locks the deep sleep while a callback is attached.
         Pretty much inherited from CAN. 
     */
-    void attach(Callback<void()> func, IrqType type=RxIrq);
+    void attach(mbed::Callback<void()> func, mbed::IrqType type=RxIrq);
   }; // class CANLayer
  
 } // namespace nmea2k

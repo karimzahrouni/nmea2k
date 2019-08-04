@@ -4,10 +4,8 @@
 */
 
 #include "CANLayer.h"
-#include "Callback.h"
-#include "PinNames.h"
-#include "drivers/CAN.h"
-
+#include "mbed.h"
+#include "Frame.h"
 
 namespace nmea2k{
 

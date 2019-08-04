@@ -11,7 +11,7 @@ class Pgn126993:public PgnData{
 public:
   
  Pgn126993(uint16_t interval_100, uint8_t count):
-  PgnData(), p(7), pgn(126993), name("Heartbeat PGN 126993"), dlen(8){
+  PgnData(7,126993,"Heartbeat PGN 126993",8){
     _translation.fields.interval = interval_100;
     _translation.fields.count = count; 
   };
@@ -20,7 +20,7 @@ public:
   
 private:
   union{
-    unsigned char *data[8] = {0xff,0xff,0xff,0xff,
+    unsigned char data[8] = {0xff,0xff,0xff,0xff,
                               0xff,0xff,0xff,0xff};
     struct{
       uint8_t unused[3],

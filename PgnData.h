@@ -12,6 +12,8 @@ namespace nmea2k{
     unsigned int dlen;
     PgnData();
 
+    PgnData(unsigned char p, unsigned int pgn, const char *name, unsigned int dlen); 
+
     // set fields (later), get data
     unsigned char* data();   
   }; // class PgnData

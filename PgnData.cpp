@@ -10,11 +10,13 @@
 namespace nmea2k{
 
 PgnData::PgnData() :
-    p(7),
-    pgn(0),
-    name("Generic Empty PGN 0"),
-    dlen(8){
+    p(7), pgn(0), name("Generic Empty PGN 0"), dlen(8){
   debug("nmea2k::PgnData() empty constructor called %p\r\n",this);
+}
+
+PgnData::PgnData(unsigned char p, unsigned int pgn, const char *name, unsigned char dlen) :
+    p(p),pgn(pgn),name(name),dlen(dlen){
+  debug("nmea2k::PgnData(p,pgn,name,dlen) called %p\r\n", this); 
 }
 
 unsigned char* PgnData::data(){

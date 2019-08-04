@@ -4,7 +4,7 @@
 */
 
 #include "Frame.h"
-#include "mbed.h"
+#include "drivers/CAN.h"
 
 namespace nmea2k{
 
@@ -31,18 +31,5 @@ namespace nmea2k{
     mbed::CANMessage(id,data,len,CANData,CANExtended){
     debug("nmea2k::Frame(id,data,len) called (char data) %p\r\n",this);
   } // nmea2k::Frame(id,data,len) w char data implementation
-
-  //Frame::~Frame(){
-  //  debug("nmea2k:~Frame() called %p\r\n",this); 
-  //}
-  
-  unsigned int Frame::get_id(void){
-    return id; 
-  }
-
-  int Frame::set_id(unsigned int x){
-    id = x;
-    return MBED_SUCCESS; 
-  }
   
 } // namespace nmea2k

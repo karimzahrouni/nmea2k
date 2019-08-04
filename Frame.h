@@ -9,7 +9,7 @@
 #ifndef FRAME_H
 #define FRAME_H
 
-#include "mbed.h"
+#include "drivers/CAN.h" 
 
 namespace nmea2k{
   
@@ -67,32 +67,6 @@ namespace nmea2k{
     // if necessary for debugging purposes? 
     //~Frame(); 
 
-    // getters and setters for id
-    /** @brief Returns message id (for CAN purposes)
-	@returns message id
-
-	Note: Frame.id is a public member but try not to access it directly, 
-	for purposes of downstream compatibility with PDU header information
-	which must manage ID more carefully. I cannot reset Frame.id
-	to be protected or private because underlying mbed CAN read
-	and write stuff relies on it being public and provides no way 
-	to modify to use the getters and setters... 
-     */
-    unsigned int get_id(void);
-
-    /** Sets message id (for CAN purposes)
-	@returns
-	  MBED_SUCCESS (0) if message id was successfully set
-	  error code (negative #) otherwise (won't fail at this level)
-
-	Note: Frame.id is a public member but try not to access it directly, 
-	for purposes of downstream compatibility with PDU header information
-	which must manage ID more carefully. I cannot reset Frame.id
-	to be protected or private because underlying mbed CAN read
-	and write stuff relies on it being public and provides no way 
-	to modify to use the getters and setters... 
-     */
-    int set_id(unsigned int x);    
   }; // class Frame
 
   

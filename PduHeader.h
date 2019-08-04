@@ -9,8 +9,6 @@
 #ifndef PDUHEADER_H
 #define PDUHEADER_H
 
-#include "nmea2k_constants.h"
-
 namespace nmea2k {
 
   /** @brief ISO11783-3 Protocol Data Unit (PDU) header information
@@ -42,7 +40,7 @@ namespace nmea2k {
     PduHeader(unsigned char priority,
 	      unsigned int pgn,
 	      unsigned char sa,
-	      unsigned char da=NMEA2K_BROADCAST);
+	      unsigned char da=255);
 
     /** Destructor for PduHeader class */
     // It was a trivial destructor anyway, leave it undefined to get

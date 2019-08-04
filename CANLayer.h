@@ -14,10 +14,8 @@
 #define NMEA2K_FREQUENCY 250000
 
 namespace nmea2k{
-  
-  class CANLayer:public CAN{
-    
- public:
+  class CANLayer:public mbed::CAN {
+  public:
     /** @brief Creates a nmea2k interface connected to specific pins
         @param rd, read from transmitter
         @param td, transmit to transmitter 
@@ -60,7 +58,7 @@ namespace nmea2k{
         Pretty much inherited from CAN. 
     */
     void attach(Callback<void()> func, IrqType type=RxIrq);
-  };
+  }; // class CANLayer
  
 } // namespace nmea2k
 

@@ -23,8 +23,8 @@ int main(void){
   pc.printf("Testing access to public members\r\n");
 
   pc.printf("Setting id=0x000000ff\r\n");
-  f.set_id(0x000000ff);
-  TEST_ASSERT_EQUAL_MESSAGE(0x000000ff,f.get_id(),"failed to set id");
+  f.id = 0x000000ff; 
+  TEST_ASSERT_EQUAL_MESSAGE(0x000000ff,f.id,"failed to set id");
 
   pc.printf("Setting data[0]=0x41\r\n");
   f.data[0] = 0x41;

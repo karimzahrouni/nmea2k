@@ -20,7 +20,7 @@ int main(void){
 
   nmea2k::Frame m;     // holds nmea2k data frame before sending
   nmea2k::PduHeader h; // ISO11783-3 header information 
-  nmea2k::Pgn126993 d;   // for PGN data fields
+  nmea2k::Pgn126993 d(heartbeat_interval*100,0);   // for PGN data fields
   
   unsigned char c=0;           // heartbeat sends a heartbeat counter
   int heartbeat_interval = 10; // nominally at a 60 s interval
@@ -36,10 +36,9 @@ int main(void){
 
   pc.printf("Heartbeat PGN 126993 send process starting in main thread\r\n"); 
   while (1){
-    
-    d = nmea2k::Pgn126993(heartbeat_interval*100,c++); // form PGN fields
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
+    d = nmea2k::Pgn126993(heartbeat_interval*100,c++); // form PGN fields
     if (n2k.write(m)) // send it!
       pc.printf("sent %s in Frame %p\r\n",d.name,&m);
     else

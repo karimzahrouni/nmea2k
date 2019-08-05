@@ -37,7 +37,8 @@ int main(void){
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
     d = nmea2k::Pgn126993(heartbeat_interval*100,c++); // form PGN fields
     if (n2k.write(m)) // send it!
-      pc.printf("main: sent %s in Frame %p\r\n",d.name,&m);
+      pc.printf("main: sent %s, interval %d, count %d\r\n",
+		d.name,d.interval,d.count);
     else
       pc.printf("main: failed sending %s\r\n",d.name); 
 

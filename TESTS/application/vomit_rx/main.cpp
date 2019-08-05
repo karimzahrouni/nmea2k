@@ -28,7 +28,7 @@ int main(void){
 
     if (n2k.read(f)){
       h = nmea2k::PduHeader(f.id);
-      pc.printf("main: rec'd priority %d, pgn %d, sa 0x%02x, da 0x%02x: 0x",
+      pc.printf("main: recieved priority %d, pgn %d, sa 0x%02x, da 0x%02x: 0x",
 		h.p(), h.pgn(), h.sa(), h.da());
       for (int i=0; i<f.len; i++)
 	pc.printf("%02x",f.data[i]);
@@ -56,7 +56,8 @@ void heartbeat_process(void){
     d = nmea2k::Pgn126993(heartbeat_interval*100,c++); // form PGN fields
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
     if (n2k.write(m)) // send it!
-      pc.printf("heartbeat_thread: sent %s in Frame %p\r\n",d.name,&m);
+      pc.printf("heartbeat_thread: sent %s, interval %d, count %d\r\n",
+		d.name,d.interval,d.count);
     else
       pc.printf("heartbeat_thread: failed sending %s\r\n",d.name); 
     ThisThread::sleep_for(heartbeat_interval*1000); 

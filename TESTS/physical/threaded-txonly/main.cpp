@@ -21,7 +21,7 @@
 // either be sure they are thread safe or be careful who writes to them. 
 Serial pc(USBTX,USBRX); // serial RS232 link to host computer
 DigitalOut txled(LED1); // indicates outgoing transmit
-nmea2k::CanLayer n2k(p30,p29); // one of two CAN ports on LPC1768
+nmea2k::CANLayer n2k(p30,p29); // one of two CAN ports on LPC1768
 Thread send_thread;
 
 

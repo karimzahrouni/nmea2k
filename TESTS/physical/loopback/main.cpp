@@ -21,8 +21,8 @@ Serial pc(USBTX,USBRX);
 Ticker ticker;
 DigitalOut txled(LED1);
 DigitalOut rxled(LED2);
-nmea2k::CanLayer n2k1(p9,p10);
-nmea2k::CanLayer n2k2(p30,p29);
+nmea2k::CANLayer n2k1(p9,p10);
+nmea2k::CANLayer n2k2(p30,p29);
 char counter=0; 
 
 

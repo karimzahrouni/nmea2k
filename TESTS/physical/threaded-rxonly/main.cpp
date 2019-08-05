@@ -21,7 +21,7 @@
 // either be sure they are thread safe or be careful who writes to them. 
 Serial pc(USBTX,USBRX); // serial RS232 link to host computer
 DigitalOut rxled(LED2); // indicates incoming receive
-nmea2k::CanLayer n2k(p30,p29);
+nmea2k::CANLayer n2k(p30,p29);
 Thread receive_thread;
 
 

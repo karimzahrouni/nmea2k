@@ -25,8 +25,8 @@
 Serial pc(USBTX,USBRX); // serial RS232 link to host computer
 DigitalOut txled(LED1); // indicates outgoing transmit
 DigitalOut rxled(LED2); // indicates incoming receive
-nmea2k::CanLayer n2k1(p9,p10); // one of two CAN ports on LPC1768
-nmea2k::CanLayer n2k2(p30,p29); // other CAN port on LPC1768
+nmea2k::CANLayer n2k1(p9,p10); // one of two CAN ports on LPC1768
+nmea2k::CANLayer n2k2(p30,p29); // other CAN port on LPC1768
 
 Thread send_thread;
 

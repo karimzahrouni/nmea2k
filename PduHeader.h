@@ -44,7 +44,7 @@ namespace nmea2k {
     /** get source address (SA) byte */
     inline unsigned char sa() {return _translation.iso.sa;}
     /** set source address (SA) byte */
-    //inline void set_sa(unsigned char x) { _translation.iso.sa = x;}
+    inline void set_sa(unsigned char x) { _translation.iso.sa = x;}
     /** get PDU specific (PS) byte */
     inline unsigned char ps() {return _translation.iso.ps; }
     /** set PDU specific (PS) byte */

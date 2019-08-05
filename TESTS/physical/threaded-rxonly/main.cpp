@@ -39,7 +39,7 @@ void receive_callback(){
       pc.printf("\r\n");
       rxled = 0;
     }
-    ThisThread::sleep_for(200); 
+    ThisThread::sleep_for(10); 
   } // while(1)
 } // receive_callback()
 

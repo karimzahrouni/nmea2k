@@ -30,8 +30,8 @@ Serial pc(USBTX,USBRX); // serial RS232 link to host computer
 DigitalOut rxled(LED2); // indicates incoming receive
 nmea2k::CANLayer n2k(p30,p29);
 nmea2k::Frame rxframe;
-EventQueue queue(32*EVENTS_EVENT_SIZE);
-Thread t; 
+EventQueue rx_queue(32*EVENTS_EVENT_SIZE);
+Thread rx_isr_thread; 
 
 // function prototypes
 void inside_can_irq(void);
@@ -44,12 +44,12 @@ void inside_can_irq(void){
   // in CAN::read() definition in mbed-os/drivers/CAN.cpp
 
   // outside of interrupt context, toggle lights and handle message
-  queue.call(&outside_can_irq); 
+  rx_queue.call(&outside_can_irq); 
 } // inside_can_irq()
 
 void outside_can_irq(void){
   rxled = 1;
-  pc.printf("t: received id %d: 0x",rxframe.id);
+  pc.printf("rx_isr_thread: received id %d: 0x",rxframe.id);
   for (int i=0; i<rxframe.len; i++)
     pc.printf("%02x",rxframe.data[i]);
   pc.printf("\r\n");
@@ -64,7 +64,7 @@ int main(void){
   pc.printf(NMEA2K_VERSION);
   pc.printf("\r\nListen and vomit test, interrupt version\r\n");
 
-  t.start(callback(&queue, &EventQueue::dispatch_forever));
+  rx_isr_thread.start(callback(&rx_queue, &EventQueue::dispatch_forever));
   n2k.attach(&inside_can_irq,CAN::RxIrq);
   
   pc.printf("main: main thread not doing much\r\n");

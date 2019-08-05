@@ -44,7 +44,7 @@ void receive_process(){
       rxled = 0;
     }
     // here you could use a semaphore wait? 
-    ThisThread::sleep_for(200); 
+    ThisThread::sleep_for(10); 
   } // while(1)
 } // receive_process()
 

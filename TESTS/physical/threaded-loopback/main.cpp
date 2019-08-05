@@ -69,7 +69,7 @@ int main(void){
       pc.printf("main: received %d\n",frame.data[0]);
       rxled = 0;
     } // if
-    ThisThread::sleep_for(200); 
+    ThisThread::sleep_for(10); 
   } // while(1)
 } // int main()
 

@@ -32,10 +32,13 @@ void receive_callback(){
   pc.printf("receive_callback() running in receive_thread\r\n");
   while(1){
     if(n2k.read(rxframe)){
-      pc.printf("receive_thread(): received %d\r\n",rxframe.data[0]);
+      pc.printf("receive_thread(): received id %d: 0x",rxframe.id);
+      for (int i=0; i<rxframe.len, i++)
+	pc.printf("%02x",rxframe.data[i]);
+      pc.printf("\r\n");
       rxled=!rxled;
     }
-    ThisThread::sleep_for(1000); 
+    ThisThread::sleep_for(10); 
   } // while(1)
 } // receive_callback()
 

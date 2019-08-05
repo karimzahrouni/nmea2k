@@ -36,14 +36,14 @@ void send_callback() {
     if(n2k.write(txframe)) {
       txled = 1; 
       counter++;
-      pc.printf("send_thread: sent id %d: 0x",txframe.id);
+      pc.printf("send_thread: sent id 0x%08x: 0x",txframe.id);
       for (int i=0; i<txframe.len; i++)
 	pc.printf("%02x",txframe.data[i]);
       pc.printf("\r\n");
       txled = 0; // blink light
     } // if
     else {
-      pc.printf("send_thread: failed sending id %d: 0x",txframe.id);
+      pc.printf("send_thread: failed sending id 0x%08x: 0x",txframe.id);
       for (int i=0; i<txframe.len; i++)
 	pc.printf("%02x",txframe.data[i]);
       pc.printf("\r\n");

@@ -49,7 +49,7 @@ void inside_can_irq(void){
 
 void outside_can_irq(void){
   rxled = 1;
-  pc.printf("rx_isr_thread: received id %d: 0x",rxframe.id);
+  pc.printf("rx_isr_thread: received id 0x%08x: 0x",rxframe.id);
   for (int i=0; i<rxframe.len; i++)
     pc.printf("%02x",rxframe.data[i]);
   pc.printf("\r\n");

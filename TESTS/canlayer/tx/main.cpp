@@ -63,7 +63,7 @@ int main(void){
     // send the message
     if (n2k.write(m)){
       txled = 1;
-      pc.printf("main: tx sent id %d: 0x",m.id);
+      pc.printf("main: tx sent id 0x%08x: 0x",m.id);
       for (int i=0; i<m.len; i++)
 	pc.printf("%02x",m.data[i]);
       pc.printf("\r\n");

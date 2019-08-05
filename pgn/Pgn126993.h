@@ -27,9 +27,9 @@ private:
     unsigned char data[8] = {0xff,0xff,0xff,0xff,
                               0xff,0xff,0xff,0xff};
     struct{
-      uint8_t unused[5],
-	count;
-      uint16_t interval;
+      uint16_T interval;
+      uint8_t count,
+	unused[5];
     } fields;
   } _translation;
 };

@@ -33,7 +33,7 @@ void receive_callback(){
   while(1){
     if(n2k.read(rxframe)){
       pc.printf("receive_thread(): received id %d: 0x",rxframe.id);
-      for (int i=0; i<rxframe.len, i++)
+      for (int i=0; i<rxframe.len; i++)
 	pc.printf("%02x",rxframe.data[i]);
       pc.printf("\r\n");
       rxled=!rxled;

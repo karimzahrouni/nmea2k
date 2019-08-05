@@ -7,6 +7,9 @@
    on the device under test and is a pretty straight copy of the 
    mbed handbook CAN hello world program. 
    See: <https://os.mbed.com/handbook/CAN>
+
+   I don't run this test much because we don't have the boards
+   rigged to do loopback easily. 
  */
 
 #include "mbed.h"

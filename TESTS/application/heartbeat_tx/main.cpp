@@ -41,7 +41,7 @@ int main(void){
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
     if (n2k.write(m)) // send it!
-      pc.printf("sent %s\r\n",d.name);
+      pc.printf("sent %s in Frame %p\r\n",d.name,&m);
     else
       pc.printf("failed sending %s\r\n",d.name); 
 

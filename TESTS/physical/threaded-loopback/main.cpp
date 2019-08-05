@@ -6,6 +6,9 @@
    This test checks the physical connections and CAN bus function
    on the device under test and is modified from the 
    mbed handbook CAN hello world program to use RTOS
+
+   I don't use this test much because we don't have the boards rigged
+   to do loopback easily... 
  */
 
 #include "mbed.h"

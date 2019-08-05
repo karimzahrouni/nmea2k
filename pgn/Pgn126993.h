@@ -11,12 +11,12 @@ namespace nmea2k{
 class Pgn126993:public PgnData{
 public:
   
- Pgn126993(uint16_t interval_100, uint8_t count):
+ Pgn126993(uint16_t interval, uint8_t count):
   PgnData(PGN_126993_PRIORITY,
           126993,
           "Heartbeat PGN 126993",
           PGN_126993_DLEN){
-    _translation.fields.interval = interval_100;
+    _translation.fields.interval = interval;
     _translation.fields.count = count; 
   };
   
@@ -28,8 +28,8 @@ private:
                               0xff,0xff,0xff,0xff};
     struct{
       uint8_t unused[5],
-        count;
-      uint16_t interval; 
+	count;
+      uint16_t interval;
     } fields;
   } _translation;
 };

@@ -48,7 +48,8 @@ int main(void){
     }
     else
       pc.printf("0x%02x:main: failed sending %s\r\n",
-		node_addr, d.name); 
+		node_addr, d.name);
+    c++; // increment the heartbeat count
     ThisThread::sleep_for(heartbeat_interval*1000); 
   } // while(1)
   

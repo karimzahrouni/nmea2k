@@ -27,7 +27,7 @@
 // more of these other than what hardware is installed... so we have to
 // either be sure they are thread safe or be careful who writes to them. 
 Serial pc(USBTX,USBRX); // serial RS232 link to host computer
-DigitalOut rxled(LED2); // indicates incoming receive
+DigitalOut txled(LED1); // indicated outgoing transmit
 nmea2k::CANLayer n2k(p30,p29);
 Thread receive_thread;
 
@@ -38,6 +38,7 @@ Thread receive_thread;
 int main(void){
   unsigned int id; // for constructing a CAN id
   char data[LEN];  // for sending LEN bytes of dummy data
+  nmea2k::Frame m; 
   
   pc.printf("nmea2k version ");
   pc.printf(NMEA2K_VERSION);

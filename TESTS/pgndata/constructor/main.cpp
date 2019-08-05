@@ -11,7 +11,7 @@
 Serial pc(USBTX,USBRX);
 
 nmea2k::PgnData p;
-unsigned char d[8];
+unsigned char* d;
 unsigned char l; 
 
 int main(void){

@@ -37,14 +37,15 @@ int main(void){
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
     d = nmea2k::Pgn126993(heartbeat_interval*100,c++); // form PGN fields
-    if (n2k.write(m)) // send it!
+    if (n2k.write(m)){ // send it!
       txled = 1; 
       pc.printf("0x%02x:main: sent %s, %0.0f s, count %d\r\n",
 		node_addr,
 		d.name,
 		(float) d.update_rate()/100.0,
 		d.heartbeat_sequence_counter());
-      txled = 0; 
+      txled = 0;
+    }
     else
       pc.printf("0x%02x:main: failed sending %s\r\n",
 		node_addr, d.name); 

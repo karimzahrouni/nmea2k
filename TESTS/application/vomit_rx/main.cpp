@@ -29,7 +29,7 @@ int main(void){
     if (n2k.read(f)){
       h = nmea2k::PduHeader(f.id);
       pc.printf("main: rec'd priority %d, pgn %d, sa 0x%02x, da 0x%02x: 0x",
-		h.p(), h.pgn()m, h.sa(), h.da());
+		h.p(), h.pgn(), h.sa(), h.da());
       for (int i=0; i<f.len; i++)
 	pc.printf("%02x",f.data[i]);
       pc.printf("\r\n");

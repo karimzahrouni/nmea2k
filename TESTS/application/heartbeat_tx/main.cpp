@@ -20,7 +20,7 @@ int main(void){
 
   nmea2k::Frame m;     // holds nmea2k data frame before sending
   nmea2k::PduHeader h; // ISO11783-3 header information 
-  nmea2k::PgnData126993 d;   // for PGN data fields
+  nmea2k::Pgn126993 d;   // for PGN data fields
   
   unsigned char c=0;           // heartbeat sends a heartbeat counter
   int heartbeat_interval = 10; // nominally at a 60 s interval

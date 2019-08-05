@@ -4,19 +4,19 @@
 */
 
 #include "PgnData.h"
-#include "mbed_debug.h"
+//#include "mbed_debug.h"
 #include "mbed_error.h"
 
 namespace nmea2k{
 
 PgnData::PgnData() :
     p(7), pgn(0), name("Generic Empty PGN 0"), dlen(8){
-  debug("nmea2k::PgnData() empty constructor called %p\r\n",this);
+  //debug("nmea2k::PgnData() empty constructor called %p\r\n",this);
 }
 
 PgnData::PgnData(unsigned char p, unsigned int pgn, const char *name, unsigned int dlen) :
     p(p),pgn(pgn),name(name),dlen(dlen){
-  debug("nmea2k::PgnData(p,pgn,name,dlen) called %p\r\n", this); 
+  //debug("nmea2k::PgnData(p,pgn,name,dlen) called %p\r\n", this); 
 }
 
 unsigned char* PgnData::data(){
@@ -27,7 +27,7 @@ unsigned char* PgnData::data(){
 }
 
 PgnParser::PgnParser(){
-  debug("PgnParser() empty constructor called %p\r\n",this); 
+  //debug("PgnParser() empty constructor called %p\r\n",this); 
 }
 
 PgnData* PgnParser::parse(unsigned char *data, unsigned char len){

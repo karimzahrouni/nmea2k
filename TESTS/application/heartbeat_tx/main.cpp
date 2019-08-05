@@ -31,15 +31,15 @@ int main(void){
   pc.printf("Heartbeat interval %d s\r\n",heartbeat_interval);
   
 
-  pc.printf("Heartbeat PGN 126993 send process starting in main thread\r\n"); 
+  pc.printf("main: Heartbeat PGN 126993 send process starting\r\n"); 
   while (1){
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
     d = nmea2k::Pgn126993(heartbeat_interval*100,c++); // form PGN fields
     if (n2k.write(m)) // send it!
-      pc.printf("sent %s in Frame %p\r\n",d.name,&m);
+      pc.printf("main: sent %s in Frame %p\r\n",d.name,&m);
     else
-      pc.printf("failed sending %s\r\n",d.name); 
+      pc.printf("main: failed sending %s\r\n",d.name); 
 
     ThisThread::sleep_for(heartbeat_interval*1000); 
   } // while(1)

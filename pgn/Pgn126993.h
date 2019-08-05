@@ -23,7 +23,7 @@ public:
   };
   
   unsigned char* data(){return &_translation.data[0];}
-  inline uint16_t update_date(){return _translation.fields.update_rate;}
+  inline uint16_t update_rate(){return _translation.fields.update_rate;}
   inline void set_update_rate(uint16_t x){
     _translation.fields.update_rate = x;
   }
@@ -38,8 +38,8 @@ private:
     unsigned char data[8] = {0xff,0xff,0xff,0xff,
                               0xff,0xff,0xff,0xff};
     struct{
-      uint16_t interval;
-      uint8_t count,
+      uint16_t update_rate;
+      uint8_t heartbeat_sequence_counter,
 	unused[5];
     } fields;
   } _translation;

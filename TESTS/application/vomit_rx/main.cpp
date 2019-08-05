@@ -66,6 +66,7 @@ void heartbeat_process(void){
 		d.name,
 		(float) d.update_rate()/100.0,
 		d.heartbeat_sequence_counter());
+      ThisThread::sleep_for(5); 
       txled = 0;
     }
     else

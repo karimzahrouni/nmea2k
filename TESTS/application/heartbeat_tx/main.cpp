@@ -17,13 +17,13 @@ DigitalOut txled(LED1);
 
 
 int main(void){
-  unsigned char c=0;           // heartbeat sends a heartbeat counter
+  uint8_t c=0;           // heartbeat sends a heartbeat counter
   int heartbeat_interval = 10; // nominally at a 60 s interval
   unsigned char node_addr = 0x00; // will need our own address
   
   nmea2k::Frame m;     // holds nmea2k data frame before sending
   nmea2k::PduHeader h; // ISO11783-3 header information 
-  nmea2k::Pgn126993 d(heartbeat_interval*100,c);   // for PGN data fields
+  nmea2k::Pgn126993 d((uint16_t) heartbeat_interval*100,c);   // for PGN data fields
   
 
   pc.printf("nmea2k version %s\r\n",NMEA2K_VERSION);
@@ -39,7 +39,7 @@ int main(void){
     d = nmea2k::Pgn126993(heartbeat_interval*100,c); // form PGN fields
     if (n2k.write(m)){ // send it!
       txled = 1; 
-      pc.printf("0x%02x:main: sent %s, %0.0f s, count %d\r\n",
+      pc.printf("0x%02x:main: sent %s, %0.0f s, count %u\r\n",
 		node_addr,
 		d.name,
 		(float) d.update_rate()/100.0,
@@ -49,7 +49,6 @@ int main(void){
     else
       pc.printf("0x%02x:main: failed sending %s\r\n",
 		node_addr, d.name); 
-    c++;
     ThisThread::sleep_for(heartbeat_interval*1000); 
   } // while(1)
   

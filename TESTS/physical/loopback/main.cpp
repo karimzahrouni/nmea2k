@@ -28,12 +28,13 @@ char counter=0;
 
 
 void send() {
-  pc.printf("send()\r\n");
+  //pc.printf("ticker: send() called\r\n");
   if(n2k1.write(nmea2k::Frame(1337, &counter, 1))) {
+    txled = 1; 
     counter++;
-    pc.printf("send(): sent %d\n", counter);
+    pc.printf("ticker: send() sent %d\n", counter);
+    txled = 0;
   }
-  txled = !txled;
 }
 
 
@@ -46,10 +47,11 @@ int main(void){
   ticker.attach(&send,1);
   Nmea2kFrame frame;
   while(1) {
-    pc.printf("loop()\n");
+    //pc.printf("loop()\n");
     if(n2k2.read(frame)){
-      pc.printf("main(): received %d\n",frame.data[0]);
-      rxled=!rxled;
+      rxled = 1; 
+      pc.printf("main: received %d\n",frame.data[0]);
+      rxled= 0;
     }
     wait(0.2);
   }

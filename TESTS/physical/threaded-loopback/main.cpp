@@ -35,15 +35,16 @@ Thread send_thread;
 void send_callback() {
   char counter=0;
   
-  pc.printf("send_thread() started\r\n");
+  pc.printf("send_thread: send_callback() started\r\n");
   while(1){
     if(n2k1.write(nmea2k::Frame(1337, &counter, 1))) {
+      txled = 1; 
       counter++;
       pc.printf("send_thread(): sent %d\r\n", counter);
-      txled = !txled; // blink light
+      txled = 0; // blink light
     } // if
     else {
-      pc.printf("send_thread(): couldn't send %d\r\n",counter);
+      pc.printf("send_thread: couldn't send %d\r\n",counter);
       counter++;
     }
     
@@ -61,11 +62,12 @@ int main(void){
   pc.printf("\r\nThreaded loopback test\r\n");
 
   send_thread.start(send_callback);
-  pc.printf("main() thread started\r\n");
+  pc.printf("main: main() thread started\r\n");
   while(1) {
     if(n2k2.read(frame)){
-      pc.printf("main(): received %d\n",frame.data[0]);
-      rxled=!rxled;
+      rxled = 1; 
+      pc.printf("main: received %d\n",frame.data[0]);
+      rxled = 0;
     } // if
     ThisThread::sleep_for(200); 
   } // while(1)

@@ -29,17 +29,17 @@ Thread receive_thread;
 void receive_callback(){
   nmea2k::Frame rxframe;
   
-  pc.printf("receive_callback() running in receive_thread\r\n");
+  pc.printf("receive_thread: receive_callback() running\r\n");
   while(1){
     if(n2k.read(rxframe)){
       rxled = 1; 
-      pc.printf("receive_thread(): received id %d: 0x",rxframe.id);
+      pc.printf("receive_thread: received id %d: 0x",rxframe.id);
       for (int i=0; i<rxframe.len; i++)
 	pc.printf("%02x",rxframe.data[i]);
       pc.printf("\r\n");
       rxled = 0;
     }
-    ThisThread::sleep_for(10); 
+    ThisThread::sleep_for(200); 
   } // while(1)
 } // receive_callback()
 
@@ -53,9 +53,9 @@ int main(void){
   pc.printf("\r\nThreaded loopback test\r\n");
 
   receive_thread.start(receive_callback);
-  pc.printf("main() thread started\r\n");
+  pc.printf("main: main() thread started\r\n");
   while(1) {
-    //pc.printf("main(): I'm asleep and doing nothing\r\n");
+    //pc.printf("main: I'm asleep and doing nothing\r\n");
     ThisThread::sleep_for(1000); 
   } // while(1)
 } // int main()

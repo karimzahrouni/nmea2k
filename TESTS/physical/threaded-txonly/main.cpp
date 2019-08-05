@@ -30,7 +30,7 @@ void send_callback() {
   char counter=0;
   nmea2k::Frame txframe; 
   
-  pc.printf("send_callback() running in send_thread\r\n");
+  pc.printf("send_thread: send_callback() running\r\n");
   while(1){
     txframe = nmea2k::Frame(1337, &counter, 1); 
     if(n2k.write(txframe)) {
@@ -62,7 +62,7 @@ int main(void){
   pc.printf("\r\nThreaded loopback test\r\n");
 
   send_thread.start(send_callback);
-  pc.printf("main() thread started, not doing much\r\n");
+  pc.printf("main: main() thread started, not doing much\r\n");
   while(1) {
     ThisThread::sleep_for(1000); 
   } // while(1)

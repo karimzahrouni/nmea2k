@@ -1,17 +1,16 @@
-/**
-   TESTS/datalink/poll-rx/main.cpp
-   Polling version of rx CAN test for mbed OS 5 with RTOS
-   D Evangelista, 2019
+/** @file TESTS/canlayer/poll-rx/main.cpp
+    @brief Polling version of rx CAN test for mbed OS 5 with RTOS
+    D Evangelista, 2019
 
-   This test checks the physical connections and CAN bus function
-   on the device under test and is modified from the 
-   mbed handbook CAN hello world program to use RTOS. It listens
-   for NMEA2K CAN messages and vomits them out if it sees them. 
-
-   This test uses a thread to periodically poll for messages. It does 
-   not use nmea2k PDU and higher level stuff and is mainly checking 
-   CAN bus functionality. 
- */
+    This test checks the physical connections and CAN bus function
+    on the device under test and is modified from the 
+    mbed handbook CAN hello world program to use RTOS. It listens
+    for NMEA2K CAN messages and vomits them out if it sees them. 
+    
+    This test uses a thread to periodically poll for messages. It does 
+    not use nmea2k PDU and higher level stuff and is mainly checking 
+    CAN bus functionality. 
+*/
 
 #include "mbed.h"
 #include "rtos.h"
@@ -25,7 +24,7 @@
 // either be sure they are thread safe or be careful who writes to them. 
 Serial pc(USBTX,USBRX); // serial RS232 link to host computer
 DigitalOut rxled(LED2); // indicates incoming receive
-nmea2k::CanLayer n2k(p30,p29);
+nmea2k::CANLayer n2k(p30,p29);
 Thread receive_thread;
 
 
@@ -33,11 +32,11 @@ Thread receive_thread;
 void receive_process(){
   nmea2k::Frame rxframe;
   
-  pc.printf("receive_process() running in receive_thread, polling\r\n");
+  pc.printf("receive_thread: receive_process() running, polling\r\n");
   while(1){
     if(n2k.read(rxframe)){
       // here you would dispatch based on message PGN and DA. 
-      pc.printf("receive_thread(): received id %d: 0x",rxframe.id);
+      pc.printf("receive_thread: received id %d: 0x",rxframe.id);
       for(int i=0;i<rxframe.len;i++)
 	pc.printf("%02x",rxframe.data[i]);
       pc.printf("\r\n");
@@ -58,7 +57,7 @@ int main(void){
   pc.printf("\r\nListen and vomit test, polled version\r\n");
 
   receive_thread.start(receive_process);
-  pc.printf("main() thread started\r\n");
+  pc.printf("main: main thread not doing much\r\n");
   while(1) {
     ThisThread::sleep_for(1000); 
   } // while(1)

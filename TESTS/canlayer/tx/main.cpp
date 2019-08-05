@@ -1,5 +1,5 @@
 /**
-   TESTS/datalink/tx/main.cpp
+   TESTS/canlayer/tx/main.cpp
    tx CAN test for mbed OS 5 with RTOS
    D Evangelista, 2019
 
@@ -8,7 +8,7 @@
    mbed handbook CAN hello world program to use RTOS. 
 
    This test does not really check data link layer stuff above the
-   CAN bus level. 
+   CAN bus level, e.g. it does NOT use PduHeader. 
  */
 
 #include "mbed.h"
@@ -28,7 +28,7 @@
 // either be sure they are thread safe or be careful who writes to them. 
 Serial pc(USBTX,USBRX); // serial RS232 link to host computer
 DigitalOut rxled(LED2); // indicates incoming receive
-nmea2k::CanLayer n2k(p30,p29);
+nmea2k::CANLayer n2k(p30,p29);
 Thread receive_thread;
 
 
@@ -50,7 +50,7 @@ int main(void){
   // setters. 
   id = (PGNISH << 16) + (RXADDR << 8) + TXADDR; 
   
-  pc.printf("main() thread started\r\n");
+  pc.printf("main: running tx process\r\n");
   while(1) {
     // make dummy data
     for (int i=0; i<LEN; i++)
@@ -62,7 +62,7 @@ int main(void){
     // send the message
     if (n2k.write(m)){
       txled = 1;
-      pc.printf("tx sent id %d, 0x",m.id);
+      pc.printf("main: tx sent id %d: 0x",m.id);
       for (int i=0; i<m.len; i++)
 	pc.printf("%02x",m.data[i]);
       pc.printf("\r\n");

@@ -13,12 +13,12 @@
 namespace nmea2k {
 
   PduHeader::PduHeader(){
-    debug("PduHeader() empty constructor called %p\r\n",this);
+    //debug("PduHeader() empty constructor called %p\r\n",this);
     _translation.id = 0; 	
   }
 
   PduHeader::PduHeader(unsigned int id){
-    debug("PduHeader(id) called %p\r\n",this);
+    //debug("PduHeader(id) called %p\r\n",this);
     _translation.id = id;
   }
 
@@ -26,7 +26,7 @@ namespace nmea2k {
 		       unsigned int pgn,
 		       unsigned char sa,
 		       unsigned char da){
-    debug("PduHeader(priority,pgn,sa,da) called %p\r\n",this);
+    //debug("PduHeader(priority,pgn,sa,da) called %p\r\n",this);
     _translation.iso.ignore = 0;
     _translation.iso.p = priority & (0x7);
     set_pgn(pgn);

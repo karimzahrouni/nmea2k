@@ -35,15 +35,16 @@ void receive_process(){
   pc.printf("receive_thread: receive_process() running, polling\r\n");
   while(1){
     if(n2k.read(rxframe)){
+      rxled = 1; 
       // here you would dispatch based on message PGN and DA. 
       pc.printf("receive_thread: received id %d: 0x",rxframe.id);
       for(int i=0;i<rxframe.len;i++)
 	pc.printf("%02x",rxframe.data[i]);
       pc.printf("\r\n");
-      rxled=!rxled;
+      rxled = 0;
     }
     // here you could use a semaphore wait? 
-    ThisThread::sleep_for(20); 
+    ThisThread::sleep_for(200); 
   } // while(1)
 } // receive_process()
 

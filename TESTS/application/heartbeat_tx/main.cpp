@@ -17,18 +17,15 @@ nmea2k::CANLayer n2k(p30,p29); // used for sending nmea2k messages
 
 
 int main(void){
-
-  nmea2k::Frame m;     // holds nmea2k data frame before sending
-  nmea2k::PduHeader h; // ISO11783-3 header information 
-  nmea2k::Pgn126993 d(heartbeat_interval*100,0);   // for PGN data fields
-  
   unsigned char c=0;           // heartbeat sends a heartbeat counter
   int heartbeat_interval = 10; // nominally at a 60 s interval
-  
   unsigned char node_addr = 0x01; // will need our own address
-
-
   
+  nmea2k::Frame m;     // holds nmea2k data frame before sending
+  nmea2k::PduHeader h; // ISO11783-3 header information 
+  nmea2k::Pgn126993 d(heartbeat_interval*100,c);   // for PGN data fields
+  
+
   pc.printf("nmea2k version %s\r\n",NMEA2K_VERSION);
   pc.printf("Simple Heartbeat PGN 126993 demo\r\n");
   pc.printf("Heartbeat interval %d s\r\n",heartbeat_interval);

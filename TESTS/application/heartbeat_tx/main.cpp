@@ -35,8 +35,8 @@ int main(void){
 	    node_addr); 
   while (1){
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
+    d = nmea2k::Pgn126993(heartbeat_interval*100,c++); // form PGN fields
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
-    d = nmea2k::Pgn126993(heartbeat_interval*100,c); // form PGN fields
     if (n2k.write(m)){ // send it!
       txled = 1; 
       pc.printf("0x%02x:main: sent %s, %0.0f s, count %u\r\n",
@@ -49,7 +49,6 @@ int main(void){
     else
       pc.printf("0x%02x:main: failed sending %s\r\n",
 		node_addr, d.name);
-    c++; // increment the heartbeat count
     ThisThread::sleep_for(heartbeat_interval*1000); 
   } // while(1)
   

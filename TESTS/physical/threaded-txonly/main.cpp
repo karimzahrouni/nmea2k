@@ -34,12 +34,13 @@ void send_callback() {
   while(1){
     txframe = nmea2k::Frame(1337, &counter, 1); 
     if(n2k.write(txframe)) {
+      txled = 1; 
       counter++;
       pc.printf("send_thread: sent id %d: 0x",txframe.id);
       for (int i=0; i<txframe.len; i++)
 	pc.printf("%02x",txframe.data[i]);
       pc.printf("\r\n");
-      txled = !txled; // blink light
+      txled = 0; // blink light
     } // if
     else {
       pc.printf("send_thread: failed sending id %d: 0x",txframe.id);

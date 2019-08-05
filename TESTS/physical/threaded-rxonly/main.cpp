@@ -32,11 +32,12 @@ void receive_callback(){
   pc.printf("receive_callback() running in receive_thread\r\n");
   while(1){
     if(n2k.read(rxframe)){
+      rxled = 1; 
       pc.printf("receive_thread(): received id %d: 0x",rxframe.id);
       for (int i=0; i<rxframe.len; i++)
 	pc.printf("%02x",rxframe.data[i]);
       pc.printf("\r\n");
-      rxled=!rxled;
+      rxled = 0;
     }
     ThisThread::sleep_for(10); 
   } // while(1)
@@ -54,7 +55,7 @@ int main(void){
   receive_thread.start(receive_callback);
   pc.printf("main() thread started\r\n");
   while(1) {
-    pc.printf("main(): I'm asleep and doing nothing\r\n");
+    //pc.printf("main(): I'm asleep and doing nothing\r\n");
     ThisThread::sleep_for(1000); 
   } // while(1)
 } // int main()

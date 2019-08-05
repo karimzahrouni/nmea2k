@@ -40,7 +40,7 @@ int main(void){
       pc.printf("main: sent %s, %0.0f s, count %d\r\n",
 		d.name,
 		(float) d.update_rate()/100.0,
-		d.heatbeat_sequence_counter());
+		d.heartbeat_sequence_counter());
     else
       pc.printf("main: failed sending %s\r\n",d.name); 
 

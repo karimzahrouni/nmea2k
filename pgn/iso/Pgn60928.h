@@ -47,7 +47,7 @@ namespace nmea2k{
 class Pgn60928:public PgnData{
 public:
   
- Pgn60928(uint32_t name;
+ Pgn60928(uint32_t name,
 	  uint32_t manufacturer_code,
 	  uint8_t device_instance_lower,
 	  uint8_t device_instance_upper,
@@ -119,7 +119,7 @@ public:
     _translation.fields.system_instance = x & 0xf;
   }
   void set_industry_group(uint8_t x){
-    _translation.fields.system_industry_group = x & 0x7;
+    _translation.fields.industry_group = x & 0x7;
   }
   void set_address_capable(uint8_t x){
     _translation.fields.address_capable = x & 0x1;

@@ -31,7 +31,7 @@ public:
   
   unsigned char* data(){return &_translation.data[0];}
 
-  inline uint8_t instance{return _translation.fields.instance;}
+  inline uint8_t instance(){return _translation.fields.instance;}
   inline void set_instance(uint8_t x){_translation.fields.instance = x;}
   inline int16_t voltage(){return _translation.fields.voltage;}
   inline void set_voltage(int16_t x){_translation.fields.voltage=x;}

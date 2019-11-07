@@ -49,7 +49,7 @@ private:
                               0xff,0xff,0xff,0xff};
     struct{
       uint8_t sid;
-      uint16 heading,
+      uint16_t heading,
           deviation,
           variation;
       uint8_t reference : 2,

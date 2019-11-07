@@ -16,8 +16,8 @@ namespace nmea2k{
 class Pgn127245:public PgnData{
 public:
   
-Pgn127245(uint8_t instance, uint8_t direction_order,
-          int16_t angle_order, int16_t position);
+ Pgn127245(uint8_t instance, uint8_t direction_order,
+	   int16_t angle_order, int16_t position):
   PgnData(PGN_126993_PRIORITY,
           127245,
           "Rudder PGN 127245",

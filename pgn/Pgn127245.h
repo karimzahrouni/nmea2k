@@ -17,8 +17,8 @@ class Pgn127245:public PgnData{
 public:
   
 Pgn127245(uint8_t instance, uint8_t direction_order,
-          int16_t angle_order, int16_t position);
-  PgnData(PGN_126993_PRIORITY,
+          int16_t angle_order, int16_t position):      //<added a ':' instead of ';' 
+  PgnData(PGN_127245_PRIORITY,   //had the wrong PGN #  //to get it to compile.
           127245,
           "Rudder PGN 127245",
           PGN_127245_DLEN){

@@ -30,7 +30,7 @@ PgnParser::PgnParser(){
   //debug("PgnParser() empty constructor called %p\r\n",this); 
 }
 
-  SharedPtr<nmea2k::PgnData> PgnParser::parse(nmea2k::PgnData d){
+  SharedPtr<nmea2k::PgnData> PgnParser::parse(nmea2k::Frame f){
   MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
                               MBED_ERROR_CODE_INVALID_OPERATION),
               "PgnParser::parse() should be overridden by subclasses");

@@ -36,7 +36,7 @@ int main(void){
         switch(h.pgn()){
           case 127245:
             debug("0x%02x:main: handling Rudder PGN 127245\r\n", node_addr);
-            //d = PgnParser127245(f.data,f.len);
+            //d = PgnParser127245(f);
             if (d)
               pc.printf("0x%02x:main: successfully parsed?\r\n", node_addr);
             else

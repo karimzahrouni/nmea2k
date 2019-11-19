@@ -13,8 +13,8 @@
 
 namespace nmea2k{
 
-class Pgn127245:public PgnData{
-public:
+  class Pgn127245:public PgnData{
+  public:
   
  Pgn127245(uint8_t instance, uint8_t direction_order,
 	   int16_t angle_order, int16_t position):
@@ -59,6 +59,23 @@ private:
   } _translation;
 };
 
+
+  class Pgn127245Parser: public PgnParser{
+  public:
+    
+  Pgn127245Parser():
+    PgnParser(){
+    };
+
+    SharedPtr<Pgn127245> parse(Frame f){
+      return NULL;
+    }
+
+  private:
+  }; // Pgn127245Parser
+  
+
+ 
 } // namespace nmea2k
 
 #endif

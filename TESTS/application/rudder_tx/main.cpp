@@ -25,11 +25,9 @@ void rudder_process(void);
 int main(void){
   nmea2k::Frame f;
   nmea2k::PduHeader h;
-  SharedPtr<nmea2k::PgnData> d;
-  //  nmea2k::PgnParser127245 RudderParser(); 
   
   pc.printf("0x%02x:main: nmea2k version %s\r\n",node_addr,NMEA2K_VERSION);
-  pc.printf("0x%02x:main: Rudder PGN 127245 tx demo\r\n");
+  pc.printf("0x%02x:main: Rudder PGN 127245 tx demo\r\n",node_addr);
   
   heartbeat_thread.start(&heartbeat_process); 
   rudder_thread.start(&rudder_process); 
@@ -86,7 +84,7 @@ void rudder_process(void){
     txled = 1; 
     d = nmea2k::Pgn127245(0, // instance
 			  PGN_127245_DIRECTION_RIGHT, // direction_order?
-			  round(15.0*PDN_127245_ANGLE_RES), // angle_order
+			  round(15.0*PGN_127245_ANGLE_RES), // angle_order
 			  round(-15.0*PGN_127245_ANGLE_RES)); // position 
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message

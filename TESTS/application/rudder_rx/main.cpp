@@ -36,6 +36,8 @@ int main(void){
           case 127245:
             debug("0x%02x:main: handling Rudder PGN 127245\r\n", node_addr);
             //d = PgnParser127245(f);
+	    for (int i=0; i<8; i++)
+	      pc.printf("%c",f.data[i]);
 	    d = nmea2k::Pgn127245(f.data);
 	    pc.printf("0x%02x:main: got rudder instance %d, direction order %d, angle_order %f, position %f\r\n",
 		      d.instance(),

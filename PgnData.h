@@ -1,7 +1,6 @@
 #ifndef PGNDATA_H
 #define PGNDATA_H
 
-#include "mbed.h"
 #include "platform/SharedPtr.h"
 
 namespace nmea2k{
@@ -25,7 +24,7 @@ namespace nmea2k{
   class PgnParser{
   public:
     PgnParser();
-    SharedPtr<PgnData> parse(Frame f); 
+    SharedPtr<PgnData> parse(PgnData d); 
   };
 
   

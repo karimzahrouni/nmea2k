@@ -4,10 +4,11 @@
 #include "PgnData.h"
 
 #define PGN_129025_PRIORITY 2
+// TODO need to get real default priority for this PGN
 #define PGN_129025_DLEN 8
 // TODO Fix latitude and longitude resolution!
-#define PGN_129025_RES_LATITUDE 1
-#define PGN_129025_RES_LONGITUDE 1
+#define PGN_129025_RES_LATITUDE 10000000
+#define PGN_129025_RES_LONGITUDE 10000000
 
 namespace nmea2k{
 
@@ -15,8 +16,8 @@ class Pgn129025:public PgnData{
 public:
   
  Pgn129025(int32_t latitude, int32_t longitude):
-  PgnData(PGN_126993_PRIORITY,
-          127245,
+  PgnData(PGN_129025_PRIORITY,
+          129025,
           "Position, Rapid Update PGN 129025",
           PGN_129025_DLEN){
     _translation.fields.latitude = latitude;

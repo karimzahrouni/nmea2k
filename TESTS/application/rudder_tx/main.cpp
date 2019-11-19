@@ -82,10 +82,10 @@ void rudder_process(void){
   while (1){
 
     txled = 1; 
-    d = nmea2k::Pgn127245(0, // instance
-			  PGN_127245_DIRECTION_RIGHT, // direction_order?
-			  round(15.0*PGN_127245_ANGLE_RES), // angle_order
-			  round(-15.0*PGN_127245_ANGLE_RES)); // position 
+    d = nmea2k::Pgn127245((uint8_t) 0, // instance
+			  (uint8_t) PGN_127245_DIRECTION_RIGHT, // direction_order?
+			  (int16_t) round(15.0*PGN_127245_ANGLE_RES), // angle_order
+			  (int16_t) round(-15.0*PGN_127245_ANGLE_RES)); // position 
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
     

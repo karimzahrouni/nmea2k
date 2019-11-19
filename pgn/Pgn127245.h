@@ -27,6 +27,15 @@ namespace nmea2k{
     _translation.fields.angle_order = angle_order;
     _translation.fields.position = position;
   };
+
+  Pgn127245(unsigned char* data):
+  PgnData(PGN_127245_PRIORITY,
+	  127245,
+	  "Rudder PGN 127245",
+	  PGN_127245_DLEN){
+    for (i=0; i<8; i++)
+      _translation.data[i] = data[i]; 
+  };
   
   unsigned char* data(){return &_translation.data[0];}
   inline uint8_t instance(){return _translation.fields.instance;}

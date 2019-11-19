@@ -20,8 +20,7 @@ void heartbeat_process(void);
 int main(void){
   nmea2k::Frame f;
   nmea2k::PduHeader h;
-  SharedPtr<nmea2k::PgnData> d;
-  //  nmea2k::PgnParser127245 RudderParser(); 
+  nmea2k::Pgn127245 d(0,0,0,0);
   
   pc.printf("0x%02x:main: nmea2k version %s\r\n",node_addr,NMEA2K_VERSION);
   pc.printf("0x%02x:main: PGN 127245 receive demo\r\n",node_addr);
@@ -37,10 +36,12 @@ int main(void){
           case 127245:
             debug("0x%02x:main: handling Rudder PGN 127245\r\n", node_addr);
             //d = PgnParser127245(f);
-            if (d)
-              pc.printf("0x%02x:main: successfully parsed?\r\n", node_addr);
-            else
-              pc.printf("0x%02x:main: did not parse successfully\r\n", node_addr);
+	    d = Pgn127245(f.data);
+	    pc.printf("0x%02x:main: got rudder instance %d, direction order %d, angle_order %f, position %f\r\n",
+		      d.instance,
+		      d.direction_order,
+		      (float)d.angle_order/PGN_127245_ANGLE_RES,
+		      (float)d.position/PGN_127245_ANGLE_RES); 
             break;
           default:
             pc.printf("0x%02x:main: received unhandled PGN %d\r\n",

@@ -44,7 +44,7 @@ int main(void){
 void heartbeat_process(void){
   nmea2k::Frame m;     // holds nmea2k data frame before sending
   nmea2k::PduHeader h; // ISO11783-3 header information 
-  nmea2k::PgnData d;   // for PGN data fields
+  nmea2k::Pgn126993 d;   // for PGN data fields
   unsigned char c=0;           // heartbeat sends a heartbeat counter
   int heartbeat_interval = 60; // nominally at a 60 s interval
   
@@ -74,7 +74,7 @@ void heartbeat_process(void){
 void rudder_process(void){
   nmea2k::Frame m;     // holds nmea2k data frame before sending
   nmea2k::PduHeader h; // ISO11783-3 header information 
-  nmea2k::PgnData d;   // for PGN data fields
+  nmea2k::Pgn127245 d;   // for PGN data fields
   int rudder_interval = 10; // nominally at a 10 s interval
 
   pc.printf("0x%02x:rudder_process: starting Rudder PGN 127245 tx process\r\n",

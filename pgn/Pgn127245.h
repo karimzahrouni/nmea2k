@@ -34,7 +34,7 @@ namespace nmea2k{
 	  "Rudder PGN 127245",
 	  PGN_127245_DLEN){
     for (int i=0; i<8; i++)
-      _translation.data[i] = data[i]; 
+      _translation.data[i] = data[7-i]; 
   };
   
   unsigned char* data(){return &_translation.data[0];}

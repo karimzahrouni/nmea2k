@@ -36,12 +36,12 @@ int main(void){
           case 127245:
             debug("0x%02x:main: handling Rudder PGN 127245\r\n", node_addr);
             //d = PgnParser127245(f);
-	    d = Pgn127245(f.data);
+	    d = nmea2k::Pgn127245(f.data);
 	    pc.printf("0x%02x:main: got rudder instance %d, direction order %d, angle_order %f, position %f\r\n",
-		      d.instance,
-		      d.direction_order,
-		      (float)d.angle_order/PGN_127245_ANGLE_RES,
-		      (float)d.position/PGN_127245_ANGLE_RES); 
+		      d.instance(),
+		      d.direction_order(),
+		      (float)d.angle_order()/PGN_127245_ANGLE_RES,
+		      (float)d.position()/PGN_127245_ANGLE_RES); 
             break;
           default:
             pc.printf("0x%02x:main: received unhandled PGN %d\r\n",

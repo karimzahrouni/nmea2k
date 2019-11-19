@@ -61,7 +61,7 @@ private:
       uint8_t instance,
           reserved : 5,
           direction_order : 3;
-      uint16_t angle_order,
+      int16_t angle_order,
           position,
           unused;
     } fields;

@@ -37,7 +37,7 @@ namespace nmea2k{
       _translation.data[i] = data[i]; 
   };
   
-  unsigned char* data(){return &_translation.data[0];}
+  unsigned char* data(){return &_translation.data;}
   inline uint8_t instance(){return _translation.fields.instance;}
   inline void set_instance(uint8_t x){_translation.fields.instance=x;}
   inline uint8_t direction_order(){return _translation.fields.direction_order;}

@@ -22,7 +22,7 @@ PgnData::PgnData(unsigned char p, unsigned int pgn, const char *name, unsigned i
 unsigned char* PgnData::data(){
   MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
                               MBED_ERROR_INVALID_OPERATION),
-              "should be overridden by subclasses data");
+              "PgnData::data() should be overridden by subclasses");
   return NULL; 
 }
 
@@ -30,10 +30,10 @@ PgnParser::PgnParser(){
   //debug("PgnParser() empty constructor called %p\r\n",this); 
 }
 
-PgnData* PgnParser::parse(unsigned char *data, unsigned char len){
+  SharedPtr<nmea2k::PgnData> PgnParser::parse(nmea2k::Frame f){
   MBED_ERROR( MBED_MAKE_ERROR(MBED_MODULE_APPLICATION,
                               MBED_ERROR_CODE_INVALID_OPERATION),
-              "should be overridden by subclasses parse");
+              "PgnParser::parse() should be overridden by subclasses");
   return NULL;
 } // PgnData* parse(data, len);
   

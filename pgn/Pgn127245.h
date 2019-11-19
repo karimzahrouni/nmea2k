@@ -68,6 +68,14 @@ private:
     };
 
     SharedPtr<Pgn127245> parse(Frame f){
+      // for simple single frame PGN,
+      // try creating a new Pgn127245
+      // copy the frame data to it
+      // if all is well return it
+      // otherwise return NULL
+
+      // seems kinda dumb to have to do this for each guy
+      // why not just have a constructor case with data? 
       return NULL;
     }
 

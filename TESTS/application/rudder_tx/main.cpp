@@ -88,7 +88,10 @@ void rudder_process(void){
 			  (int16_t) round(-15.0*PGN_127245_ANGLE_RES)); // position 
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
-    
+
+    for (int i=0; i<8; i++){
+      pc.printf("%x",d.data()[i]);
+    }
     if (n2k.write(m)) // send it!
       pc.printf("0x%02x:rudder_process: sent %s in Frame %p\r\n",
 		node_addr,d.name,&m);

@@ -89,12 +89,19 @@ void rudder_process(void){
     h = nmea2k::PduHeader(d.p,d.pgn,node_addr,NMEA2K_BROADCAST); // form header 
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
 
-    for (int i=0; i<8; i++){
-      pc.printf("%02x",d.data()[i]);
-    }
+    //debug("0x%02x:rudder_process: sending data",node_addr); 
+    //for (int i=0; i<8; i++){
+    //  debug("%02x",d.data()[i]);
+    //}
+    //debug("\r\n");
     if (n2k.write(m)) // send it!
-      pc.printf("0x%02x:rudder_process: sent %s in Frame %p\r\n",
-		node_addr,d.name,&m);
+      pc.printf("0x%02x:rudder_process: sent %s, instance %d, direction_order %d, angle_order %3.1f, position %3.1f\r\n",
+		node_addr,
+		d.name,
+		d.instance(),
+		d.direction_order(),
+		(float) d.angle_order()/PGN_127245_ANGLE_RES*180.0/NMEA2K_PI,
+		(float) d.position()/PGN_127245_ANGLE_RES*180.0/NMEA2K_PI);
     else
       pc.printf("0x%02x:rudder_process: failed sending %s\r\n",
 		node_addr,d.name);

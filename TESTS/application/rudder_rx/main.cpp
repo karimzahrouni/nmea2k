@@ -34,15 +34,16 @@ int main(void){
       if ((h.da() == NMEA2K_BROADCAST) || (h.da() == node_addr))
         switch(h.pgn()){
           case 127245:
-            debug("0x%02x:main: handling Rudder PGN 127245\r\n", node_addr);
+            //debug("0x%02x:main: handling Rudder PGN 127245\r\n", node_addr);
             //d = PgnParser127245(f);
-	    for (int i=0; i<8; i++)
-	      pc.printf("%02x",f.data[i]);
 	    d = nmea2k::Pgn127245(f.data);
-	    for (int i=0; i<8; i++)
-	      pc.printf("%02x",d.data()[i]);
-	    pc.printf("0x%02x:main: got rudder instance %d, direction order %d, angle_order %3.1f deg, position %3.1f deg\r\n",
+	    //debug("0x%02x:main: received data 0x",node_addr);
+	    //for (int i=0; i<8; i++)
+	    //  debug("%02x",d.data()[i]);
+	    //debug("\r\n");
+	    pc.printf("0x%02x:main: recieved %s, instance %d, direction_order %d, angle_order %3.1f, position %3.1f\r\n",
 		      node_addr,
+		      d.name,
 		      d.instance(),
 		      d.direction_order(),
 		      (float)d.angle_order()/PGN_127245_ANGLE_RES*180.0/NMEA2K_PI,

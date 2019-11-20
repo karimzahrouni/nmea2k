@@ -42,6 +42,7 @@ int main(void){
 	    for (int i=0; i<8; i++)
 	      pc.printf("%02x",d.data()[i]);
 	    pc.printf("0x%02x:main: got rudder instance %d, direction order %d, angle_order %f, position %f\r\n",
+		      node_addr,
 		      d.instance(),
 		      d.direction_order(),
 		      (float)d.angle_order()/PGN_127245_ANGLE_RES,

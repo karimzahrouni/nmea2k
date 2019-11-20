@@ -13,6 +13,7 @@
 /** @def NMEA2K_VERSION
     @brief nmea2k version for Sailbot Hull 14 mod 3 */
 #define NMEA2K_VERSION "14.3.0 PT1"
+#define NMEA2K_PI (3.14159265358979323846263383)
 
 #include "Frame.h"
 #include "CANLayer.h"

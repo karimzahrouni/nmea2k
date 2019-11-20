@@ -45,8 +45,8 @@ int main(void){
 		      node_addr,
 		      d.instance(),
 		      d.direction_order(),
-		      (float)d.angle_order()/PGN_127245_ANGLE_RES*180.0/3.14159,
-		      (float)d.position()/PGN_127245_ANGLE_RES*180.0/3.14159); 
+		      (float)d.angle_order()/PGN_127245_ANGLE_RES*180.0/NMEA2K_PI,
+		      (float)d.position()/PGN_127245_ANGLE_RES*180.0/NMEA2K_PI); 
             break;
           default:
             pc.printf("0x%02x:main: received unhandled PGN %d\r\n",

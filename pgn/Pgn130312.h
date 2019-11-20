@@ -42,6 +42,15 @@ public:
     _translation.fields.actual_temperature = actual_temperature;
     _translation.fields.set_temperature = set_temperature;
   };
+
+ Pgn130312(unsigned char* data):
+  PgnData(PGN_130312_PRIORITY,
+	  130312,
+	  "Temperature PGN 130312",
+	  PGN_130312_DLEN){
+    for (int i=0; i<PGN_130312_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };
   
   unsigned char* data(){return &_translation.data[0];}
   inline uint8_t sid(){return _translation.fields.sid;}

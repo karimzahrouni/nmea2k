@@ -18,6 +18,15 @@ Pgn59904(uint32_t pgn):
           PGN_59904_DLEN){
     set_pgn(pgn); 
   };
+
+ Pgn59904(unsigned char* data):
+  PgnData(PGN_59904_PRIORITY,
+	  59904,
+	  "ISO Request PGN 59904",
+	  PGN_59904_DLEN){
+    for (int i=0; i<PGN_59904_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };
   
   unsigned char* data(){return &_translation.data[0];}
   inline uint32_t pgn(){

@@ -23,6 +23,15 @@ public:
     _translation.fields.latitude = latitude;
     _translation.fields.longitude = longitude;
   };
+
+  Pgn129025(unsigned char* data):
+  PgnData(PGN_129025_PRIORITY,
+	  129025,
+	  "Position, Rapid Update PGN 129025",
+	  PGN_129025_DLEN){
+    for (int i=0; i<PGN_129025_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };  
   
   unsigned char* data(){return &_translation.data[0];}
   inline int32_t latitude(){return _translation.fields.latitude;}

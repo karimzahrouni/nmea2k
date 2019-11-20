@@ -30,6 +30,15 @@ public:
     _translation.fields.source = source;
     _translation.fields.pressure = pressure;
   };
+
+ Pgn130314(unsigned char* data):
+  PgnData(PGN_130314_PRIORITY,
+	  130314,
+	  "Actual Pressure PGN 130314",
+	  PGN_130314_DLEN){
+    for (int i=0; i<PGN_130314_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };
   
   unsigned char* data(){return &_translation.data[0];}
   inline uint8_t sid(){return _translation.fields.sid;}

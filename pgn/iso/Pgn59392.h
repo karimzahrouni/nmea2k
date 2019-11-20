@@ -27,6 +27,15 @@ Pgn59392(uint8_t control,
     set_pgn(pgn); 
   };
   
+ Pgn59392(unsigned char* data):
+  PgnData(PGN_59392_PRIORITY,
+	  59392,
+	  "ISO Acknowledgement PGN 59392",
+	  PGN_59392_DLEN){
+    for (int i=0; i<PGN_59392_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };
+  
   unsigned char* data(){return &_translation.data[0];}
   inline uint8_t control(){return _translation.fields.control;}
   inline void set_control(uint8_t x){_translation.fields.control=control;}

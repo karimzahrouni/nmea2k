@@ -68,6 +68,15 @@ public:
     set_industry_group(industry_group);
     set_address_capable(address_capable);
   };
+
+  Pgn60928(unsigned char* data):
+  PgnData(PGN_60928_PRIORITY,
+	  60928,
+	 "ISO Address Claim PGN 60928",
+	  PGN_60928_DLEN){
+    for (int i=0; i<PGN_60928_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };  
   
   unsigned char* data(){return &_translation.data[0];}
 

@@ -31,6 +31,15 @@ public:
     _translation.fields.wind_angle = wind_angle;
     _translation.fields.reference = reference; 
   };
+
+ Pgn130306(unsigned char* data):
+  PgnData(PGN_130306_PRIORITY,
+	  130306,
+	  "Wind Data PGN 130306",
+	  PGN_130306_DLEN){
+    for (int i=0; i<PGN_130306_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };
   
   unsigned char* data(){return &_translation.data[0];}
   inline uint8_t sid(){return _translation.fields.sid;}

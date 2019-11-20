@@ -21,6 +21,15 @@ public:
     _translation.fields.heartbeat_sequence_counter =
       heartbeat_sequence_counter; 
   };
+
+ Pgn126993(unsigned char* data):
+  PgnData(PGN_126993_PRIORITY,
+	  126993,
+	  "Heartbeat PGN 126993",
+	  PGN_126993_DLEN){
+    for (int i=0; i<PGN_126993_DLEN; i++)
+      _translation.data[i] = data[i];
+  };
   
   unsigned char* data(){return &_translation.data[0];}
   inline uint16_t update_rate(){return _translation.fields.update_rate;}

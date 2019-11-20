@@ -28,6 +28,15 @@ public:
     _translation.fields.temperature = temperature;
     _translation.fields.sid = sid;
   };
+
+  Pgn127508(unsigned char* data):
+  PgnData(PGN_127508_PRIORITY,
+	  127508,
+	  "Battery Status PGN 127508",
+	  PGN_127508_DLEN){
+    for (int i=0; i<PGN_127508_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };
   
   unsigned char* data(){return &_translation.data[0];}
 

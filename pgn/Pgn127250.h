@@ -30,6 +30,15 @@ public:
     _translation.fields.variation = variation;
     _translation.fields.reference = reference;
   };
+
+ Pgn127250(unsigned char* data):
+  PgnData(PGN_127250_PRIORITY,
+	  127250,
+	  "Vessel Heading PGN 127250",
+	  PGN_127250_DLEN){
+    for (int i=0; i<PGN_127250_DLEN; i++)
+      _translation.data[i] = data[i]; 
+  };
   
   unsigned char* data(){return &_translation.data[0];}
   inline uint8_t sid(){return _translation.fields.sid;}

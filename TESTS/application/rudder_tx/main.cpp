@@ -90,7 +90,7 @@ void rudder_process(void){
     m = nmea2k::Frame(h.id(),d.data(),d.dlen); // assemble message
 
     for (int i=0; i<8; i++){
-      pc.printf("%x",d.data()[i]);
+      pc.printf("%02x",d.data()[i]);
     }
     if (n2k.write(m)) // send it!
       pc.printf("0x%02x:rudder_process: sent %s in Frame %p\r\n",

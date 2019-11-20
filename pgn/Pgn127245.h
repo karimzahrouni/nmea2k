@@ -58,7 +58,7 @@ private:
     unsigned char data[8] = {0xff,0xff,0xff,0xff,
                               0xff,0xff,0xff,0xff};
     struct{
-      uint8_t instance,
+      uint8_t instance : 8 ,
           reserved : 5,
           direction_order : 3;
       int16_t angle_order,

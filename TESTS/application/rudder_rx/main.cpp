@@ -41,7 +41,7 @@ int main(void){
 	    d = nmea2k::Pgn127245(f.data);
 	    for (int i=0; i<8; i++)
 	      pc.printf("%02x",d.data()[i]);
-	    pc.printf("0x%02x:main: got rudder instance %d, direction order %d, angle_order %f, position %3.1f\r\n",
+	    pc.printf("0x%02x:main: got rudder instance %d, direction order %d, angle_order %3.1f deg, position %3.1f deg\r\n",
 		      node_addr,
 		      d.instance(),
 		      d.direction_order(),

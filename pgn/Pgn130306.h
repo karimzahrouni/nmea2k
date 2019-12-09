@@ -57,7 +57,7 @@ private:
                               0xff,0xff,0xff,0xff};
     struct{
       uint8_t sid;
-      uint16 wind_speed,
+      uint16_t wind_speed,
           wind_angle;
       uint8_t reference,
           unused[2];
